@@ -50,7 +50,7 @@ library(moments)
 library(nortest)
 library(car)
 library(Matching)
-load("~/Dropbox/Research/Working Papers/ClimatePolicy/dat_anal.RData")
+load("dat_anal.RData")
 # options(kableExtra.auto_format = FALSE) # for word output this turns off the html output which is the default and makes tables look terrible
 ```
 
@@ -280,7 +280,7 @@ Figure \@ref(fig:ETSprice) charts the daily price of the EUA Futures contract fo
 For a emissions trading scheme to work efficiently allocation of abatement across countries would require that the marginal abatement cost is the same in all countries and over time. Clearly, this is not the case from the average abatement values in table \@ref(tab:SPs2), where the mean MAC is increasing over time and is typically largest for target setting countries. Furthermore, the EU ETS mentioned above, which allows firms from different EU countries to buy and sell CO^2^ emission allowances in order to achieve efficientallocation  of  abatement, shows a typical price range for MAC estimate in the period.  This suggests that allocation of CO^2^ abatement across countries despite the EU ETS market has been far from cost efficient.
 
 ### Marginal effect of the enviromental variable
-Following @Gallagher2019, we investigate the marginal effect of the enviromental variables  in equation \@ref(eq:QCNLS) to understand how they impact on inefficiency.  Specifically, we consider how inefficiency is affected by the proportion of trade to GDP, the percentage of the urban living in a country's population, and whether they country explicitly sets CO~2~ emission targets in the period of analysis. 
+Following @Gallagher2019, we investigate the marginal effect of the environmental variables  in equation \@ref(eq:QCNLS) to understand how they impact on inefficiency.  Specifically, we consider how inefficiency is affected by the proportion of trade to GDP, the percentage of the urban living in a country's population, and whether they country explicitly sets CO~2~ emission targets in the period of analysis. 
 
 ```{r reg}
 ClimatePolicy_anal %>% mutate(logGDP=log(GDP),
@@ -291,12 +291,11 @@ ClimatePolicy_anal %>% mutate(logGDP=log(GDP),
   dplyr::select(regY,TRADEtoGDP,URBAN,Setter,Yr,country) ->df_anal
 
 lm(regY~TRADEtoGDP+URBAN+Setter+Yr,data=df_anal) %>%
-  summary %>%
   tidy() %>%
   # mutate(estimate=exp(estimate))
   slice(-1) %>%
-  kable("latex",digits = 3,caption = "Marginal effect of enviromental variables",align = "c",booktabs=T) %>%
-  footnote(general="This table shows the marginal effects from the z coefficients in equation (1) by exploiting statistical procedure first outlined in Kuosmenan & Johnson (2015).") %>%
+  kable("latex",digits = 3,caption = "Marginal effect of enviromental variables",align = "c",booktabs=T,longtable=T) %>%
+  footnote(general="This table shows the marginal effects from the z coefficients in equation (1) by exploiting statistical procedure first outlined in Kuosmenan & Johnson (2015).",threeparttable = T) %>%
   kable_styling(full_width = T)
 ```
 

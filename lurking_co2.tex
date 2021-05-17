@@ -1,42 +1,56 @@
-\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 %
-\documentclass[12pt,]{article}
+\documentclass[
+  12pt,
+]{article}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provides euro and other symbols
-\else % if luatex or xelatex
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
   \usepackage{unicode-math}
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\usepackage{hyperref}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-            pdfauthor={Barry Quinn (Queen's Management School); Ronan Gallagher (Edinburgh Business School); Timo Kuosmanen (Aalto Business School)},
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
+  pdfauthor={Barry Quinn (Queen's Management School); Ronan Gallagher (Edinburgh Business School); Timo Kuosmanen (Aalto Business School)},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
 \usepackage[margin=1in]{geometry}
 \usepackage{longtable,booktabs}
-% Fix footnotes in tables (requires footnote package)
-\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -46,25 +60,14 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{5}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
-
-% set default figure placement to htbp
+% Set default figure placement to htbp
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
-
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{array}
@@ -83,7 +86,7 @@
 \title{\emph{Lurking in the shadows:}\\
 The cost and efficiency implications of CO\textsubscript{2} emissions target setting}
 \author{Barry Quinn (Queen's Management School) \and Ronan Gallagher (Edinburgh Business School) \and Timo Kuosmanen (Aalto Business School)}
-\date{13 August, 2020}
+\date{17 May, 2021}
 
 \begin{document}
 \maketitle
@@ -175,7 +178,7 @@ We use the International Energy Association (IEA) database\footnote{\url{http://
 \toprule
 Target Setting Country & Non Target Setting Country\\
 \midrule
-Slovak Republic ,Spain ,Sweden ,Switzerland ,United Kingdom ,Australia ,Austria ,Belgium ,Bulgaria ,Canada ,Czech Republic ,Denmark ,Estonia ,Finland ,France ,Germany ,Greece ,Hungary ,Iceland ,Ireland ,Italy ,Luxembourg ,Norway ,Poland ,Portugal ,Romania ,Russian Federation ,Latvia ,Netherlands ,New Zealand ,Japan & Senegal ,Singapore ,Slovenia ,South Africa ,Sri Lanka ,Sudan ,Thailand ,Togo ,Tunisia ,Ukraine ,United Arab Emirates ,United States ,Uruguay ,Uzbekistan ,Venezuela, RB ,Yemen, Rep. ,Zambia ,Albania ,Algeria ,Argentina ,Armenia ,Azerbaijan ,Bahrain ,Bangladesh ,Belarus ,Benin ,Bolivia ,Botswana ,Brazil ,Cambodia ,Cameroon ,Chile ,China ,Colombia ,Congo, Rep. ,Costa Rica ,Croatia ,Cyprus ,Dominican Republic ,Ecuador ,Egypt, Arab Rep. ,El Salvador ,Georgia ,Ghana ,Guatemala ,Haiti ,Honduras ,India ,Indonesia ,Israel ,Jamaica ,Jordan ,Kazakhstan ,Kenya ,Kyrgyz Republic ,Lithuania ,Malta ,Mozambique ,Namibia ,Pakistan ,Panama ,Paraguay ,Peru ,Philippines ,Saudi Arabia ,Korea, Rep. ,Malaysia ,Mexico ,Morocco ,Nepal ,Oman ,Qatar ,Kuwait ,Nigeria\\
+\textbf{Slovak Republic ,Spain ,Sweden ,Switzerland ,United Kingdom ,Australia ,Austria ,Belgium ,Bulgaria ,Canada ,Czech Republic ,Denmark ,Estonia ,Finland ,France ,Germany ,Greece ,Hungary ,Iceland ,Ireland ,Italy ,Luxembourg ,Norway ,Poland ,Portugal ,Romania ,Russian Federation ,Latvia ,Netherlands ,New Zealand ,Japan} & \textbf{Senegal ,Singapore ,Slovenia ,South Africa ,Sri Lanka ,Sudan ,Thailand ,Togo ,Tunisia ,Ukraine ,United Arab Emirates ,United States ,Uruguay ,Uzbekistan ,Venezuela, RB ,Yemen, Rep. ,Zambia ,Albania ,Algeria ,Argentina ,Armenia ,Azerbaijan ,Bahrain ,Bangladesh ,Belarus ,Benin ,Bolivia ,Botswana ,Brazil ,Cambodia ,Cameroon ,Chile ,China ,Colombia ,Congo, Rep. ,Costa Rica ,Croatia ,Cyprus ,Dominican Republic ,Ecuador ,Egypt, Arab Rep. ,El Salvador ,Georgia ,Ghana ,Guatemala ,Haiti ,Honduras ,India ,Indonesia ,Israel ,Jamaica ,Jordan ,Kazakhstan ,Kenya ,Kyrgyz Republic ,Lithuania ,Malta ,Mozambique ,Namibia ,Pakistan ,Panama ,Paraguay ,Peru ,Philippines ,Saudi Arabia ,Korea, Rep. ,Malaysia ,Mexico ,Morocco ,Nepal ,Oman ,Qatar ,Kuwait ,Nigeria}\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -195,7 +198,7 @@ Some summary statistics of the model variables are presented in Table \ref{tab:s
 \cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7} \cmidrule(l{3pt}r{3pt}){8-9} \cmidrule(l{3pt}r{3pt}){10-11}
   & Non Target & Target & Non Target & Target & Non Target & Target & Non Target & Target & Non Target & Target\\
 \midrule
-C02 emissions (Million Metric Tons) & 2.25 & 7.72 & 22.30 & 66.70 & 272.68 & 232.27 & 1086.07 & 346.03 & 496.12 & 1105.97\\
+C02 emissions (Million Metric Tons) & 2.24 & 7.72 & 22.30 & 66.70 & 272.68 & 232.27 & 1086.07 & 346.03 & 496.12 & 1105.97\\
 GDP (Billion PPP \$USD) & 16.10 & 33.56 & 113.62 & 362.44 & 764.05 & 910.94 & 2368.19 & 1159.91 & 2662.15 & 3432.20\\
 Labour Force (Millions) & 0.81 & 0.24 & 5.53 & 4.94 & 31.82 & 13.60 & 105.78 & 18.58 & 113.96 & 66.18\\
 Capital Stock (Billions PPP \$USD) & 20.80 & 69.57 & 170.11 & 919.89 & 1552.25 & 2133.53 & 5168.49 & 2937.17 & 5832.42 & 7321.33\\
@@ -351,13 +354,15 @@ For a emissions trading scheme to work efficiently allocation of abatement acros
 \hypertarget{marginal-effect-of-the-enviromental-variable}{%
 \subsubsection{Marginal effect of the enviromental variable}\label{marginal-effect-of-the-enviromental-variable}}
 
-Following Gallagher and Quinn (\protect\hyperlink{ref-Gallagher2019}{2019}), we investigate the marginal effect of the enviromental variables in equation \eqref{eq:QCNLS} to understand how they impact on inefficiency. Specifically, we consider how inefficiency is affected by the proportion of trade to GDP, the percentage of the urban living in a country's population, and whether they country explicitly sets CO\textsubscript{2} emission targets in the period of analysis.
+Following Gallagher and Quinn (\protect\hyperlink{ref-Gallagher2019}{2019}), we investigate the marginal effect of the environmental variables in equation \eqref{eq:QCNLS} to understand how they impact on inefficiency. Specifically, we consider how inefficiency is affected by the proportion of trade to GDP, the percentage of the urban living in a country's population, and whether they country explicitly sets CO\textsubscript{2} emission targets in the period of analysis.
 
-\begin{table}
-
-\caption{\label{tab:reg}Marginal effect of enviromental variables}
-\centering
-\begin{tabu} to \linewidth {>{\centering}X>{\centering}X>{\centering}X>{\centering}X>{\centering}X}
+\begin{ThreePartTable}
+\begin{TableNotes}
+\item \textit{Note: } 
+\item This table shows the marginal effects from the z coefficients in equation (1) by exploiting statistical procedure first outlined in Kuosmenan \& Johnson (2015).
+\end{TableNotes}
+\begin{longtabu} to \linewidth {>{\centering}X>{\centering}X>{\centering}X>{\centering}X>{\centering}X}
+\caption{\label{tab:reg}Marginal effect of enviromental variables}\\
 \toprule
 term & estimate & std.error & statistic & p.value\\
 \midrule
@@ -370,10 +375,9 @@ Yr2010 & -0.013 & 0.075 & -0.169 & 0.866\\
 Yr2011 & -0.014 & 0.075 & -0.191 & 0.849\\
 Yr2012 & -0.016 & 0.075 & -0.216 & 0.829\\
 \bottomrule
-\multicolumn{5}{l}{\textit{Note: }}\\
-\multicolumn{5}{l}{This table shows the marginal effects from the z coefficients in equation (1) by exploiting statistical procedure first outlined in Kuosmenan \& Johnson (2015).}\\
-\end{tabu}
-\end{table}
+\insertTableNotes
+\end{longtabu}
+\end{ThreePartTable}
 
 The results from table \ref{tab:reg} reveal some interesting features of the inefficency patterns at the country level. Typically, those countries which are have higher trade to GDP ratios and higher urban populations tend to be less efficieny over the sample. Interestingly, those countries which are setting targets tend to be more inefficiency in the sample period. Finally, there is an overall reduction in inefficiency over the period indicated by the year dummies, although this relationship is not significant in the data.
 
@@ -408,20 +412,20 @@ Type & Variable & Detail & Source\\
 Type & Variable & Detail & Source\\
 \midrule
 \endhead
-\
+
 \endfoot
 \bottomrule
 \insertTableNotes
 \endlastfoot
-Undesirable Output & CO2 emissions from fossil fuel (Millions of metric tonnes) & Emissions were calculated using IEA energy databases and the default methods and emission factors given in the 2006 GLs for National Greenhouse Gas Inventories. & International Energy Agency\\
-Desirable Output & GDP, PPP (constant 2011 international \$) & PPP GDP is gross domestic product converted to international dollars using purchasing power parity rates. An international dollar has the same purchasing power over GDP as the U.S. dollar has in the United States. GDP is the sum of gross value added by all resident producers in the economy plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in constant 2011 international dollars. & World Bank, International Comparison Program database.\\
-Input & Labor force, total & Labor force comprises people ages 15 and older who supply labor for the production of goods and services during a specified period. It includes people who are currently employed and people who are unemployed but seeking work as well as first-time job-seekers. Not everyone who works is included, however. Unpaid workers, family workers, and students are often omitted, and some countries do not count members of the armed forces. Labor force size tends to vary during the year as seasonal workers enter and leave. & Derived using data from International Labour Organization, ILOSTAT database and World Bank population estimates. Labor data retrieved in September 2018.\\
-Input & Capital Stock, PPP (constant international \$Billions) & Total capital stock is the sum of government capital stock, private capital stock, and public-private partnerships (PPP) capital stock.  When the PPP capital stock is missing we assume zero. & IMF and World Bank\\
-Enviromental Variable & Trade (\% of GDP) & Trade is the sum of exports and imports of goods and services measured as a share of gross domestic product. & World Bank national accounts data, and OECD National Accounts data files.\\
+Undesirable Output & \textbf{CO2 emissions from fossil fuel (Millions of metric tonnes)} & Emissions were calculated using IEA energy databases and the default methods and emission factors given in the 2006 GLs for National Greenhouse Gas Inventories. & International Energy Agency\\
+Desirable Output & \textbf{GDP, PPP (constant 2017 international \$)} & PPP GDP is gross domestic product converted to international dollars using purchasing power parity rates. An international dollar has the same purchasing power over GDP as the U.S. dollar has in the United States. GDP is the sum of gross value added by all resident producers in the country plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in constant 2017 international dollars. & International Comparison Program, World Bank | World Development Indicators database, World Bank | Eurostat-OECD PPP Programme.\\
+Input & \textbf{Labor force, total} & Labor force comprises people ages 15 and older who supply labor for the production of goods and services during a specified period. It includes people who are currently employed and people who are unemployed but seeking work as well as first-time job-seekers. Not everyone who works is included, however. Unpaid workers, family workers, and students are often omitted, and some countries do not count members of the armed forces. Labor force size tends to vary during the year as seasonal workers enter and leave. & Derived using data from International Labour Organization, ILOSTAT database. The data retrieved in March 1, 2020.\\
+Input & \textbf{Capital Stock, PPP (constant international \$Billions)} & Total capital stock is the sum of government capital stock, private capital stock, and public-private partnerships (PPP) capital stock.  When the PPP capital stock is missing we assume zero. & IMF and World Bank\\
+Enviromental Variable & \textbf{Trade (\% of GDP)} & Trade is the sum of exports and imports of goods and services measured as a share of gross domestic product. & World Bank national accounts data, and OECD National Accounts data files.\\
 \addlinespace
-Enviromental Variable & Urban population (\% of total) & Urban population refers to people living in urban areas as defined by national statistical offices. The data are collected and smoothed by United Nations Population Division. & United Nations Population Division. World Urbanization Prospects: 2018 Revision.\\
-Enviromental Variable & Target Setting Indicator & This variable takes a value of 1 for a country which committed to a hard target of emission reduction during the Kyoto Protocol period and zero otherwise. & author's own calculation\\
-Enviromental Variable & Year Indicators & A proxy for unobserved between group temporal variation & author's own calculation\\*
+Enviromental Variable & \textbf{Urban population (\% of total population)} & Urban population refers to people living in urban areas as defined by national statistical offices. The data are collected and smoothed by United Nations Population Division. & United Nations Population Division. World Urbanization Prospects: 2018 Revision.\\
+Enviromental Variable & \textbf{Target Setting Indicator} & This variable takes a value of 1 for a country which committed to a hard target of emission reduction during the Kyoto Protocol period and zero otherwise. & author's own calculation\\
+Enviromental Variable & \textbf{Year Indicators} & A proxy for unobserved between group temporal variation & author's own calculation\\*
 \end{longtable}
 \end{ThreePartTable}
 \endgroup{}
@@ -525,31 +529,31 @@ Table \ref{tab:Test1} shows the results of the testing approach described in sec
 
 \hypertarget{refs}{}
 \leavevmode\hypertarget{ref-Anderson1952}{}%
-Anderson, T W, and D A Darling. 1952. ``Asymptotic Theory of Certain `Goodness of Fit' Criteria Based on Stochastic Processes.'' \emph{Ann. Math. Stat.} 23 (2). Institute of Mathematical Statistics: 193--212.
+Anderson, T W, and D A Darling. 1952. ``Asymptotic Theory of Certain `Goodness of Fit' Criteria Based on Stochastic Processes.'' \emph{Ann. Math. Stat.} 23 (2): 193--212.
 
 \leavevmode\hypertarget{ref-Anderson1954}{}%
----------. 1954. ``A Test of Goodness of Fit.'' \emph{J. Am. Stat. Assoc.} 49 (268). Taylor \& Francis: 765--69.
+---------. 1954. ``A Test of Goodness of Fit.'' \emph{J. Am. Stat. Assoc.} 49 (268): 765--69.
 
 \leavevmode\hypertarget{ref-De_Angelis2019}{}%
-Angelis, Enrico Maria de, Marina Di Giacomo, and Davide Vannoni. 2019. ``Climate Change and Economic Growth: The Role of Environmental Policy Stringency.'' \emph{Sustain. Sci. Pract. Policy} 11 (8). Multidisciplinary Digital Publishing Institute: 2273.
+Angelis, Enrico Maria de, Marina Di Giacomo, and Davide Vannoni. 2019. ``Climate Change and Economic Growth: The Role of Environmental Policy Stringency.'' \emph{Sustain. Sci. Pract. Policy} 11 (8): 2273.
 
 \leavevmode\hypertarget{ref-Assaf2013}{}%
-Assaf, George, Roman Matousek, and Efthymios G Tsionas. 2013. ``Turkish Bank Efficiency: Bayesian Estimation with Undesirable Outputs.'' \emph{Journal of Banking \& Finance} 37 (2). Elsevier: 506--17.
+Assaf, George, Roman Matousek, and Efthymios G Tsionas. 2013. ``Turkish Bank Efficiency: Bayesian Estimation with Undesirable Outputs.'' \emph{Journal of Banking \& Finance} 37 (2): 506--17.
 
 \leavevmode\hypertarget{ref-Bohringer2003}{}%
-Böhringer, Christoph, and Carsten Vogt. 2003. ``Economic and Environmental Impacts of the Kyoto Protocol.'' \emph{Canadian Journal of Economics/Revue Canadienne d'économique} 36 (2). Wiley Online Library: 475--96.
+Böhringer, Christoph, and Carsten Vogt. 2003. ``Economic and Environmental Impacts of the Kyoto Protocol.'' \emph{Canadian Journal of Economics/Revue Canadienne d'économique} 36 (2): 475--96.
 
 \leavevmode\hypertarget{ref-Brechin2003}{}%
 Brechin, Steven R. 2003. ``Comparative Public Opinion and Knowledge on Global Climatic Change and the Kyoto Protocol: The US Versus the World?'' \emph{Int. J. Sociol. Soc. Policy} 23 (10): 106--34.
 
 \leavevmode\hypertarget{ref-Brown1974}{}%
-Brown, Morton B, and Alan B Forsythe. 1974. ``Robust Tests for the Equality of Variances.'' \emph{J. Am. Stat. Assoc.} 69 (346). Taylor \& Francis: 364--67.
+Brown, Morton B, and Alan B Forsythe. 1974. ``Robust Tests for the Equality of Variances.'' \emph{J. Am. Stat. Assoc.} 69 (346): 364--67.
 
 \leavevmode\hypertarget{ref-Buonanno2003}{}%
-Buonanno, Paolo, Carlo Carraro, and Marzio Galeotti. 2003. ``Endogenous Induced Technical Change and the Costs of Kyoto.'' \emph{Res. Energy Econ.} 25 (1). Elsevier: 11--34.
+Buonanno, Paolo, Carlo Carraro, and Marzio Galeotti. 2003. ``Endogenous Induced Technical Change and the Costs of Kyoto.'' \emph{Res. Energy Econ.} 25 (1): 11--34.
 
 \leavevmode\hypertarget{ref-Burniaux2000}{}%
-Burniaux, Jean-Marc. 2000. ``A Multi-Gas Assessment of the Kyoto Protocol.'' \emph{OECD Economics Department Working Papers No. 270}. OECD.
+Burniaux, Jean-Marc. 2000. ``A Multi-Gas Assessment of the Kyoto Protocol.'' \emph{OECD Economics Department Working Papers No. 270}.
 
 \leavevmode\hypertarget{ref-Cheng2019}{}%
 Cheng, Yu, Kangjuan Lv, Jian Wang, and Hao Xu. 2019. ``Energy Efficiency, Carbon Dioxide Emission Efficiency, and Related Abatement Costs in Regional China: A Synthesis of Input--Output Analysis and DEA.'' \emph{Energy Efficiency}.
@@ -558,7 +562,7 @@ Cheng, Yu, Kangjuan Lv, Jian Wang, and Hao Xu. 2019. ``Energy Efficiency, Carbon
 Choi, Yongrok, Ning Zhang, and P Zhou. 2012. ``Efficiency and Abatement Costs of Energy-Related CO2 Emissions in China: A Slacks-Based Efficiency Measure.'' \emph{Appl. Energy} 98 (October): 198--208.
 
 \leavevmode\hypertarget{ref-Cifci2018}{}%
-Cifci, Eren, and Matthew E Oliver. 2018. ``Reassessing the Links Between GHG Emissions, Economic Growth, and the UNFCCC: A Difference-in-Differences Approach.'' \emph{Sustain. Sci. Pract. Policy} 10 (2). Multidisciplinary Digital Publishing Institute: 334.
+Cifci, Eren, and Matthew E Oliver. 2018. ``Reassessing the Links Between GHG Emissions, Economic Growth, and the UNFCCC: A Difference-in-Differences Approach.'' \emph{Sustain. Sci. Pract. Policy} 10 (2): 334.
 
 \leavevmode\hypertarget{ref-Conover1999}{}%
 Conover, W J. 1999. \emph{Practical Nonparametric Statistics}. 3 edition. Wiley.
@@ -567,25 +571,25 @@ Conover, W J. 1999. \emph{Practical Nonparametric Statistics}. 3 edition. Wiley.
 Du, Limin, Aoife Hanley, and Chu Wei. 2015. ``Marginal Abatement Costs of Carbon Dioxide Emissions in China: A Parametric Analysis.'' \emph{Environmental and Resource Economics}.
 
 \leavevmode\hypertarget{ref-Fare1990}{}%
-Färe, R, and S Grosskopf. 1990. ``A Distance Function Approach to Price Efficiency.'' \emph{J. Public Econ.} North-Holland.
+Färe, R, and S Grosskopf. 1990. ``A Distance Function Approach to Price Efficiency.'' \emph{J. Public Econ.}
 
 \leavevmode\hypertarget{ref-Fare1993}{}%
-Färe, Rolf, Shawna Grosskopf, C. A. Knox Lovell, and Suthathip Yaisawarng. 1993. ``Derivation of Shadow Prices for Undesirable Outputs: A Distance Function Approach.'' \emph{Rev. Econ. Stat.} 75 (2). The MIT Press: 374--80.
+Färe, Rolf, Shawna Grosskopf, C. A. Knox Lovell, and Suthathip Yaisawarng. 1993. ``Derivation of Shadow Prices for Undesirable Outputs: A Distance Function Approach.'' \emph{Rev. Econ. Stat.} 75 (2): 374--80.
 
 \leavevmode\hypertarget{ref-Fare2012}{}%
 Färe, Rolf, and Daniel Primont. 2012. \emph{Multi-Output Production and Duality: Theory and Applications}. Springer Netherlands.
 
 \leavevmode\hypertarget{ref-Fischer2006}{}%
-Fischer, Carolyn, and Richard D Morgenstern. 2006. ``Carbon Abatement Costs: Why the Wide Range of Estimates?'' \emph{Energy J.} 27 (2). International Association for Energy Economics: 73--86.
+Fischer, Carolyn, and Richard D Morgenstern. 2006. ``Carbon Abatement Costs: Why the Wide Range of Estimates?'' \emph{Energy J.} 27 (2): 73--86.
 
 \leavevmode\hypertarget{ref-Gallagher2019}{}%
-Gallagher, Ronan, and Barry Quinn. 2019. ``Regulatory Own Goals: The Unintended Consequences of Economic Regulation in Professional Football.'' \emph{European Sport Management Quarterly}, April. Routledge, 1--20.
+Gallagher, Ronan, and Barry Quinn. 2019. ``Regulatory Own Goals: The Unintended Consequences of Economic Regulation in Professional Football.'' \emph{European Sport Management Quarterly}, April, 1--20.
 
 \leavevmode\hypertarget{ref-Halkos2014}{}%
-Halkos, George E, and Nickolaos G Tzeremes. 2014. ``Measuring the Effect of Kyoto Protocol Agreement on Countries' Environmental Efficiency in CO2 Emissions: An Application of Conditional Full Frontiers.'' \emph{J Prod Anal} 41 (3). Springer US: 367--82.
+Halkos, George E, and Nickolaos G Tzeremes. 2014. ``Measuring the Effect of Kyoto Protocol Agreement on Countries' Environmental Efficiency in CO2 Emissions: An Application of Conditional Full Frontiers.'' \emph{J Prod Anal} 41 (3): 367--82.
 
 \leavevmode\hypertarget{ref-Hovi2012}{}%
-Hovi, Jon, Detlef F Sprinz, and Guri Bang. 2012. ``Why the United States Did Not Become a Party to the Kyoto Protocol: German, Norwegian, and US Perspectives.'' \emph{European Journal of International Relations} 18 (1). SAGE Publications Ltd: 129--50.
+Hovi, Jon, Detlef F Sprinz, and Guri Bang. 2012. ``Why the United States Did Not Become a Party to the Kyoto Protocol: German, Norwegian, and US Perspectives.'' \emph{European Journal of International Relations} 18 (1): 129--50.
 
 \leavevmode\hypertarget{ref-Johnson2015}{}%
 Johnson, Andrew L, and Timo Kuosmanen. 2015. ``An Introduction to CNLS and StoNED Methods for Efficiency Analysis: Economic Insights and Computational Aspects.'' In \emph{Benchmarking for Performance Evaluation}, 117--86. Springer, New Delhi.
@@ -603,7 +607,7 @@ Kuosmanen, Timo, and Andrew Johnson. 2017. ``Modeling Joint Production of Multip
 Kuosmanen, Timo, Mika Kortelainen, Timo Sipiläinen, and Laurens Cherchye. 2010. ``Firm and Industry Level Profit Efficiency Analysis Using Absolute and Uniform Shadow Prices.'' \emph{Eur. J. Oper. Res.} 202 (2): 584--94.
 
 \leavevmode\hypertarget{ref-Kuosmanen2004}{}%
-Kuosmanen, Timo, Thierry Post, and Timo Sipiläinen. 2004. ``Shadow Price Approach to Total Factor Productivity Measurement: With an Application to Finnish Grass-Silage Production.'' \emph{Journal of Productivity Analysis} 22 (1-2). Kluwer Academic Publishers: 95--121.
+Kuosmanen, Timo, Thierry Post, and Timo Sipiläinen. 2004. ``Shadow Price Approach to Total Factor Productivity Measurement: With an Application to Finnish Grass-Silage Production.'' \emph{Journal of Productivity Analysis} 22 (1-2): 95--121.
 
 \leavevmode\hypertarget{ref-Kuosmanen2018b}{}%
 Kuosmanen, Timo, and Xun Zhou. 2018. ``Shadow Prices and Marginal Abatement Costs: Convex Quantile Regression Approach,'' November.
@@ -615,31 +619,31 @@ Lee, Chia-Yen, and Ke Wang. 2019. ``Nash Marginal Abatement Cost Estimation of A
 Lee, Myunghun, and Ning Zhang. 2012. ``Technical Efficiency, Shadow Price of Carbon Dioxide Emissions, and Substitutability for Energy in the Chinese Manufacturing Industries.'' \emph{Energy Econ.} 34 (5): 1492--7.
 
 \leavevmode\hypertarget{ref-Levene1961}{}%
-Levene, Howard. 1961. ``Robust Tests for Equality of Variances.'' \emph{Contributions to Probability and Statistics. Essays in Honor of Harold Hotelling}. Stanford University Press, 279--92.
+Levene, Howard. 1961. ``Robust Tests for Equality of Variances.'' \emph{Contributions to Probability and Statistics. Essays in Honor of Harold Hotelling}, 279--92.
 
 \leavevmode\hypertarget{ref-Manne2004}{}%
 Manne, Alan, and Richard Richels. 2004. ``US Rejection of the Kyoto Protocol: The Impact on Compliance Costs and CO2 Emissions.'' \emph{Energy Policy} 32 (4): 447--54.
 
 \leavevmode\hypertarget{ref-Maradan2005}{}%
-Maradan, David, Anatoli Vassiliev, and Others. 2005. ``Marginal Costs of Carbon Dioxide Abatement: Empirical Evidence from Cross-Country Analysis.'' \emph{Revue Suisse d Economie et de Statistique} 141 (3). Citeseer: 377.
+Maradan, David, Anatoli Vassiliev, and Others. 2005. ``Marginal Costs of Carbon Dioxide Abatement: Empirical Evidence from Cross-Country Analysis.'' \emph{Revue Suisse d Economie et de Statistique} 141 (3): 377.
 
 \leavevmode\hypertarget{ref-McKibbin2004}{}%
-McKibbin, Warwick J, and Peter J Wilcoxen. 2004. ``Estimates of the Costs of Kyoto: Marrakesh Versus the McKibbin--Wilcoxen Blueprint.'' \emph{Energy Policy} 32 (4). Elsevier: 467--79.
+McKibbin, Warwick J, and Peter J Wilcoxen. 2004. ``Estimates of the Costs of Kyoto: Marrakesh Versus the McKibbin--Wilcoxen Blueprint.'' \emph{Energy Policy} 32 (4): 467--79.
 
 \leavevmode\hypertarget{ref-Meyer2003}{}%
-Meyer, Mary C. 2003. ``A Test for Linear Versus Convex Regression Function Using Shape‐restricted Regression.'' \emph{Biometrika} 90 (1). Narnia: 223--32.
+Meyer, Mary C. 2003. ``A Test for Linear Versus Convex Regression Function Using Shape‐restricted Regression.'' \emph{Biometrika} 90 (1): 223--32.
 
 \leavevmode\hypertarget{ref-Murray1995}{}%
-Murray, Brian C. 1995. ``Measuring Oligopsony Power with Shadow Prices: U.S. Markets for Pulpwood and Sawlogs.'' \emph{Rev. Econ. Stat.} 77 (3). The MIT Press: 486--98.
+Murray, Brian C. 1995. ``Measuring Oligopsony Power with Shadow Prices: U.S. Markets for Pulpwood and Sawlogs.'' \emph{Rev. Econ. Stat.} 77 (3): 486--98.
 
 \leavevmode\hypertarget{ref-Nordhaus1999}{}%
-Nordhaus, William D, and Joseph G Boyer. 1999. ``Requiem for Kyoto: An Economic Analysis of the Kyoto Protocol.'' \emph{Energy J.} 20. International Association for Energy Economics: 93--130.
+Nordhaus, William D, and Joseph G Boyer. 1999. ``Requiem for Kyoto: An Economic Analysis of the Kyoto Protocol.'' \emph{Energy J.} 20: 93--130.
 
 \leavevmode\hypertarget{ref-OBrien1981}{}%
 O'Brien, Ralph G. 1981. ``A Simple Test for Variance Effects in Experimental Designs.'' \emph{Psychol. Bull.} 89 (3): 570--74.
 
 \leavevmode\hypertarget{ref-Reilly1999}{}%
-Reilly, J, R Prinn, J Harnisch, J Fitzmaurice, H Jacoby, D Kicklighter, J Melillo, P Stone, A Sokolov, and C Wang. 1999. ``Multi-Gas Assessment of the Kyoto Protocol.'' \emph{Nature} 401 (6753). Nature Publishing Group: 549--55.
+Reilly, J, R Prinn, J Harnisch, J Fitzmaurice, H Jacoby, D Kicklighter, J Melillo, P Stone, A Sokolov, and C Wang. 1999. ``Multi-Gas Assessment of the Kyoto Protocol.'' \emph{Nature} 401 (6753): 549--55.
 
 \leavevmode\hypertarget{ref-Rubin2015}{}%
 Rubin, Edward S, John E Davison, and Howard J Herzog. 2015. ``The Cost of CO2 Capture and Storage.'' \emph{Int. J. Greenhouse Gas Control} 40 (September): 378--400.
@@ -666,7 +670,7 @@ Welch, B L. 1947. ``The Generalisation of Student's Problems When Several Differ
 Weyant, J P, and J N Hill. 1999. ``Kyoto Special Issue, Introduction and Overview.'' \emph{Energy J.}
 
 \leavevmode\hypertarget{ref-Zhang1998}{}%
-Zhang, Zhongxiang, and Henk Folmer. 1998. ``Economic Modelling Approaches to Cost Estimates for the Control of Carbon Dioxide Emissions.'' \emph{Energy Econ.} 20 (1). Elsevier: 101--20.
+Zhang, Zhongxiang, and Henk Folmer. 1998. ``Economic Modelling Approaches to Cost Estimates for the Control of Carbon Dioxide Emissions.'' \emph{Energy Econ.} 20 (1): 101--20.
 
 \leavevmode\hypertarget{ref-Zhou2014}{}%
 Zhou, P, X Zhou, and L W Fan. 2014. ``On Estimating Shadow Prices of Undesirable Outputs with Efficiency Models: A Literature Review.'' \emph{Appl. Energy} 130 (October): 799--806.
