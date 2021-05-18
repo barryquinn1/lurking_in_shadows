@@ -36,7 +36,7 @@ opts_chunk$set(fig.path='figures/paper-',
                dev=c("png","pdf"),
                fig.width=14,
                fig.height=7,
-               dpi=400,
+               dpi=300,
                fig.show='hold',
                fig.pos = "H", out.extra = "",
                fig.lp="fig:",
@@ -271,8 +271,6 @@ There is a common theoretical starting point for *carbon emissions* pricing and 
 
 Since the introduction of the KPA, emission pricing schemes are bound to state actors, where it is politically inconvenient to increase such tax in line with climate impacts.  While efforts such as the EU emission trading scheme, introduced in 2008 for major industrial facilities, it has been shown to only cover about 40% of the European greenhouse-gas emissions^[https://www.dandc.eu/en/article/why-carbon-emissions-pricing-and-carbon-shadow-pricing-both-make-sense#:~:text=Appropriate%20carbon%20prices&text=%E2%80%9CCarbon%20emissions%20pricing%E2%80%9D%20means%20that,not%20reflect%20those%20impacts%20yet.].  In contrast shadow pricing largely bypasses national governments, as it is in common using by multilateral development banks.  That said, shadow pricing is only being applied to emerging and developing country projects.  The approach largely adopted here is a social value of carbon (SVC). The @CPLC2017 commission report established a SVC shadow price range necessary to achieving the Paris temperature target as \$40-80/tCO~2~ by 2020, and \$50-100/tCO~2~ by 2030.
 
-
-
 ```{r ETSprice, fig.cap="Daily ECX EUA Futures Price", eval=FALSE}
 # This is the ICE ECX EUA Future price which is a proxy  
 library(Quandl)
@@ -302,47 +300,44 @@ pr_usd %>%
 <!-- \end{footnotesize} -->
 
 
-```{r ETS comparision}
+```{r ETS comparision,fig.cap="ETS pricing mechanism comparison"}
 library(readxl)
 library(dplyr)
 read_excel("CPI_Data_DashboardExtract.xlsx",
            sheet = "Data_Price",
-           skip = 2) %>%  
-  gather(Year,Price_USD_2011) %>% 
-  drop_na() %>% 
-  slice(-c(1:3)) %>%
+           skip = 2,na="N/A") ->df
+df <- df[,colSums(is.na(df))<nrow(df)]
+df %>% 
+  dplyr::select(-`Jurisdiction Covered`,-`Instrument Type`) %>%
+  gather(Year,Price_USD_2011,-`Name of the initiative`) %>%
   mutate(Year=as.numeric(str_replace(Year,"Price_rate_1_","")),
-         Price=as.numeric(Price_USD_2011)) %>%
-  dplyr::select(Year,Price) %>%
-  drop_na() %>%
-  left_join(
+         Price_USD_2011=as.numeric(Price_USD_2011)) %>%
+  rename(Initiative="Name of the initiative") %>%
+  filter(Year>=2008 & Year<=2014) %>%
+  rbind(
   ClimatePolicy_anal %>% 
   group_by(year) %>%
-  summarise("MAC Overall"=mean(MAC,na.rm = T),
-            "MAC Target Setters"=mean(MAC_T,na.rm = T),            
-            "MAC Non Target Setters"=mean(MAC_No_T,na.rm = T)) %>%
-    rename(Year=year),
-  by="Year"
-) %>% 
-  gather(Type,Price,-Year) %>%
-  mutate(type_of_price=factor(Type,levels=c("MAC_no_target","MAC_overall","MAC_target","EU_ETS"))
-  ggplot(aes(x=Year,y=Price,fill=Type)) + 
-  geom_col(position = "dodge") + 
+  summarise("Shadow Price KPA target-setters"=mean(MAC_T,na.rm = T),          
+            "Shadow Price KPA non- target setters"=mean(MAC_No_T,na.rm = T)) %>% rename(Year=year) %>%
+    gather(Initiative,Price_USD_2011,-Year)) %>%
+  ggplot(aes(x=as.character(Year),y=Price_USD_2011,fill=Initiative)) + geom_col(position="dodge") + 
+  labs(x="", y="US$/tCO2e",fill="Pricing Mechanism",caption = "Source: World Bank Carbon Pricing Dashboard") +
   coord_flip() +
-   theme(legend.position = "top")
-
-
+  theme(text = element_text(size=20),
+    legend.text = element_text(size=12)) +
+  scale_fill_brewer(type = "qual")
 ```
 
+Figure 1 compares the 2011 nominal Carbon Prices from the seven of the largest emission trading schemes (ETS) to our shadow price mean estimates. In the first three years of the KPA the shadow price for both groups (target setting and non-target setting) is a multiple of the prevailing ETS carbon pricing markets. Interestingly, The Saitama ETS^[The Saitama target setting type ETS is a baseline-and-credit system that sets mandatory emission reduction targets for large buildings and factories. It was established in April 2011 as part of the Saitama Prefecture Global Warming Strategy Promotion Ordinance and is linked to the Tokyo CaT.] carbon pricing mechanism introduced in 2011 provides comparable estimates to our analysis, although its share of the global annual greenhouse gases emissions covered is a fraction of the EU ETS market (40% approximately^[https://carbonpricingdashboard.worldbank.org/map_data]). 
 
-Figure 1 charts the daily price of the EUA Futures contract for the sample period. One contract is worth 1000 Carbon Emission Allowances (EUA), where each EUA is an entitlement to emit one tonne of carbon dioxide equivalent gas.  The average shadow prices of CO~2~ emission from table 4 are higher than the average market prices of CO~2~ allowances in figure 1. The mean difference  The price fluctuates with a range of €5.72-31.71 per metric tonne in the European Union Emission Trading Scheme(EUETS) in years 2008-2012. 
+  
 
 For a emissions trading scheme to work efficiently allocation of abatement across countries would require that the marginal abatement cost is the same in all countries and over time. Clearly, this is not the case from the average abatement values in table 4, where the mean MAC is increasing over time and is typically largest for target setting countries. Furthermore, the EU ETS mentioned above, which allows firms from different EU countries to buy and sell CO^2^ emission allowances in order to achieve efficient allocation  of  abatement, shows a typical price range for MAC estimate in the period.  This suggests that allocation of CO~2~ abatement across countries despite the EU ETS market has been far from cost efficient.
 
 ### Marginal effect of the enviromental variable
 Following @Gallagher2019, we investigate the marginal effect of the environmental variables  in equation 1 to understand how they impact on inefficiency.  Specifically, we consider how inefficiency is affected by the proportion of trade to GDP, the percentage of the urban living in a country's population, and whether they country explicitly sets CO~2~ emission targets in the period of analysis. 
 
-```{r reg}
+```{r reg,results="asis"}
 ClimatePolicy_anal %>% mutate(logGDP=log(GDP),
                    logx=log((Capital+LABOUR+CO2)/3+1),
                    regY=logGDP-logx,
@@ -359,22 +354,27 @@ lm(regY~TRADEtoGDP+URBAN+Setter+Yr,data=df_anal) %>%
   kable_styling(full_width = T)
 ```
 
-The results from table \@ref(tab:reg) reveal some interesting features of the inefficency patterns at the country level.  Typically, those countries which are have higher trade to GDP ratios and higher urban populations tend to be less efficieny over the sample. Interestingly, those countries which are setting targets tend to be more inefficiency in the sample period. Finally, there is an overall reduction in inefficiency over the period indicated by the year dummies, although this relationship is not significant in the data.  
+The results from table 5 reveal some interesting features of the inefficient patterns at the country level.  Typically, those countries which are have higher trade to GDP ratios and higher urban populations tend to be less efficient over the sample. Interestingly, those countries which are setting targets tend to be more inefficiency in the sample period. Finally, there is an overall reduction in inefficiency over the period indicated by the year dummies, although this relationship is not significant in the data.  
+
+\newpage
 
 # Concluding Remarks
 
-This study provide important evidence to the on-going debate on target setting implications in climate policy.  Using state of the art efficiency techniques the study reveals some important and economically meaningful implications of CO~2~ emissions target setting.  The study expliots the explicit target setting period of the Kyoto Protocol to reveal unintended consequences in terms of increased inefficiencies and marginal abatement costs.
+This study provide important evidence to the on-going debate on target setting implications in climate policy.  Using state of the art efficiency techniques the study reveals some important and economically meaningful implications of CO~2~ emissions target setting.  The study exploits the explicit target setting period of the Kyoto Protocol to reveal unintended consequences in terms of increased inefficiencies and marginal abatement costs.
 
-The resulys reveals important implications for emissions trading schemes. For a emissions trading scheme to work efficiently allocation of abatement across countries would require that the marginal abatement cost is the same in all countries and over time. Clearly, this is not the case from the average abatement values in table \@ref(tab:SPs2), where the mean MAC is increasing over time and is typically largest for target setting countries. The results compared to the EU ETS trading scheme prices of the same period reveal that allocation of CO~2~ abatement across countries has been far from cost efficient.
-Furthermore marginal effects estimate of the enviromental variables suggest that target setting countries are more inefficient, and that inefficiencies are also driven by higher trade are more urbanisation.
+The resulys reveals important implications for emissions trading schemes. For a emissions trading scheme to work efficiently allocation of abatement across countries would require that the marginal abatement cost is the same in all countries and over time. Table 4 shows a substantive difference across the groups with the mean MAC increasing over time and typically larger for target setting countries. Our naive visual comparison of these mean shadow prices to the emissions trading schemes function over the sample period also suggest that allocation of CO~2~ abatement across countries has been far from cost efficient.
+
+Furthermore marginal effects estimate of the environmental variables suggest that target setting countries are more inefficient, and that inefficiencies are also driven by higher trade are more urbanisation.
 
 We feel our results add value to the regulatory economic analysis toolbox, by provide a coherent means to investigate statistically meaningful differences in regulating climate change.
+
+\newpage 
 
 # Appendix
 
 ## A.1: Shadow price group difference testing
 
-We illustrate our test using a cost function but argue it can be generalised to any production technology specfication. @Fare2012 prove, using duality theory, that production technologies are validly represented by either a cost function, the conventional production function, or a distance function. The cost function is defined as:
+We illustrate our test using a cost function but argue it can be generalised to any production technology specification. @Fare2012 prove, using duality theory, that production technologies are validly represented by either a cost function, the conventional production function, or a distance function. The cost function is defined as:
 \begin{equation}
 C(x,y)=\text{min} \{wx:\text{input x can produce output y}\}
 (\#eq:CostFn)
@@ -386,7 +386,7 @@ X=C(x,y) + \epsilon
 \end{equation}
 where $X$ is the observed cost and $\epsilon$ is a random disturbance term. The partial derivative of $C$ with respect to output $m$ is referred to as the shadow price of output $m$ (in other words, the marginal cost). The vector of all $M$ shadow prices is called the gradient vector and is denoted by $VC$.  Figure \@ref(fig:isoquant) illustrates the output isoquant in the case of two firms, where the gradient vector $VC$ includes two shadow prices illustrated by the dashed lines. The shadow prices define the slope of the tangent line on the output frontier. 
 
-```{r isoquant, fig.cap=" Two output isoquant"}
+```{r isoquant, fig.cap=" Two output isoquant", fig.height=5,fig.width=8}
 library(ggforce)
 arrow = arrow(angle=15, type = "closed")
 tibble(y1=c(2,3),y2=c(3,2)) %>% # some data to plot
@@ -429,13 +429,13 @@ tibble(y1=c(2,3),y2=c(3,2)) %>% # some data to plot
 The figure represents a two output production model, where the black arc line is the best practice output frontier. Firm 1 and Firm 2 are operating below the frontier and are thus defined as inefficient. These firms can improve their production efficiency (move towards the output frontier) by simultaneously producing more of y2 and y1 for a given level of inputs (costs). The dashed lines from the origin represent the radial distance along which efficiency is measured for each firm.  The dashed tangents on the output frontier represent the shadow prices for the firms.
 \end{footnotesize} 
 
-From figure \@ref(fig:isoquant) it is easy to see that the shadow prices depend on both the curvature of the output isoquant and the output mix, which can be measured by the ratio y2/y1. Note that tan A = y2/y1, where A is the angle indicated in figure  \@ref(fig:isoquant). Note further that the shadow prices depend on this angle (the polar coordinates), **not** the distance to the frontier. Proportional scaling of all outputs by some arbitrary constant along the dashed rays from the origin does not affect the shadow prices.  
+From figure 2 it is easy to see that the shadow prices depend on both the curvature of the output isoquant and the output mix, which can be measured by the ratio y2/y1. Note that tan A = y2/y1, where A is the angle indicated in figure  2. Note further that the shadow prices depend on this angle (the polar coordinates), **not** the distance to the frontier. Proportional scaling of all outputs by some arbitrary constant along the dashed rays from the origin does not affect the shadow prices.  
 
 What if we have empirically observed a change in the shadow prices (via some regulatory or supervisory shock) and our objective is to test whether this change is statistically significant?  If the output isoquant is held constant, the shadow prices can only change due to a change in the output mix y2/y1. Therefore, we can test statistically if there is a significant change in the output mix. Note that the ratio y2/y1 is completely independent of the estimation of the frontier, and therefore, the test is immune to possible serial correlation in the finite sample estimates of the shadow prices.  Some standard approaches to testing the significance of the changes in the distribution of y2/y1 are reviewed in the next section^[For completeness, it is worth noting that if the output isoquant is linear (outputs are perfect substitutes in production), then the shadow prices do not change even if the output mix changes. We could test if the curvature of the output set is significant (i.e., if there are significant economies of scope) by comparing the empirical fit of the linear and convex regression (see @Meyer2003, for details), but this is not our main objective. Rather, we are interested in the effect of a change in the regulatory and supervisory environment on shadow prices, and this effect can only occur through the change in the output mix]. 
 
 Regulation can influence the output allocation, but not the economies of scope or the shape of the production possibility set. @Zhou2014 argues that a genuine objective of a production unit in the presence of the introduction of a regulatory abatement target is to reduce their undesirable output to the target level. That is, if an external abatement target is given, the producer primarily focuses on achieving that target emissions level.  After attainment of this target, the economic objective of the producer is to maximise production of the desirable output in order to maximise profit.  This external regulatory shock thus changes the output allocation mix of desirable output to undesirable output but not the shape of the production possibility set.  
 
-As a practical example consider a regulatory shock which imposes a new supervisory framework on a regulated system.  In the efficiency literature regulatory externalities are consider to impose technological shifts to the best-practice frontier technology (the solid line in figure \@ref(fig:isoquant)).  If  Hicks nuetrality can be assumed, the effect on the frontier is a parrellel shift where the shape of the production possibility set remains unchanged.  
+As a practical example consider a regulatory shock which imposes a new supervisory framework on a regulated system.  In the efficiency literature regulatory externalities are consider to impose technological shifts to the best-practice frontier technology (the solid line in figure 2).  If  Hicks neutrality can be assumed, the effect on the frontier is a parallel shift where the shape of the production possibility set remains unchanged.  
 
 ## Application of Statistical Test
 Suppose we have two series of the output ratio y2/y1, which could represent two groups of firms observed in the same period or the same sample of firms observed in two different time periods. There are several methods for testing whether the two series are significantly different. 
@@ -458,7 +458,7 @@ The testing procedure for the difference in groups of the ratio series y2/y1 is 
 
 Our statistical shadow price difference test is based on the underlying data for the frontier efficiency. Specifically, it is the ratio of the corresponding bad output to either good output or input that is represented in a shadow price estimate. For example the ratio of CO^2^ emissions to GDP could be used to test statistical differences in the shadow price of the good output calculated as $MRT_{\tau}(y_{i},b_{j})=-\frac{\delta \vec{D}_{\tau}/\delta b_{j}}{\delta \vec{D}_{\tau}/\delta y_{i}}$.
 
-```{r Test1}
+```{r Test1, results="asis"}
 library(pander)
 # LeveneTest only works with factor variables in the formula
 ClimatePolicy_anal$Target<-as.factor(ClimatePolicy_anal$TargetSet)
@@ -498,7 +498,8 @@ kable(caption = "Statistical Analysis of Marginal Abatement Cost Differences",al
 
 ```
 
-Table 6 shows the results of the testing approach described in section \@ref(TestSteps) applied each year to ratio of the variables represented by the MAC estimates. The first column presents the results of the test of the empirical distribution of the ratio, and shows that normality is rejected for all years.  This result means we should use a non-parametric group difference test.  Column 2 presents the equality of variance test across the groups of interest which is robust to a non-normal distribution.  Equality of variance is not rejected for all years. Columns 3 and 4 of table \@ref(tab:Test) provide a statistical analysis of the observed mean differences in shadow prices presented in table \@ref(tab:SPsGrps). In column 3, the Wilcoxon Mann Whitney test provide robust inference when we cannot reject the hypothesis of equality of variance in groups assessed in column 2. The  Kolomogorov Smirnov test provides robust inference inference if the equality of variance hypothesis is rejected. Given the results of column 2, column 3 results suggests that there is a statistically significant difference in the shadow prices of the two cohorts.  This provides some meaningful evidence that target setting countries consistently experienced increased abatement costs over the Kyoto protocol period
+Table 6 shows the results of the testing approach described in section \@ref(TestSteps) applied each year to ratio of the variables represented by the MAC estimates. The first column presents the results of the test of the empirical distribution of the ratio, and shows that normality is rejected for all years.  This result means we should use a non-parametric group difference test.  Column 2 presents the equality of variance test across the groups of interest which is robust to a non-normal distribution.  Equality of variance is not rejected for all years. Columns 3 and 4 of table 6 provide a statistical analysis of the observed mean differences in shadow prices presented in table 4. In column 3, the Wilcoxon Mann Whitney test provide robust inference when we cannot reject the hypothesis of equality of variance in groups assessed in column 2. The  Kolomogorov Smirnov test provides robust inference inference if the equality of variance hypothesis is rejected. Given the results of column 2, column 3 results suggests that there is a statistically significant difference in the shadow prices of the two cohorts.  This provides some meaningful evidence that target setting countries consistently experienced increased abatement costs over the Kyoto protocol period
 
+\newpage
 
 # References
