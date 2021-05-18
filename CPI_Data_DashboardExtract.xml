@@ -1,0 +1,669 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <DocumentProperties xmlns="urn:schemas-microsoft-com:office:office">
+  <Author>Axel Richter</Author>
+  <LastAuthor>Microsoft Office User</LastAuthor>
+  <Created>2021-05-18T12:37:57Z</Created>
+  <Version>15.0</Version>
+ </DocumentProperties>
+ <OfficeDocumentSettings xmlns="urn:schemas-microsoft-com:office:office">
+  <AllowPNG/>
+  <PixelsPerInch>96</PixelsPerInch>
+ </OfficeDocumentSettings>
+ <ExcelWorkbook xmlns="urn:schemas-microsoft-com:office:excel">
+  <WindowHeight>17600</WindowHeight>
+  <WindowWidth>28800</WindowWidth>
+  <WindowTopX>120</WindowTopX>
+  <WindowTopY>460</WindowTopY>
+  <ActiveSheet>2</ActiveSheet>
+  <ProtectStructure>False</ProtectStructure>
+  <ProtectWindows>False</ProtectWindows>
+ </ExcelWorkbook>
+ <Styles>
+  <Style ss:ID="Default" ss:Name="Normal">
+   <Alignment ss:Vertical="Bottom"/>
+   <Borders/>
+   <Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="12" ss:Color="#000000"/>
+   <Interior/>
+   <NumberFormat/>
+   <Protection/>
+  </Style>
+ </Styles>
+ <Worksheet ss:Name="Data_Overall">
+  <Table ss:ExpandedColumnCount="14" ss:ExpandedRowCount="4" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="16">
+   <Row>
+    <Cell><Data ss:Type="String">Data last updated November, 01 2020</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">Note:&#160;Carbon pricing initiatives are considered &quot;scheduled for implementation&quot;&#160;once they have been formally adopted through legislation and have an official, planned start date.&#160; Carbon pricing initiatives are considered “under consideration” if the government has announced its intention to work towards the implementation of a carbon pricing initiative and this has been formally confirmed by official government sources.&#160; Jurisdictions that only mention carbon pricing in their NDCs are not included as different interpretations of the NDC text are possible. The carbon pricing initiatives have been classified in ETSs and carbon taxes according to how they operate technically. ETS does not only refer to cap-and-trade systems, but also baseline-and-credit systems such as in British Columbia and baseline-and-offset systems such as in Australia. Carbon pricing has evolved over the years and initiatives do not necessarily follow the two categories in a strict sense. Due to the dynamic approach to continuously improve data quality, changes to the map do not only reflect new developments, but also corrections following new information from official government sources.  &#160; </Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">Name of the initiative</Data></Cell>
+    <Cell><Data ss:Type="String">Type</Data></Cell>
+    <Cell><Data ss:Type="String">Status</Data></Cell>
+    <Cell><Data ss:Type="String">Type of juridiction covered</Data></Cell>
+    <Cell><Data ss:Type="String">Jurisdiction covered</Data></Cell>
+    <Cell><Data ss:Type="String">World Bank region</Data></Cell>
+    <Cell><Data ss:Type="String">Year of implementation</Data></Cell>
+    <Cell><Data ss:Type="String">Year of abolishment</Data></Cell>
+    <Cell><Data ss:Type="String">GHG emissions covered [MtCO2e]</Data></Cell>
+    <Cell><Data ss:Type="String">Proportion of global GHG emissions covered</Data></Cell>
+    <Cell><Data ss:Type="String">Government income, previous year</Data></Cell>
+    <Cell><Data ss:Type="String">Value [billion US$]</Data></Cell>
+    <Cell><Data ss:Type="String">Initiatives with overlapping GHG emissions covered</Data></Cell>
+    <Cell><Data ss:Type="String">Covered GHG emissions overlapping with other initiatives [MtCO2e]</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">EU ETS</Data></Cell>
+    <Cell><Data ss:Type="String">ETS</Data></Cell>
+    <Cell><Data ss:Type="String">Implemented</Data></Cell>
+    <Cell><Data ss:Type="String">Regional</Data></Cell>
+    <Cell><Data ss:Type="String">EU, Norway, Iceland, Liechtenstein</Data></Cell>
+    <Cell><Data ss:Type="String">Europe and Central Asia</Data></Cell>
+    <Cell><Data ss:Type="String">2005</Data></Cell>
+    <Cell><Data ss:Type="String">0</Data></Cell>
+    <Cell><Data ss:Type="String">2249.119036</Data></Cell>
+    <Cell><Data ss:Type="String">0.041515578</Data></Cell>
+    <Cell><Data ss:Type="String">16.01123332</Data></Cell>
+    <Cell><Data ss:Type="String">33.6623297</Data></Cell>
+    <Cell><Data ss:Type="String">Finland carbon tax, Ireland carbon tax, UK carbon price floor, Norway carbon tax</Data></Cell>
+    <Cell><Data ss:Type="String">179.8925015</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Data_Emission">
+  <Table ss:ExpandedColumnCount="34" ss:ExpandedRowCount="4" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="16">
+   <Row>
+    <Cell><Data ss:Type="String">Data last updated November, 01 2020</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">Note: Only the introduction or removal of an ETS or carbon tax is shown. The coverage of each carbon pricing initiative is presented as a share of annual global GHG emissions for 1990-2015 based on data from the Emission Database for Global Atmospheric Research (EDGAR) version 5.0 including biofuels emissions. From 2015 onwards, the share of global GHG emissions is based on 2015 emissions from EDGAR. The GHG emissions coverage for each jurisdiction is based on official government sources and/or estimates.  If emissions that are covered by multiple carbon pricing initiatives shown in the graph, these are attributed to the carbon pricing initiative that was introduced first. Due to the dynamic approach to continuously improve data quality, changes to the graph do not only reflect new developments, but also corrections following new information from official government sources.  The information on the China national ETS represents early unofficial estimates based on the announcement of China’s National Development and Reform Commission on the launch of the national ETS of December 2017. </Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String"></Data></Cell>
+    <Cell><Data ss:Type="String">1990</Data></Cell>
+    <Cell><Data ss:Type="String">1991</Data></Cell>
+    <Cell><Data ss:Type="String">1992</Data></Cell>
+    <Cell><Data ss:Type="String">1993</Data></Cell>
+    <Cell><Data ss:Type="String">1994</Data></Cell>
+    <Cell><Data ss:Type="String">1995</Data></Cell>
+    <Cell><Data ss:Type="String">1996</Data></Cell>
+    <Cell><Data ss:Type="String">1997</Data></Cell>
+    <Cell><Data ss:Type="String">1998</Data></Cell>
+    <Cell><Data ss:Type="String">1999</Data></Cell>
+    <Cell><Data ss:Type="String">2000</Data></Cell>
+    <Cell><Data ss:Type="String">2001</Data></Cell>
+    <Cell><Data ss:Type="String">2002</Data></Cell>
+    <Cell><Data ss:Type="String">2003</Data></Cell>
+    <Cell><Data ss:Type="String">2004</Data></Cell>
+    <Cell><Data ss:Type="String">2005</Data></Cell>
+    <Cell><Data ss:Type="String">2006</Data></Cell>
+    <Cell><Data ss:Type="String">2007</Data></Cell>
+    <Cell><Data ss:Type="String">2008</Data></Cell>
+    <Cell><Data ss:Type="String">2009</Data></Cell>
+    <Cell><Data ss:Type="String">2010</Data></Cell>
+    <Cell><Data ss:Type="String">2011</Data></Cell>
+    <Cell><Data ss:Type="String">2012</Data></Cell>
+    <Cell><Data ss:Type="String">2013</Data></Cell>
+    <Cell><Data ss:Type="String">2014</Data></Cell>
+    <Cell><Data ss:Type="String">2015</Data></Cell>
+    <Cell><Data ss:Type="String">2016</Data></Cell>
+    <Cell><Data ss:Type="String">2017</Data></Cell>
+    <Cell><Data ss:Type="String">2018</Data></Cell>
+    <Cell><Data ss:Type="String">2019</Data></Cell>
+    <Cell><Data ss:Type="String">2020</Data></Cell>
+    <Cell><Data ss:Type="String">2021</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">EU ETS</Data></Cell>
+    <Cell><Data ss:Type="String">&#160;</Data></Cell>
+    <Cell><Data ss:Type="String">&#160;</Data></Cell>
+    <Cell><Data ss:Type="String">&#160;</Data></Cell>
+    <Cell><Data ss:Type="String">&#160;</Data></Cell>
+    <Cell><Data ss:Type="String">&#160;</Data></Cell>
+    <Cell><Data ss:Type="String">&#160;</Data></Cell>
+    <Cell><Data ss:Type="String">&#160;</Data></Cell>
+    <Cell><Data ss:Type="String">&#160;</Data></Cell>
+    <Cell><Data ss:Type="String">&#160;</Data></Cell>
+    <Cell><Data ss:Type="String">&#160;</Data></Cell>
+    <Cell><Data ss:Type="String">&#160;</Data></Cell>
+    <Cell><Data ss:Type="String">&#160;</Data></Cell>
+    <Cell><Data ss:Type="String">&#160;</Data></Cell>
+    <Cell><Data ss:Type="String">&#160;</Data></Cell>
+    <Cell><Data ss:Type="String">&#160;</Data></Cell>
+    <Cell><Data ss:Type="String">4.91047%</Data></Cell>
+    <Cell><Data ss:Type="String">4.79452%</Data></Cell>
+    <Cell><Data ss:Type="String">4.63337%</Data></Cell>
+    <Cell><Data ss:Type="String">4.51430%</Data></Cell>
+    <Cell><Data ss:Type="String">4.26262%</Data></Cell>
+    <Cell><Data ss:Type="String">4.21687%</Data></Cell>
+    <Cell><Data ss:Type="String">3.97560%</Data></Cell>
+    <Cell><Data ss:Type="String">3.91017%</Data></Cell>
+    <Cell><Data ss:Type="String">4.25584%</Data></Cell>
+    <Cell><Data ss:Type="String">4.06052%</Data></Cell>
+    <Cell><Data ss:Type="String">4.10981%</Data></Cell>
+    <Cell><Data ss:Type="String">4.10981%</Data></Cell>
+    <Cell><Data ss:Type="String">4.10981%</Data></Cell>
+    <Cell><Data ss:Type="String">4.10981%</Data></Cell>
+    <Cell><Data ss:Type="String">4.10981%</Data></Cell>
+    <Cell><Data ss:Type="String">4.10981%</Data></Cell>
+    <Cell><Data ss:Type="String">4.10981%</Data></Cell>
+    <Cell><Data ss:Type="String">&#160;</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Data_Price">
+  <Table ss:ExpandedColumnCount="131" ss:ExpandedRowCount="4" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="16">
+   <Row>
+    <Cell><Data ss:Type="String">Data last updated November, 01 2020</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">Note: Nominal prices on April 01, 2011 Prices are not necessarily comparable between carbon pricing initiatives because of differences in the number of sectors covered and allocation methods applied, specific exemptions, and different compensation methods. Due to the dynamic approach to continuously improve data quality and fluctuating exchange rates, data of different years may not always be comparable and could be amended following new information from official government sources. In addition, data for a limited number of initiatives may be incomplete as they are in the process of being validated and will be updated following confirmation from official government sources. </Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">Name of the initiative</Data></Cell>
+    <Cell><Data ss:Type="String">Instrument Type</Data></Cell>
+    <Cell><Data ss:Type="String">Jurisdiction Covered</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_1990</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_1990</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_1990</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_1990</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_1991</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_1991</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_1991</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_1991</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_1992</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_1992</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_1992</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_1992</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_1993</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_1993</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_1993</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_1993</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_1994</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_1994</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_1994</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_1994</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_1995</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_1995</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_1995</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_1995</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_1996</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_1996</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_1996</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_1996</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_1997</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_1997</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_1997</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_1997</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_1998</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_1998</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_1998</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_1998</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_1999</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_1999</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_1999</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_1999</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_2000</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_2000</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_2000</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_2000</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_2001</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_2001</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_2001</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_2001</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_2002</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_2002</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_2002</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_2002</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_2003</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_2003</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_2003</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_2003</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_2004</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_2004</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_2004</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_2004</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_2005</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_2005</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_2005</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_2005</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_2006</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_2006</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_2006</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_2006</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_2007</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_2007</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_2007</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_2007</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_2008</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_2008</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_2008</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_2008</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_2009</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_2009</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_2009</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_2009</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_2010</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_2010</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_2010</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_2010</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_2011</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_2011</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_2011</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_2011</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_2012</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_2012</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_2012</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_2012</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_2013</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_2013</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_2013</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_2013</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_2014</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_2014</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_2014</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_2014</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_2015</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_2015</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_2015</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_2015</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_2016</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_2016</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_2016</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_2016</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_2017</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_2017</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_2017</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_2017</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_2018</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_2018</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_2018</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_2018</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_2019</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_2019</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_2019</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_2019</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_2020</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_2020</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_2020</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_2020</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_1_Instrument_Type</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_1_Instrument_Type</Data></Cell>
+    <Cell><Data ss:Type="String">Price_label_2_Instrument_Type</Data></Cell>
+    <Cell><Data ss:Type="String">Price_rate_2_Instrument_Type</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">EU ETS</Data></Cell>
+    <Cell><Data ss:Type="String">ETS</Data></Cell>
+    <Cell><Data ss:Type="String">EU, Norway, Iceland, Liechtenstein</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">19.04973001</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">32.244399</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">1.256404</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">34.48332</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">15.550804</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">17.26597599</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">23.75688</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">9.296661996</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">6.060480003</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">6.757099997</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">7.689825</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">4.87867152</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">6.236738797</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">16.36535412</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">24.505702</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">30.14353429</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <Selected/>
+   <LeftColumnVisible>39</LeftColumnVisible>
+   <Panes>
+    <Pane>
+     <Number>3</Number>
+     <ActiveRow>2</ActiveRow>
+     <ActiveCol>59</ActiveCol>
+    </Pane>
+   </Panes>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="Data_Revenue">
+  <Table ss:ExpandedColumnCount="33" ss:ExpandedRowCount="4" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="16">
+   <Row>
+    <Cell><Data ss:Type="String">Data last updated November, 01 2020</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">Note: Nominal prices on April 01, 2011 Prices are not necessarily comparable between carbon pricing initiatives because of differences in the number of sectors covered and allocation methods applied, specific exemptions, and different compensation methods. Due to the dynamic approach to continuously improve data quality and fluctuating exchange rates, data of different years may not always be comparable and could be amended following new information from official government sources. In addition, data for a limited number of initiatives may be incomplete as they are in the process of being validated and will be updated following confirmation from official government sources. </Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">Name of the initiative</Data></Cell>
+    <Cell><Data ss:Type="String">Instrument Type</Data></Cell>
+    <Cell><Data ss:Type="String">Jurisdiction Covered</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_1990</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_1991</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_1992</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_1993</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_1994</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_1995</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_1996</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_1997</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_1998</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_1999</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_2000</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_2001</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_2002</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_2003</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_2004</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_2005</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_2006</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_2007</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_2008</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_2009</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_2010</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_2011</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_2012</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_2013</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_2014</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_2015</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_2016</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_2017</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_2018</Data></Cell>
+    <Cell><Data ss:Type="String">Revenue_2019</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">EU ETS</Data></Cell>
+    <Cell><Data ss:Type="String">ETS</Data></Cell>
+    <Cell><Data ss:Type="String">EU, Norway, Iceland, Liechtenstein</Data></Cell>
+    <Cell><Data ss:Type="String">0</Data></Cell>
+    <Cell><Data ss:Type="String">0</Data></Cell>
+    <Cell><Data ss:Type="String">0</Data></Cell>
+    <Cell><Data ss:Type="String">0</Data></Cell>
+    <Cell><Data ss:Type="String">0</Data></Cell>
+    <Cell><Data ss:Type="String">0</Data></Cell>
+    <Cell><Data ss:Type="String">0</Data></Cell>
+    <Cell><Data ss:Type="String">0</Data></Cell>
+    <Cell><Data ss:Type="String">0</Data></Cell>
+    <Cell><Data ss:Type="String">0</Data></Cell>
+    <Cell><Data ss:Type="String">0</Data></Cell>
+    <Cell><Data ss:Type="String">0</Data></Cell>
+    <Cell><Data ss:Type="String">0</Data></Cell>
+    <Cell><Data ss:Type="String">0</Data></Cell>
+    <Cell><Data ss:Type="String">0</Data></Cell>
+    <Cell><Data ss:Type="String">0</Data></Cell>
+    <Cell><Data ss:Type="String">0</Data></Cell>
+    <Cell><Data ss:Type="String">0</Data></Cell>
+    <Cell><Data ss:Type="String">85.56648564</Data></Cell>
+    <Cell><Data ss:Type="String">463.9658657</Data></Cell>
+    <Cell><Data ss:Type="String">1879.385212</Data></Cell>
+    <Cell><Data ss:Type="String">1295.430893</Data></Cell>
+    <Cell><Data ss:Type="String">1632.31571</Data></Cell>
+    <Cell><Data ss:Type="String">4983.429708</Data></Cell>
+    <Cell><Data ss:Type="String">3407.876902</Data></Cell>
+    <Cell><Data ss:Type="String">5639.4056</Data></Cell>
+    <Cell><Data ss:Type="String">4214.61057</Data></Cell>
+    <Cell><Data ss:Type="String">6849.572734</Data></Cell>
+    <Cell><Data ss:Type="String">15948.21643</Data></Cell>
+    <Cell><Data ss:Type="String">16011.23332</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+ <Worksheet ss:Name="General_Informations">
+  <Table ss:ExpandedColumnCount="27" ss:ExpandedRowCount="4" x:FullColumns="1"
+   x:FullRows="1" ss:DefaultColumnWidth="65" ss:DefaultRowHeight="16">
+   <Row>
+    <Cell><Data ss:Type="String">Data last updated November, 01 2020</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">Name of the initiative</Data></Cell>
+    <Cell><Data ss:Type="String">Type of the initiative</Data></Cell>
+    <Cell><Data ss:Type="String">Status of the initiative</Data></Cell>
+    <Cell><Data ss:Type="String">Year of implementation</Data></Cell>
+    <Cell><Data ss:Type="String">Description of the initiative</Data></Cell>
+    <Cell><Data ss:Type="String">Recent developments</Data></Cell>
+    <Cell><Data ss:Type="String">Jurisdictions covered</Data></Cell>
+    <Cell><Data ss:Type="String">GHG emissions in the jurisdiction (2012)</Data></Cell>
+    <Cell><Data ss:Type="String">Share of jurisdiction's GHG emissions covered</Data></Cell>
+    <Cell><Data ss:Type="String">Sectors and/or fuels covered</Data></Cell>
+    <Cell><Data ss:Type="String">Proportion of GHG emissions covered overlapping with other carbon pricing initiatives</Data></Cell>
+    <Cell><Data ss:Type="String">Cap or total emission units (current year or latest year available, ETS only)</Data></Cell>
+    <Cell><Data ss:Type="String">Allocation approaches (ETS only)</Data></Cell>
+    <Cell><Data ss:Type="String">Competitiveness considerations and/or exemptions</Data></Cell>
+    <Cell><Data ss:Type="String">Point of regulation</Data></Cell>
+    <Cell><Data ss:Type="String">Compliance cycle</Data></Cell>
+    <Cell><Data ss:Type="String">Use of offsets</Data></Cell>
+    <Cell><Data ss:Type="String">Price level</Data></Cell>
+    <Cell><Data ss:Type="String">Price/market stabilization mechanisms (ETS only)</Data></Cell>
+    <Cell><Data ss:Type="String">Future price developments (Carbon tax only)</Data></Cell>
+    <Cell><Data ss:Type="String">Government revenues (previous year)</Data></Cell>
+    <Cell><Data ss:Type="String">Value (current year)</Data></Cell>
+    <Cell><Data ss:Type="String">Relation to other carbon pricing initiatives</Data></Cell>
+    <Cell><Data ss:Type="String">Cooperations</Data></Cell>
+    <Cell><Data ss:Type="String">Links to official sources</Data></Cell>
+    <Cell><Data ss:Type="String">To find out more</Data></Cell>
+    <Cell><Data ss:Type="String">Contributions</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">General information</Data></Cell>
+    <Cell><Data ss:Type="String">General information</Data></Cell>
+    <Cell><Data ss:Type="String">General information</Data></Cell>
+    <Cell><Data ss:Type="String">General information</Data></Cell>
+    <Cell><Data ss:Type="String">General information</Data></Cell>
+    <Cell><Data ss:Type="String">General information</Data></Cell>
+    <Cell><Data ss:Type="String">Scope</Data></Cell>
+    <Cell><Data ss:Type="String">Scope</Data></Cell>
+    <Cell><Data ss:Type="String">Scope</Data></Cell>
+    <Cell><Data ss:Type="String">Scope</Data></Cell>
+    <Cell><Data ss:Type="String">Scope</Data></Cell>
+    <Cell><Data ss:Type="String">Allocation</Data></Cell>
+    <Cell><Data ss:Type="String">Allocation</Data></Cell>
+    <Cell><Data ss:Type="String">Compliance</Data></Cell>
+    <Cell><Data ss:Type="String">Compliance</Data></Cell>
+    <Cell><Data ss:Type="String">Compliance</Data></Cell>
+    <Cell><Data ss:Type="String">Compliance</Data></Cell>
+    <Cell><Data ss:Type="String">Price</Data></Cell>
+    <Cell><Data ss:Type="String">Price</Data></Cell>
+    <Cell><Data ss:Type="String">Price</Data></Cell>
+    <Cell><Data ss:Type="String">Value</Data></Cell>
+    <Cell><Data ss:Type="String">Value</Data></Cell>
+    <Cell><Data ss:Type="String">Other information</Data></Cell>
+    <Cell><Data ss:Type="String">Other information</Data></Cell>
+    <Cell><Data ss:Type="String">Other information</Data></Cell>
+    <Cell><Data ss:Type="String">Other information</Data></Cell>
+    <Cell><Data ss:Type="String">Other information</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="String">EU ETS</Data></Cell>
+    <Cell><Data ss:Type="String">ETS</Data></Cell>
+    <Cell><Data ss:Type="String">Implemented</Data></Cell>
+    <Cell><Data ss:Type="String">2005</Data></Cell>
+    <Cell><Data ss:Type="String">The European Union Emissions Trading System (EU ETS) represents the central pillar of the EU climate change policy and is the oldest and largest ETS for GHGs operating worldwide. Introduced in 2005 and now in its third phase, the system has gone through several reforms and will change again with the start of phase 4 in January 2021. </Data></Cell>
+    <Cell><Data ss:Type="String">As part of the EU's Green Deal in line with the EU's commitment to reach carbon-neutrality by 2050, as enshrined in the proposed European climate law, the Commission will review and propose to revise where necessary all relevant climate-related policy instruments by June 2021. In September 2020, the European Commission presented its plan to ramp up climate ambition towards 2030, proposing to cut emissions by at least 55% compared to 1990 levels. The 2030 Climate Target Plan is based on the Commission’s impact assessment  and comes with policy options to reach the higher reduction goal. Proposed revisions to the ETS include an expansion of the system’s scope to include emissions from the transport and buildings sectors through upstream coverage, a steeper reduction in the cap trajectory as well as a potential one-off reduction to the cap. While the share of free allocation would be revised downwards, industries at high risk of carbon leakage would continue to receive support through this mechanism under the new target. Alternative options to address leakage risks, including a carbon border adjustment targeting specific industrial sectors, are also considered in the Climate Target Plan.  Although not explicitly stated in the document, revisions to the MSR may also be expected as part of the planned review in 2021. The policy options are to be presented as legislative proposals by June 2021. The European Parliament has backed the Commission’s plan while adopting a more stringent emission reduction target of 60% in early October 2020.   Following its departure from the EU on January 31, 2020, the UK effectively also withdrew from the EU ETS. However, during the transition period until the end of 2020, the UK still participates in the EU ETS, and UK installations will therefore continue to face compliance obligations for their 2019 and 2020 emissions. In early February 2020, the European Commission published a negotiating mandate to begin talks with the UK on a deal governing post-Brexit relations. The mandate encourages the Parties to consider linking a UK national ETS with the EU ETS.  Linking would need to be based on conditions agreed within the EU to ensure a level playing field and the integrity of the EU ETS. After the end of the transition period, emissions from stationary installations in the UK fall outside the scope of the EU ETS and Union law. Flights between the UK and EU will remain within the scope of the EU ETS following a derogation (Article 28a) in the EU ETS Directive. Operators located or based in the United Kingdom that want to continue holding EUAs beyond April 30, 2021 would have to open a trading account in the Union Registry administered by an EU Member State and move their assets accordingly. Financial firms and institutions wanting to continue their participation in EU ETS auctions beyond this date should ensure that they are established as a legal entity in the EU.   The link between the registries of the Swiss and EU emissions trading systems that will enable the transfer of allowances, initially postponed due to COVID-19, became operational as of September 21, 2020 on a provisional basis. Transfers between the registries are executed on pre-announced dates that are released at least one month in advance.  The provisional solution will remain in effect until a direct link between both systems is established. EU and Swiss operators can use allowances from either system for compliance for 2020 emissions and later years. </Data></Cell>
+    <Cell><Data ss:Type="String">EU, Norway, Iceland, Liechtenstein</Data></Cell>
+    <Cell><Data ss:Type="String">5012 MtCO2e</Data></Cell>
+    <Cell><Data ss:Type="String">45%</Data></Cell>
+    <Cell><Data ss:Type="String">The EU ETS applies to CO2 emissions from the industry, power and aviation sectors and includes industrial process emissions. It also covers N2O emissions from the certain chemical sectors and PFC emissions from primary aluminium production.   In December 2017, the EU extended the 'Stop the Clock' provision. Under this extension, intercontinental flights are not included in the scope of the EU ETS until December 31, 2023 to align with the start of the first phase of CORSIA in 2024.</Data></Cell>
+    <Cell><Data ss:Type="String">8%  Estimated based on overlap with: Finland carbon tax, Ireland carbon tax, UK carbon price floor, Norway carbon tax The minor overlap with the following carbon pricing initiatives could not be taken into account due to a lack of available data: Denmark carbon tax, Estonia carbon tax, Latvia carbon tax, Slovenia carbon tax, Sweden carbon tax</Data></Cell>
+    <Cell><Data ss:Type="String">1816 MtCO2e (2020)  The total amount of emission allowances is determined top-down and decreases annually. From 2021 onwards, the cap decreases annually by 2.2% instead of 1.74%.</Data></Cell>
+    <Cell><Data ss:Type="String">Emission allowances under the cap are distributed via a combination of free allocation and auctioning. Industry and aviation sectors receive free allocation based on EU-wide benchmarks and historical activity data. The free allocation to industry sectors also depends on their emission and/or trade intensity and is corrected to ensure the total free allowances does not exceed the available allowances for free allocation. The power sector does not receive any free allocation. The total number of free allowances available for free allocation declines annually.</Data></Cell>
+    <Cell><Data ss:Type="String">Emission-intensive and/or trade-intensive sectors at risk of carbon leakage receive free allowances up to 100% of the benchmark level. Also, some small emitters are exempt from the EU ETS.   From 2021 onwards, sectors that are not included on the list of sectors deemed to be at risk of carbon leakage will receive up to 30% free allocation until 2026. After 2026, this will decrease linearly to 0% in 2030. Sectors on the carbon leakage list will continue to receive 100% of their allowances freely, up to benchmark levels. The benchmark levels will be updated every 5 vears to take technological progress into account. </Data></Cell>
+    <Cell><Data ss:Type="String">Operators are liable for reporting the emissions covered under the EU ETS at a facility level and surrendering an equivalent amount of EU emission allowances (and eligible offsets). </Data></Cell>
+    <Cell><Data ss:Type="String">Operators need to meet their compliance obligations on an annual basis. Operators need to surrender allowances by April 30 for the covered GHGs emitted in the previous calendar year. </Data></Cell>
+    <Cell><Data ss:Type="String">Several quantitative and qualitative restrictions apply to the use of ERUs and CERs. Each operator is restricted in the quantity of international credits it can use to meet its compliance obligations, with the total use of credits for phase 2 and phase 3 limited to up to 50% of the overall reduction under the EU ETS in that period. Credits from GHG emissions reduction projects registered before December 31, 2012 can be used from all countries, except certain project types. For credits from emission reductions after January 1, 2013, only credits from projects hosted by least developed countries (LDCs) are eligible. Projects from industrial gas credits (projects involving the destruction of HFC-23 and N2O) are excluded regardless of the host country. Credits issued for emission reductions that occurred in the first commitment period of the Kyoto Protocol were no longer accepted after 31 March 2015.  From 2021, the use of offsets is not envisaged.</Data></Cell>
+    <Cell><Data ss:Type="String">N/A</Data></Cell>
+    <Cell><Data ss:Type="String">From January 2019, the market stability reserve (MSR) started shaping the supply of allowances to provide greater price stability and predictability in the EU ETS. The MSR achieves this goal by removing allowances from the market if the number of total allowances in circulation is higher than 833 million allowances, and injecting allowances into the market if the number of allowances in circulation falls below 400 million. From 2019 until 2023, the yearly withholding rate of surplus allowances into the MSR is temporarily doubled to 24%. In addition, as of 2023 the number of allowances held in the MSR will be limited to the previous year's auction volume and any allowances beyond that number being invalidated.  As of phase 4, a Member State may also cancel allowances from their share of allowances to be auctioned if they take additional measures that result in closure of electricity generation capacity. The quantity of allowances invalidated shall not exceed the average verified emissions of the installation from five years preceding the closure.</Data></Cell>
+    <Cell><Data ss:Type="String">Not applicable</Data></Cell>
+    <Cell><Data ss:Type="String">US$16011 million</Data></Cell>
+    <Cell><Data ss:Type="String">US$33662 million</Data></Cell>
+    <Cell><Data ss:Type="String">The European Commission has concluded negotiations with Switzerland on linking the EU ETS with the Swiss ETS. In November 2017, the EU and Switzerland signed the Agreement to link their ETS.  The Agreement enter into force on 1 January 2020.</Data></Cell>
+    <Cell><Data ss:Type="String">The EU continues to seek out international cooperation. In April 2018, the European Commission held its first policy dialogue with China's newly-created Ministry of Ecology and Environment, reaffirming continued bilateral cooperation in developing the China national ETS.  At the Global Climate Action Summit held in September 2018, the EU and California agreed that officials from the EU and California would step up the frequency of exchanges, including on principles for alignment and the role of carbon pricing in sending near- and long-term investment signals for transformative technologies, addressing economic competitiveness, and maximizing public benefits for use of program revenues.</Data></Cell>
+    <Cell><Data ss:Type="String">EU Emissions Trading System (EU ETS) Consolidated version of Directive 2003/87/EC Other legislation related to the EU ETS</Data></Cell>
+    <Cell><Data ss:Type="String">ICAP EU ETS factsheet</Data></Cell>
+    <Cell><Data ss:Type="String">The data for this factsheet is provided by the the International Carbon Action Partnership (ICAP) Secretariat and is an abbreviated entry of the factsheet for the ICAP ETS Map. The complete ICAP factsheet for the EU ETS can be found here</Data></Cell>
+   </Row>
+  </Table>
+  <WorksheetOptions xmlns="urn:schemas-microsoft-com:office:excel">
+   <PageSetup>
+    <Header x:Margin="0.3"/>
+    <Footer x:Margin="0.3"/>
+    <PageMargins x:Bottom="0.75" x:Left="0.7" x:Right="0.7" x:Top="0.75"/>
+   </PageSetup>
+   <PageLayoutZoom>0</PageLayoutZoom>
+   <ProtectObjects>False</ProtectObjects>
+   <ProtectScenarios>False</ProtectScenarios>
+  </WorksheetOptions>
+ </Worksheet>
+</Workbook>

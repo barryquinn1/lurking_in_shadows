@@ -79,23 +79,25 @@
 \title{\emph{Lurking in the shadows:} Abatement cost and efficiency
 implications of CO\textsubscript{2} emissions target setting.}
 \author{Barry Quinn (Queen's Management School) \and Ronan Gallagher (Edinburgh Business School) \and Timo Kuosmanen (Aalto Business School)}
-\date{May 17, 2021}
+\date{May 18, 2021}
 
 \begin{document}
 \maketitle
 \begin{abstract}
 This paper consider the marginal abatement cost and frontier efficiency
 implications of setting explicit CO\textsubscript{2} emission. We
-exploit recent work on marginal abatement estimation to provide robust
-estimates of the cost of target setting in the Kyoto Protocol Agreement
-period. Overall, our results reveal that cost of marginal abatement of
-CO\textsuperscript{2} was typically higher for target setting countries.
-Furthermore, we find these countries which have higher trade to GDP
-ratios, high urban populations and explicit set targets where more
-inefficient. These results are particularly useful for understand the
-consequences of policies to curb unwanted byproducts in a regulated
-system. The results reveal \emph{hidden} consequences of the regulation
-used to mitigate undesirable outputs.
+exploit recent work, which follows a more flexible \emph{least cost
+alternative} procedure, to estimate a consistent abatement cost of
+target setting in the Kyoto Protocol Agreement period. Overall, our
+results reveal that cost of marginal abatement of CO\textsubscript{2}
+was typically higher for target setting countries. Furthermore, we find
+these countries which have higher trade to GDP ratios, high urban
+populations and explicit set targets where more inefficient.
+Interestingly, naive market price comparison shows there may have
+existing some price discovery frictions. These results are particularly
+useful for understand the consequences of policies to curb unwanted
+byproducts in a regulated system. The results reveal \emph{hidden}
+consequences of the regulation used to mitigate undesirable outputs.
 \end{abstract}
 
 \hypertarget{introduction}{%
@@ -452,7 +454,7 @@ domestic economy could otherwise support. For example, in the sample
 there are three countries which have a Trade to GDP ratio in excess of
 200\%; Luxembourg, Malta and Singapore.
 
-\begingroup\fontsize{8}{10}\selectfont
+\newpage
 
 \begin{ThreePartTable}
 \begin{TableNotes}
@@ -477,15 +479,14 @@ Trade to GDP (\%) & 34.16 & 43.18 & 75.73 & 84.75 & 88.35 & 99.64 & 55.18 & 57.6
 \insertTableNotes
 \end{longtabu}
 \end{ThreePartTable}
-\endgroup{}
 
 \hypertarget{model}{%
 \subsection{Model}\label{model}}
 
 The primary focus of our analysis is shadow prices estimates for
-CO\textsuperscript{2} emission from fossil fuel. Previous studies have
-provided inaccurate measures as a result of a number of missteps. These
-include:
+CO\textsubscript{2} emission from fossil fuel. Previous studies have
+provided inaccurate measures as a result of a number of missteps
+including:
 
 \begin{itemize}
 \tightlist
@@ -502,16 +503,16 @@ include:
 
 These factors combine to grossly overestimate shadow prices, group
 differences in shadow prices, and thus the impact of emissions reduction
-targetting. In our study we follow the approach proposed by Kuosmanen
-and Zhou (2018) and uses a convex quantile regression to provide local
-approximations of shadow prices calibrated to observed inefficiencies.
-Specifically, the authors exploit the benefits of Kuosmanen and Johnson
-(2017) directional distance convex regression and Wang et al. (2014)
-quantile formulation to reveal shadow prices at observed performance
-levels. Furthermore, this approach is robust to heterogeniety, is more
-robust to direction vector choice than previous methods, and accomodates
+targeting. Using a convex quantile regression, this study provides local
+approximations of shadow prices calibrated using observed
+inefficiencies. Specifically, we exploit the benefits of Kuosmanen and
+Johnson (2017) directional distance convex regression and Wang et al.
+(2014) quantile formulation to reveal shadow prices at observed
+performance levels. Importantly, this approach is robust the observed
+heterogeneity, the choice of direction vector, and accommodates
 noise-based uncertainty. To estimate this quantile based distance
 function the following linear programming problem is solved:
+
 \begin{equation}
 \begin{split}
 & \underset{\alpha,\beta,\gamma,\delta,\epsilon^-,\epsilon^+}{\text{min}}
@@ -523,48 +524,43 @@ function the following linear programming problem is solved:
 & \beta_{it} \geq0,\gamma_{it} \geq0,\delta_{it} \geq0 \; \forall i,t \\
 & \epsilon^-_{it} \geq0, \epsilon^+_{it} \geq 0 \; \forall i,t
 \end{split}
-(\#eq:QCNLS)
 \end{equation}
 
-Equation @ref(eq:QCNLS) produces a probablistic distance function, where
-the two errors terms (\(\epsilon^-\) and \(\epsilon^+\)) allow for
-deviations from the frontier and \(\tau\) defines the quantile by
-controlling weights of the deviations. The above estimation technique is
-commonly know as StoNED and a full exposition of this empirical approach
-can be found at Kuosmanen and Zhou (2018).
-
-We estimate the model using a balanced panel of 105 countries for 5
-years (2008-2012) where the \(Z\) vector includes a Trade to GDP ratio,
-the percentage of population which is urban, a dummy to indicator if the
-country is a target setting, and a set of year dummies. These
-enviromental variable capture observed heterogeneity across countries
-and through time which has a common influence on the production
-technology. The estimated model thus produces performance adjusted dual
-prices \(\gamma^{'}_{it},\beta^{'}_{it} ,\delta^{'}_{it}\) which are key
-inputs into the marginal abatement calculations. Finally, one appealling
-feature of the specification in equation @ref(eq:QCNLS) is a seperately
+Equation 1 is a probabilistic distance function, where the two errors
+terms (\(\epsilon^-\) and \(\epsilon^+\)) allow for deviations from the
+frontier and \(\tau\) defines the quantile. We estimate the model using
+a balanced panel of 105 countries for 5 years (2008-2012) where the
+\(Z\) vector includes, trade to GDP ratio, the percentage of population
+which is urban, a dummy to indicator if the country is a target setting,
+and a set of year dummies. These environmental variable adjust for
+observed cross-country and through time fluctuation in the production
+technology. The estimated model results in performance adjusted dual
+prices \(\gamma^{'}_{it},\beta^{'}_{it} ,\delta^{'}_{it}\) which serve
+as inputs for the marginal abatement calculations. An additional
+appealing feature of the specification in equation 1 is a separate
 estimated intercept for each observation; \(\alpha_{it}\). These
-observation-specific intercepts conveniently capture any unobserved time
-series and crossectional variation.
+observation-specific can be thought of as \emph{unit two-way
+nonparametric fixed effects}, which capture unobserved time series and
+cross-sectional variation.
 
 \hypertarget{marginal-abatement}{%
 \subsubsection{Marginal abatement}\label{marginal-abatement}}
 
-To evaluate marginal abatement, we create a series of quantile estimands
-which are used to find the local quantile \(\tau^{*}\) for each observed
-data point. For example, we could estimate 10 quantiles using
+Marginal abatement estimation uses a series of levels to find the local
+quantile \(\tau^{*}\) for each observed data point. For example, a set
+of ten quantile levels
 \(\tau=(0.05,0.15,0.25,0.35,0.45,0.55,0.65,0.75,0.85,0.95)\)\footnote{We
   use the GAMS software and the CPLEX solver to find an optimal solution
-  to equation @ref(eq:QCNLS)}. The number of quantiles is not fixed but
+  to equation 1}. In general, the number of quantiles is not fixed but
 should depend on sample size and signal to noise ratio.
 
 Kuosmanen and Zhou (2018) note that in the traditional approach to
 shadow pricing using frontier estimation, the terms marginal abatement
 costs and shadow prices are used interchangeably. This is because
 previous approaches only use bad output shadow prices measured in units
-of forgone good output. They expand marginal abatement cost definition
-to include incremental use of inputs by considering an optimal
-combination of shadow price definitions:
+of forgone good output. They expand the marginal abatement cost
+definition to include incremental use of inputs by considering an
+optimal combination of shadow price definitions:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -576,15 +572,15 @@ combination of shadow price definitions:
   The marginal product of inputs on outputs (MP).
 \end{enumerate}
 
-In our study, the marginal abatement costs are calculated in the
-following way:
+In our study, the marginal abatement costs are calculated in a similar
+fashion as followings:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
   Find the largest expectile (\(\tau^{*}\)) for which the residual
-  (\(\epsilon^+ + \epsilon^-\)) is non-negative.\\
+  (\(\epsilon^+ + \epsilon^-\)) is non-negative.
 \end{enumerate}
 
 \begin{itemize}
@@ -596,7 +592,7 @@ following way:
   shadow prices of the nearest expectiles, weighted by \(\epsilon\). For
   some observations residuals are positive (or negative) for all
   expectiles (the best and the worst performers respectively). For those
-  we just use shadow prices of the highest / lowest expectile.
+  we just use shadow prices of the highest/lowest expectile.
 \end{itemize}
 
 \begin{enumerate}
@@ -608,7 +604,7 @@ following way:
   frontier of the quantiles(i.e.~the absolute value of the residuals).
   Specifically these can be thought of as the sub derivatives with
   respect to the bad outputs from the distance function, where the
-  marginal rate of substitution of output i on bad output j is
+  marginal rate of substitution of output \(i\) on bad output \(j\) is
   \(MRT_{\tau}(y_{i},b_{j})=-\frac{\delta \vec{D}_{\tau}/\delta b_{j}}{\delta \vec{D}_{\tau}/\delta y_{i}}\).
   Similarly the MP of input k on bad output j is
   \(MP_{\tau}(x_{k},b_{j})=\frac{\delta \vec{D}_{\tau}/\delta b_{j}}{\delta \vec{D}_{\tau}/\delta x_{k}}\)
@@ -616,23 +612,21 @@ following way:
   Use the results from step 2, the marginal abatement cost (MAC) for bad
   output \(j\) is define as: \begin{equation}
   MAC(b_{j})=\displaystyle \min_{i,k}\{p_{i}MRT_{\tau}(y_{i},b_{j}), w_{k}MP_{\tau}(x_{k},b_{j})\}
-  (\#eq:mac)
   \end{equation}
 \end{enumerate}
 
-In equation @ref(eq:mac) \(p_{i}\) is the price of output \(i\) and
-\(w_{k}\) is the price of input k. This flexible definition of MAC
-provides multiple opportunities for abatement. Specifically, bad output
-\(j\) can be abated by either reducing good outputs (i.e., downscaling
-the GDP activity) or increasing the input use (for example investment in
-labour force or capital stock). This approach uses the least-cost
-alternative. In the case where the good outputs are expressed in
-monetary units the sub derivatives (dual prices) provide monetary shadow
-prices for bad outputs and the above equation simplifies to:
+In equation 2 \(p_{i}\) is the price of output \(i\) and \(w_{k}\) is
+the price of input \(k\). This flexible definition of the MAC provides
+multiple opportunities for abatement. Specifically, bad output \(j\) can
+be abated by either reducing good outputs (i.e., downscaling the GDP
+activity) or increasing the input use (for example investment in labour
+force or capital stock). This approach uses the least-cost alternative.
+In the case where the good outputs are expressed in monetary units the
+sub derivatives (dual prices) provide monetary shadow prices for bad
+outputs and the above equation simplifies to:
 
 \begin{equation}
 MAC(b_{j})=\displaystyle \min_{i,k}\{MRT_{\tau}(y_{i},b_{j}), MP_{\tau}(x_{k},b_{j})\} 
-(\#eq:mac1)
 \end{equation}
 
 In the above calculation it is important to ensure that the MRT and MP
@@ -644,34 +638,87 @@ comparably in terms of minimum cost.
 \hypertarget{results-and-discussion}{%
 \subsection{Results and discussion}\label{results-and-discussion}}
 
-Using the convex quantile regression approach proposed by Kuosmanen and
-Zhou (2018) we estimate a stepwise yield curve of probabilistic
-benchmark technologies. These technologies are then used to extract, at
-the observed performance level, country-year marginal abatement costs of
-CO\textsuperscript{2} emissions. We use the direction vector
+We estimate a stepwise yield curve of probabilistic benchmark
+technologies. These technologies are then used to extract, at the
+observed performance level, country-year marginal abatement costs of
+CO\textsubscript{2} emissions. We use the direction vector
 \(g(x)=\bar{x}, g(y)=0, g(x)=0\) to estimate the directional distance
 function model for 10 quantiles \(\tau=(0.05,0.15,\dots,0.85,0.95)\),
 which should be sufficient granularity for a sample size of 525.
 Finally, these estimate are perturbed by a noise term which can capture
-measurement error in the data. Tables @ref(tab:SPs2) summarise these
-estimate.
+measurement error in the data.
 
-Tables @ref(tab:SPs2) summarises the marginal abatement cost estimates
-for each year in our sample period. This table present the mean and
-interquartile range for the full sample, targetting setting countries
-and their non target setting counterparts. Marginal abatement costs
-illustrate the carbon intensity of a country, where countries with
-larger manufacturing sectors will have relatively have higher MAC
-estimates. The MAC estimates are similar to those reported in the
-literature (Lee and Wang 2019; Böhringer and Vogt 2003; Viguier,
-Babiker, and Reilly 2003). Furthermore, they are comparatively similar
-to the cost of C0\textsuperscript{2} capture and storage of coal plants
-estimated by Rubin, Davison, and Herzog (2015). They estimate a
-mitigation cost (constant 2013 dollar per metric tonne of
-CO\textsuperscript{2}) for capture of \emph{46-99 US dollars} and
-storage of \emph{53-137 US dollars}. These estimates as well as ours are
-directly comparable to the market price or tax on CO\textsuperscript{2}
-emissions.
+\begin{ThreePartTable}
+\begin{TableNotes}
+\item \textit{Note: } 
+\item This table presents yearly mean and interquartile estimates of the marginal abatement costs calculated for the full sample and for each group of countries.  The last four columns disaggregates the mean analysis to compare countries which set emission reduction targets against countries which did not.  GDP(y) and capital stock (x1) are deflated to 2011 international dollars, and are considered to have a unit price.  An alternative interpretation is that the the price multipliers (p,w)=1 in the calculations of the marginal rate of transformation of GDP and the marginal product of the capital stock as they represent both quantity and price. The marginal abatement cost is thus calculated as the minimum of the marginal rate of transformation of GDP and the marginal product of capital stock on C0\textasciitilde{}2\textasciitilde{} emissions.  The MAC is measured in USD per metric ton of CO\textasciitilde{}2\textasciitilde{} emission. Labour (x2) is the total labour force in each country (in millions).  The marginal product of labour is the dual without a price multiplier and is measured in millions of labour force per ton of CO2 emission.
+\end{TableNotes}
+\begin{longtabu} to \linewidth {>{\centering}X>{\centering}X>{\centering}X>{\centering}X>{\centering}X>{\centering}X>{\centering}X}
+\caption{\label{tab:SPs2}Marginal abatement costs in 2011 dollars per CO2 tonne}\\
+\toprule
+\multicolumn{1}{c}{\em{\textbf{}}} & \multicolumn{2}{c}{\em{\textbf{Full Sample}}} & \multicolumn{2}{c}{\em{\textbf{Target Setting Countries}}} & \multicolumn{2}{c}{\em{\textbf{Non Target Setting Countries}}} \\
+\cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5} \cmidrule(l{3pt}r{3pt}){6-7}
+\em{\textbf{}} & \em{\textbf{Mean}} & \em{\textbf{Interquartile Range}} & \em{\textbf{Mean}} & \em{\textbf{Interquartile Range}} & \em{\textbf{Mean}} & \em{\textbf{Interquartile Range}}\\
+\midrule
+2008 & 71.91 & 53.59 & 64.45 & 46.22 & 74.95 & 55.35\\
+2009 & 81.18 & 63.47 & 90.09 & 40.74 & 77.64 & 63.37\\
+2010 & 87.89 & 72.61 & 95.93 & 53.77 & 84.19 & 75.52\\
+2011 & 86.73 & 60.64 & 89.64 & 51.83 & 85.46 & 84.99\\
+2012 & 103.31 & 67.47 & 111.07 & 75.47 & 100.23 & 58.25\\
+\bottomrule
+\insertTableNotes
+\end{longtabu}
+\end{ThreePartTable}
+
+Table 4 summarises the marginal abatement cost estimates for each year
+in our sample period. This table present the mean and interquartile
+range for the full sample, targeting setting countries and their non
+target setting counterparts. Marginal abatement costs illustrate the
+carbon intensity of a country, where countries with larger manufacturing
+sectors will have relatively higher MAC estimates. The MAC estimates are
+similar to those reported in the literature (Lee and Wang 2019;
+Böhringer and Vogt 2003; Viguier, Babiker, and Reilly 2003). , and
+comparatively similar to the cost of C0\textsubscript{2} capture and
+storage of coal plants estimated by Rubin, Davison, and Herzog (2015),
+who estimate a mitigation cost (constant 2013 dollar per metric tonne of
+CO\textsubscript{2}) for capture of \emph{46-99 US dollars} and storage
+of \emph{53-137 US dollars}.
+
+\hypertarget{carbon-emissions-pricing-comparison}{%
+\subsubsection{Carbon emissions pricing
+comparison}\label{carbon-emissions-pricing-comparison}}
+
+The theoretical starting point for \emph{carbon emissions} pricing and
+\emph{carbon shadow} pricing; a sufficiently expensive emissions price
+to impose reduction to zero of emissions that cause global warming. An
+appropriate carbon pricing regime should treat these two options as
+mutually reinforcing; carbon emission pricing being where policymakers
+add a carbon component to the current market price of pollutants or
+shadow pricing which ascertains a \emph{future price} of the true
+economic cost of a climate-relevant project. Both have a real world
+impact in that they drive markets towards factoring in long-term
+impacts.
+
+Since the introduction of the KPA, emission pricing schemes are bound to
+state actors, where it is politically inconvenient to increase such tax
+in line with climate impacts. While efforts such as the EU emission
+trading scheme, introduced in 2008 for major industrial facilities, it
+has been shown to only cover about 40\% of the European greenhouse-gas
+emissions\footnote{\url{https://www.dandc.eu/en/article/why-carbon-emissions-pricing-and-carbon-shadow-pricing-both-make-sense\#}:\textasciitilde:text=Appropriate\%20carbon\%20prices\&text=\%E2\%80\%9CCarbon\%20emissions\%20pricing\%E2\%80\%9D\%20means\%20that,not\%20reflect\%20those\%20impacts\%20yet.}.
+In contrast shadow pricing largely bypasses national governments, as it
+is in common using by multilateral development banks. That said, shadow
+pricing is only being applied to emerging and developing country
+projects. The approach largely adopted here is a social value of carbon
+(SVC). The Stiglitz and Stern (2017) commission report established a SVC
+shadow price range necessary to achieving the Paris temperature target
+as \$40-80/tCO\textsubscript{2} by 2020, and
+\$50-100/tCO\textsubscript{2} by 2030.
+
+Following Rubin, Davison, and Herzog (2015), or shadow price estimates
+of CO\textsubscript{2} emissions can be compared to the market price
+over the KPA period. The following comparison, serving as statistical
+naive benchmark, can provide some point in time insight into on price
+discovery frictions.
 
 \begin{figure}[H]
 \includegraphics{figures/paper-ETSprice-1} \caption{Daily ECX EUA Futures Price}\label{fig:ETSprice}
@@ -680,39 +727,37 @@ emissions.
 \begin{footnotesize} The EUA Futures Contract is a deliverable contract where each Clearing Member with a position open at cessation of trading for a contract month is obliged to make or take delivery of Carbon Emission Allowances to or from the Union Registry in accordance with the ICE Futures Europe Regulations. One lot of 1,000 Carbon Emission Allowances (EUA). Each EUA being an entitlement to emit one tonne of carbon dioxide equivalent gas, as further defined in the ICE Futures Europe Regulation.
 \end{footnotesize}
 
-Figure @ref(fig:ETSprice) charts the daily price of the EUA Futures
-contract for the sample period. One contract is worth 1000 Carbon
-Emission Allowances (EUA), where each EUA is an entitlement to emit one
-tonne of carbon dioxide equivalanet gas. Tables @ref(tab:SPs2) results
-are considerable higher than the market prices of CO\textsuperscript{2}
-allowances in figure @ref(fig:ETSprice). The price fluctates with a
-range of €5.72-31.71 per metric tonne in the European Union Emission
-Trading Scheme(EUETS) in years 2008-2012.
+Figure 1 charts the daily price of the EUA Futures contract for the
+sample period. One contract is worth 1000 Carbon Emission Allowances
+(EUA), where each EUA is an entitlement to emit one tonne of carbon
+dioxide equivalent gas. The average shadow prices of CO\textsubscript{2}
+emission from table 4 are higher than the average market prices of
+CO\textsubscript{2} allowances in figure 1. The mean difference The
+price fluctuates with a range of €5.72-31.71 per metric tonne in the
+European Union Emission Trading Scheme(EUETS) in years 2008-2012.
 
 For a emissions trading scheme to work efficiently allocation of
 abatement across countries would require that the marginal abatement
 cost is the same in all countries and over time. Clearly, this is not
-the case from the average abatement values in table @ref(tab:SPs2),
-where the mean MAC is increasing over time and is typically largest for
-target setting countries. Furthermore, the EU ETS mentioned above, which
-allows firms from different EU countries to buy and sell
-CO\textsuperscript{2} emission allowances in order to achieve
-efficientallocation of abatement, shows a typical price range for MAC
-estimate in the period. This suggests that allocation of
-CO\textsuperscript{2} abatement across countries despite the EU ETS
-market has been far from cost efficient.
+the case from the average abatement values in table 4, where the mean
+MAC is increasing over time and is typically largest for target setting
+countries. Furthermore, the EU ETS mentioned above, which allows firms
+from different EU countries to buy and sell CO\textsuperscript{2}
+emission allowances in order to achieve efficient allocation of
+abatement, shows a typical price range for MAC estimate in the period.
+This suggests that allocation of CO\textsubscript{2} abatement across
+countries despite the EU ETS market has been far from cost efficient.
 
 \hypertarget{marginal-effect-of-the-enviromental-variable}{%
 \subsubsection{Marginal effect of the enviromental
 variable}\label{marginal-effect-of-the-enviromental-variable}}
 
 Following Gallagher and Quinn (2019), we investigate the marginal effect
-of the environmental variables in equation @ref(eq:QCNLS) to understand
-how they impact on inefficiency. Specifically, we consider how
-inefficiency is affected by the proportion of trade to GDP, the
-percentage of the urban living in a country's population, and whether
-they country explicitly sets CO\textsubscript{2} emission targets in the
-period of analysis.
+of the environmental variables in equation 1 to understand how they
+impact on inefficiency. Specifically, we consider how inefficiency is
+affected by the proportion of trade to GDP, the percentage of the urban
+living in a country's population, and whether they country explicitly
+sets CO\textsubscript{2} emission targets in the period of analysis.
 
 The results from table @ref(tab:reg) reveal some interesting features of
 the inefficency patterns at the country level. Typically, those
@@ -914,25 +959,25 @@ CO\textsuperscript{2} emissions to GDP could be used to test statistical
 differences in the shadow price of the good output calculated as
 \(MRT_{\tau}(y_{i},b_{j})=-\frac{\delta \vec{D}_{\tau}/\delta b_{j}}{\delta \vec{D}_{\tau}/\delta y_{i}}\).
 
-Table @ref(tab:Test1) shows the results of the testing approach
-described in section @ref(TestSteps) applied each year to ratio of the
-variables represented by the MAC estimates. The first column presents
-the results of the test of the empirical distribution of the ratio, and
-shows that normality is rejected for all years. This result means we
-should use a non-parametric group difference test. Column 2 presents the
-equality of variance test across the groups of interest which is robust
-to a non-normal distribution. Equality of variance is not rejected for
-all years. Columns 3 and 4 of table @ref(tab:Test) provide a statistical
-analysis of the observed mean differences in shadow prices presented in
-table @ref(tab:SPsGrps). In column 3, the Wilcoxon Mann Whitney test
-provide robust inference when we cannot reject the hypothesis of
-equality of variance in groups assessed in column 2. The Kolomogorov
-Smirnov test provides robust inference inference if the equality of
-variance hypothesis is rejected. Given the results of column 2, column 3
-results suggests that there is a statistically significant difference in
-the shadow prices of the two cohorts. This provides some meaningful
-evidence that target setting countries consistently experienced
-increased abatement costs over the Kyoto protocol period
+Table 6 shows the results of the testing approach described in section
+@ref(TestSteps) applied each year to ratio of the variables represented
+by the MAC estimates. The first column presents the results of the test
+of the empirical distribution of the ratio, and shows that normality is
+rejected for all years. This result means we should use a non-parametric
+group difference test. Column 2 presents the equality of variance test
+across the groups of interest which is robust to a non-normal
+distribution. Equality of variance is not rejected for all years.
+Columns 3 and 4 of table @ref(tab:Test) provide a statistical analysis
+of the observed mean differences in shadow prices presented in table
+@ref(tab:SPsGrps). In column 3, the Wilcoxon Mann Whitney test provide
+robust inference when we cannot reject the hypothesis of equality of
+variance in groups assessed in column 2. The Kolomogorov Smirnov test
+provides robust inference inference if the equality of variance
+hypothesis is rejected. Given the results of column 2, column 3 results
+suggests that there is a statistically significant difference in the
+shadow prices of the two cohorts. This provides some meaningful evidence
+that target setting countries consistently experienced increased
+abatement costs over the Kyoto protocol period
 
 \hypertarget{references}{%
 \section*{References}\label{references}}
@@ -1106,6 +1151,12 @@ of CO2 Capture and Storage.'' \emph{Int. J. Greenhouse Gas Control} 40
 \leavevmode\hypertarget{ref-Stephens1986}{}%
 Stephens, Michael A. 1986. ``Tests Based on EDF Statistics.'' In
 \emph{Goodness-of-Fit-Techniques}, 97--194. Routledge.
+
+\leavevmode\hypertarget{ref-CPLC2017}{}%
+Stiglitz, Joseph E., and Nicholas Stern. 2017. ``Report of the
+High-Level Commission on Carbon Prices.'' \emph{Carbon Pricing
+Leadership Coalition}. Routledge.
+\url{https://static1.squarespace.com/static/54ff9c5ce4b0a53decccfb4c/t/59b7f2409f8dce5316811916/1505227332748/CarbonPricing_FullReport.pdf}.
 
 \leavevmode\hypertarget{ref-Vale2016}{}%
 Vale, Petterson Molina. 2016. ``The Changing Climate of Climate Change
