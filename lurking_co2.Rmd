@@ -5,7 +5,7 @@ author:
   - Ronan Gallagher (Edinburgh Business School)
   - Timo Kuosmanen (Aalto Business School)
 date: "`r format(Sys.time(),'%B %d, %Y')`"
-abstract: "This paper interrogates the impact of the Kyoto Protocol target setting regime on carbon *shadow* pricing and environmental efficiency. We extract shadow price estimates and efficiency scores from a comprehensive dataset of 125 countries over the four years of the KP using the unified StoNED framework. We exploit recent work, which uses the *least-cost alternative* procedure to estimate CO~2~ marginal abatement costs from initial model estimation. Results reveal abatement costs are significantly higher for target setting countries, increase over the sample period, and are an order of magnitude greater than the prevailing emissions pricing mechanisms. Typically, environmental inefficiency scores are higher in countries with higher trade to GDP ratios, higher urban density, and explicit C0~2~ emission targets set under the Kyoto Protocol. Our findings provide insights into the consequences of policies to curb unwanted byproducts in a regulated system and reveal *future price* consequences of the regulation used to mitigate undesirable outputs."
+abstract: "This paper interrogates the impact of the Kyoto Protocol target setting regime on carbon *shadow* pricing and environmental efficiency. We extract shadow price estimates and efficiency scores from a comprehensive dataset of 125 countries over the four years period using the unified StoNED framework. We exploit recent work, which uses the *least-cost alternative* procedure to estimate CO~2~ marginal abatement costs from initial model estimation. Results reveal abatement costs are significantly higher for target setting countries, increase over the sample period, and are an order of magnitude greater than the prevailing emissions pricing mechanisms. Given the number on developing countries in our sample, this findings highlights a shadow price inequality gap at that time. Typically, environmental inefficiency scores are higher in countries with higher trade to GDP ratios, higher urban density, and explicit C0~2~ emission targets set under the Kyoto Protocol. Our findings provide insights into the consequences of policies to curb unwanted byproducts in a regulated system and reveal *future price* consequences of the regulation used to mitigate undesirable outputs."
 
 acknowledgements:
   "We would like to acknowledge Professor Donal McKillop and Professor John Turner for the helpful commentary and advice on this paper."
@@ -16,6 +16,7 @@ keywords:
   - Stochastic nonparametric envelopment of data (StoNED)
   - Carbon emissions target setting
   - Kyoto Protocol
+  - Development economics
 fontsize: 10pt
 fontfamily: mathpazo
 bibliography: ReferencesForLurking.bib
@@ -62,20 +63,19 @@ load("dat_anal.RData")
 
 
 # Introduction
-Target setting stringency in climate policy has attracted considerable debate since the Kyoto Protocol (hereafter KP) [for example, see @De_Angelis2019]. The impact of climate change and the production of greenhouse gas (GHG) emissions are existential challenges of the 21~st~ century. The World Health Organisation estimates a health risk associated with climate change of 250,000 additional deaths per year between 2030 and 2050, assuming the status quo of current abatement practices and global economic growth^[https://www.who.int/news-room/fact-sheets/detail/climate-change-and-health]. 
+Target setting stringency in climate policy has attracted considerable debate since the Kyoto Protocol (hereafter KP) [for example, see @De_Angelis2019]. The impact of climate change and the production of greenhouse gas (GHG) emissions are existential challenges of the 21^st^ century. The World Health Organisation estimates a health risk associated with climate change of 250,000 additional deaths per year between 2030 and 2050, assuming the status quo of current abatement practices and global economic growth^[https://www.who.int/news-room/fact-sheets/detail/climate-change-and-health]. 
 
-@Fare2012 describes shadow prices as 'virtual' or unforeseen costs to a firm's management. A shadow price obtained from an economic model is the implicit value of untradeable outputs such as pollutants or undesirable byproducts [@Lee2012].   Technically, they value the marginal product faced by the decision-maker based on the optimal choice of outputs and inputs, which maximises utility [@Murray1995]. Under the assumption of rationality, shadow prices reveal the underlying opportunity costs hidden from the researcher [@Kuosmanen2006]. Importantly, this opportunity cost (economic price) definition can also take the form of marginal substitution (transformation) rates between inputs (outputs).]. @Luhmann2020 argue that shadow pricing is as crucial as emission pricing (for example, emissions trading schemes) for appropriate carbon price discovery.  They argue shadow can also be called "future pricing". The word "shadow" highlights that, for financiers to assess a project's actual economic value, fuel is priced higher than current levels. The rationale being, even if there is no carbon emissions pricing,  carbon prices are taken into account, factoring in what markets still ignore. Shadow prices have a long history of revealing the cost of reducing undesirable outputs^[Shadow prices assess the costs of producing some byproduct, or more technically, an undesirable output. They are helpful for regulatory and supervision analysis where quality control of byproducts plays an integral part in the sustainable growth of the regulated system. Shadow price usage is dependent on the observability of a market price for the undesirable output. When we observe output prices, then shadow pricing models can identify the appropriate output mix for revenue maximisation. More commonly, shadow price calculations numerate the price of an undesirable output in units of foregone desirable output.] in terms of reducing the production of desirable outputs (See @Zhou2014 for recent literature on shadow price estimation).  Framed in this way, the shadow price of air pollution emissions is equivalent to a marginal abatement cost and provides valuable guidance to emission reduction policies. 
-
+@Fare2012 describes shadow prices as 'virtual' or unforeseen costs to a firm's management. A shadow price obtained from an economic model is the implicit value of *untradeable* outputs such as pollutants or undesirable by-products [@Lee2012].   Technically, they value the marginal product faced by the decision-maker based on the optimal choice of outputs and inputs, which maximises utility [@Murray1995]. Under the assumption of rationality, shadow prices reveal the underlying opportunity costs hidden from the researcher [@Kuosmanen2006]. Importantly, this opportunity cost (economic price) definition can also take the form of marginal substitution (transformation) rates between inputs (outputs).]. @Luhmann2020 argue that shadow pricing is as crucial as emission pricing (for example, emissions trading schemes) for appropriate carbon price discovery.  They argue shadow pricing can also be called "future pricing". The word "shadow" highlights that, for financiers to assess a project's actual economic value, fuel is priced higher than current levels. The rationale being, even if there is no carbon emissions pricing,  carbon prices are taken into account, factoring in *future* value ignored by markets. Shadow prices have a long history of revealing the cost of reducing undesirable outputs^[Shadow prices assess the costs of producing some by-product, or more technically, an undesirable output. They are helpful for regulatory and supervision analysis where quality control of by-products plays an integral part in the sustainable growth of the regulated system. Shadow price usage is dependent on the observability of a market price for the undesirable output. When we observe output prices, then shadow pricing models can identify the appropriate output mix for revenue maximisation. More commonly, shadow price calculations numerate the price of an undesirable output in units of foregone desirable output.] in terms of reducing the production of desirable outputs (See @Zhou2014 for recent literature on shadow price estimation).  Framed in this way, the shadow price of air pollution emissions is equivalent to a marginal abatement cost and provides valuable guidance to emission reduction policies. 
 
 @Lee2019 critique the body of work on marginal abatement costs of CO~2~ at the country level.  They show that empirical studies use frontier efficiency methods to estimate shadow prices (for country and region level analysis see [@Cheng2019; @Du2015; @Choi2012; @Maradan2005]) where CO~2~ pollutants as treated as undesirable outputs. We argue that these studies systematically over-estimate the marginal abatement cost by ignoring actual performance levels, noise, and the ability to abate via increasing input uses. For instance, an increase in capital investments into cleaner technology could be an alternative use of inputs. @Kuosmanen2018b show that marginal abatement costs are routinely overestimated compared to the market prices of CO~2~. They develop a methodology to counteract this systematic bias, which we follow in our analysis. 
 
-This paper aims to add to this debate by investigating the impact of KP target setting on carbon pricing and environmental efficiency. Specifically, we exploit state-of-the-art frontier methods, namely Stochastic Nonparametric Envelopment of Data (StoNeD), to produce consistent environmental efficiency and marginal abatement estimates. We further decompose the target setting effects using a novel statistical procedure introduced in @Gallagher2019. We estimate marginal abatement costs using efficient frontier shadow prices^[The terms "opportunity cost" and "shadow price" are used interchangeably in the efficiency literature.]  
+This paper aims to add to this debate by investigating the impact of KP target setting on carbon pricing and environmental efficiency. Specifically, we exploit state-of-the-art frontier methods, namely **Sto**chastic **N**onparametric **e**nvelopment of **D**ata (StoNeD), to produce consistent environmental efficiency and marginal abatement estimates. We further decompose the target setting effects using a novel statistical procedure introduced in @Gallagher2019. We estimate marginal abatement costs using efficient frontier shadow prices^[The terms "opportunity cost" and "shadow price" are used interchangeably in the efficiency literature.]  
 
-Our results provide a consistent economic cost of the Kyoto Protocol Agreement.  Taking advantage of the explicit target-setting regime from 2008 to 2012, we estimate the marginal abatement cost of CO~2~ emissions.  Unlike previous shadow price estimates of CO~2~ emissions calculated ignoring country-level inefficiencies^[Technically,  cost estimates assume the entity under investigation is on the efficient frontier.], our model uses a quantile approach to incorporate additional information on the relative inefficiency of each country. The analysis results in shadow prices measured as the cost of abatement in constant international dollar terms. 
+Our results provide a consistent economic cost of the KP.  Taking advantage of the explicit target-setting regime from 2008 to 2012, we estimate the marginal abatement cost of CO~2~ emissions.  Unlike previous shadow price estimates of CO~2~ emissions calculated ignoring country-level inefficiencies^[Technically, abatement cost estimates assume the entity under investigation is on the efficient frontier.], our model uses a quantile approach to incorporate additional information on the relative inefficiency of each country. The analysis results in shadow prices measured as the cost of abatement in constant international dollar terms. 
 
-To disentangle abatement cost differences, we appeal a trigonometric procedure proposed in @Gallagher2019. This innovative test reveals that specific target setting countries typical experienced a higher marginal abatement cost than their non-target setting counterparts, the estimated difference being economically and statistically significant.  Our findings suggest an unintended consequence of climate policy target setting. The proposed market mechanism for trading emissions failed to eliminate these shadow price differences in target setting countries. 
+To disentangle abatement cost differences, we apply a trigonometric procedure proposed in @Gallagher2019. This innovative test reveals that specific target setting countries typical experienced a higher marginal abatement cost than their non-target setting counterparts, the estimated difference being economically and statistically significant.  Our findings suggest an unintended consequence of climate policy target setting. Our paper is a direct extension of @Kuosmanen2020 in two ways; the sample includes a large number of developing countries (non-annex countries) and provides explicit evidence of a shadow price inequality gap between *rich and poor* countries. The proposed market mechanism for trading emissions failed to eliminate this shadow price gap. 
 
-In the next section, we will outline the sample design and define the variables used. Section 2 briefly outlines the innovative model used to estimate CO^2^ emission production. Section 3 presents the results and some brief discussion.
+In the next section, we will outline the sample design and define the variables used. Section 2 briefly outlines the innovative model used to estimate CO~2~ emission production. Section 3 presents the results and some brief discussion.
 
 # Literature Review
 
@@ -155,7 +155,7 @@ In the above calculation, it is essential to ensure that the MRT and MP enter th
 
 
 ## Application of Statistical Test
-Suppose we have two series of the output ratio y2/y1, representing two groups of firms observed in the same period or the same sample of firms observed in two different periods. There are several methods for testing whether the two series are significantly different. 
+Appendix A:1 details the theoretical exposition of shadow price group difference testing first proposed in @Gallagher2019.  Suppose we have two series of the output ratio y2/y1, representing two groups of firms observed in the same period or the same sample of firms observed in two different periods. There are several methods for testing whether the two series are significantly different. 
 
 An obvious possibility is to apply a two-sample t-test for testing the equality of means or the F-test for equal variances. This test requires either that sample size is sufficiently large for asymptotic inferences or that the ratio y2/y1 is normally distributed. 
 
@@ -199,7 +199,7 @@ Emissions were calculated using IEA energy databases and the default methods and
 kable(text_tbl,booktabs=TRUE,caption = "Description of variables",longtable=T) %>% 
   kable_styling(latex_options = c("repeat_header","hold_position"),font_size=8,full_width=T) %>% 
   column_spec(2, bold = T, border_right = T) %>%
-  column_spec(column = c(1:4),width = c("10em","10em","10em","10em")) %>%
+  column_spec(column = c(1:4),width = c("5em","5em","30em","5em")) %>%
   footnote(general="A detailed description of the inputs, outputs and enviromental variables which index the production frontier model.  Capital stock and GDP are monetary variables and enter the model in real terms measured at purchasing power parity or constant international dollar billions.",threeparttable = T)
 ```
 
@@ -213,13 +213,15 @@ ClimatePolicy_anal %>%
   dplyr::select(country) %>%
   distinct() %>%
     unlist(use.names = F) %>%
-  paste(sep = ",",collapse = " ,")-> v1
+  sort() %>%
+  paste(sep = ",",collapse = ", ")-> v1
 ClimatePolicy_anal %>% 
   filter(TargetSet==0) %>%
   dplyr::select(country) %>%
   distinct() %>%
     unlist(use.names = F) %>%
-  paste(sep = ",",collapse = " ,")-> v2
+  sort() %>%
+  paste(sep = ",",collapse = ", ")-> v2
   
 tibble("Target Setting Country"=v1,
        "Non Target Setting Country"=v2) %>% 
@@ -240,7 +242,7 @@ sumThatFinal<-function(x){
   Mean=mean(x,na.rm = T)
   SD=sd(x,na.rm = T)
   p95=quantile(x,na.rm = T,0.95)
-  round(c(p5,Median,Mean,SD,p95),2)
+  round(c(Mean,SD,p5,Median,p95),2)
 }
 
 sumStats<-ClimatePolicy_anal %>% 
@@ -255,8 +257,8 @@ rownames(sumStats)<-c("C02 emissions (Million Metric Tons)","GDP (Billion PPP $U
 
 sumStats %>% 
   kable("latex",booktabs=T, longtable=T,caption = "Summary statistics of inputs, outputs and z variables",align = "c",row.names =T,col.names =rep(c("Non Target","Target"),5))  %>% 
-  kable_styling(latex_options =c("hold_position","scale_down"), full_width=T) %>% 
-  add_header_above(header =c(" "=1,"5th%ile"=2,"Median"=2,"Mean"=2,"StdDev"=2,"95th%ile"=2)) %>%
+  kable_styling(latex_options =c("hold_position"), font_size = 10, full_width=T) %>% 
+  add_header_above(header =c(" "=1,"Mean"=2,"StdDev"=2,"5th%ile"=2,"Median"=2,"95th%ile"=2)) %>%
   column_spec(1,width="10em") %>%
  footnote(general="This table provides central tendency and spread statistics for the model variables for the sample period by target setting groups. Variables are presented on the measurement basis with which they enter the model, for example Capital stock enters the model in constant $Billions.",threeparttable=T)
 ```
@@ -289,7 +291,7 @@ Table 4 summarises the marginal abatement cost estimates for each year in our sa
 
 There is a common theoretical starting point for *carbon emissions* pricing and *carbon shadow* pricing, a sufficiently high emissions price for imposing zero emissions that cause global warming. An appropriate carbon pricing regime should treat these two options as mutually reinforcing.  Carbon emission pricing being where policymakers add a carbon component to the current market price of pollutants, Shadow pricing, which ascertains a *future price* of the actual economic cost of a climate-relevant project.  Both have a real-world impact in that they drive markets towards factoring in long-term impacts. In practice, the pricing schemes diverge due to political inconvenience and inadequate multilateral commitments.
 
-Since the introduction of the KP, emission pricing schemes are political motivators to state actors, where it is politically inconvenient to increase such tax in line with climate impacts.  While efforts such as the EU emission trading scheme, introduced in 2008 for major industrial facilities, it has been shown to only cover about 40% of the European greenhouse-gas emissions^[https://www.dandc.eu/en/article/why-carbon-emissions-pricing-and-carbon-shadow-pricing-both-make-sense#:~:text=Appropriate%20carbon%20prices&text=%E2%80%9CCarbon%20emissions%20pricing%E2%80%9D%20means%20that,not%20reflect%20those%20impacts%20yet.].  In contrast, shadow pricing essentially bypasses national governments, as it is in commonly used by multilateral development banks.  At present, only projects in emerging and developing countries routinely apply shadow pricing [@Luhmann2020].  The approach essentially adopted here is a social value of carbon (SVC). The @CPLC2017 commission report established an SVC shadow price range necessary to achieve the Paris temperature target as \$40-80/tCO~2~ by 2020, and \$50-100/tCO~2~ by 2030.
+Since the introduction of the KP, emission pricing schemes are political motivators to state actors, where it is politically inconvenient to increase such tax in line with climate impacts.  While efforts such as the EU emission trading scheme, introduced in 2008 for major industrial facilities, have been shown to only cover about 40% of the European greenhouse-gas emissions^[https://www.dandc.eu/en/article/why-carbon-emissions-pricing-and-carbon-shadow-pricing-both-make-sense#:~:text=Appropriate%20carbon%20prices&text=%E2%80%9CCarbon%20emissions%20pricing%E2%80%9D%20means%20that,not%20reflect%20those%20impacts%20yet.].  In contrast, shadow pricing essentially bypasses national governments, as it is in commonly used by multilateral development banks.  At present, only projects in emerging and developing countries routinely apply shadow pricing [@Luhmann2020].  The approach essentially adopted here is a social value of carbon (SVC). The @CPLC2017 commission report established an SVC shadow price range necessary to achieve the Paris temperature target as \$40-80/tCO~2~ by 2020, and \$50-100/tCO~2~ by 2030.
 
 
 ```{r ETSprice, fig.cap="Daily ECX EUA Futures Price", eval=FALSE}
@@ -324,30 +326,35 @@ read_excel("CPI_Data_DashboardExtract.xlsx",
            sheet = "Data_Price",
            skip = 2,na="N/A") ->df
 df <- df[,colSums(is.na(df))<nrow(df)]
+df %>% filter(`Name of the initiative`=="EU ETS")->df
 df %>% 
   dplyr::select(-`Jurisdiction Covered`,-`Instrument Type`) %>%
   gather(Year,Price_USD_2011,-`Name of the initiative`) %>%
   mutate(Year=as.numeric(str_replace(Year,"Price_rate_1_","")),
          Price_USD_2011=as.numeric(Price_USD_2011)) %>%
   rename(Initiative="Name of the initiative") %>%
-  filter(Year>=2008 & Year<=2014) %>%
+  filter(Year>=2008) %>%
   rbind(
   ClimatePolicy_anal %>% 
   group_by(year) %>%
   summarise("Shadow Price KP target-setters"=mean(MAC_T,na.rm = T),          
             "Shadow Price KP non- target setters"=mean(MAC_No_T,na.rm = T)) %>% rename(Year=year) %>%
     gather(Initiative,Price_USD_2011,-Year)) %>%
-  ggplot(aes(x=as.character(Year),y=Price_USD_2011,fill=Initiative)) + geom_col(position="dodge") + 
-  labs(x="", y="US$/tCO2e",fill="Pricing Mechanism",caption = "Source: World Bank Carbon Pricing Dashboard") +
-  coord_flip() +
+  ggplot(aes(x=as.character(Year),y=Price_USD_2011,group=Initiative)) +
+  geom_point(aes(shape=Initiative,colour=Initiative)) +
+  geom_line(aes(colour=Initiative),linetype="dotdash") +
+  labs(x="", y="US$/tCO2e",caption = "Source: World Bank Carbon Pricing Dashboard") +
+  # coord_flip() +
   theme(text = element_text(size=20),
-    legend.text = element_text(size=12)) +
+        legend.position = "right",
+    legend.text = element_text(size=10)) +
+  scale_shape_manual(values=1:9) +
   scale_fill_brewer(type = "qual")
 ```
 
-Figure 1 compares the 2011 nominal Carbon Prices from the seven of the largest emission trading schemes (ETS) to our shadow price mean estimates. In the first three years of the KP, the shadow price for both groups (target setting and non-target setting) is a multiple of the prices from existing ETS markets. Interestingly, The Saitama ETS^[The Saitama target setting type ETS is a baseline-and-credit system that sets mandatory emission reduction targets for large buildings and factories. It was established in April 2011 as part of the Saitama Prefecture Global Warming Strategy Promotion Ordinance and is linked to the Tokyo CaT.] carbon pricing mechanism introduced in 2011 provides comparable estimates to our analysis. This mispricing is an encouraging sign that our *least-cost alternative* approach may be more in line with market expectations. That said, Saitama ETS only covers a small fraction of global annual greenhouse gases emissions compared to the EU ETS (5% per annum approximately^[https://carbonpricingdashboard.worldbank.org/map_data]) which may be indicative of an illiquid pricing mechanism.
+Figure 1 compares the 2011 nominal Carbon Prices from the EU emission trading schemes (ETS) to our shadow price mean estimates. Over the four years of the KP, the shadow price for both groups (target setting and non-target setting) is a multiple of the prices from the ETS.  While our estimates trend up over the period the ETS prices actually fall.  Interestingly, in the last year the EU-ETS price has increased dramatically and is beginning to approach our shadow price estimates. 
   
-For an emissions trading scheme to work efficiently, allocation of abatement across countries would require that the marginal abatement cost is the same in all countries and over time. The results from table 4 suggest this is not the case. The mean MAC is trending up in both groupings and is typically most significant for target setting countries. Furthermore, the various regional ETS pricing mentioned above, which allows firms from different countries to buy and sell CO~2~ emission allowances to achieve an efficient allocation of abatement, are not working to lower the marginal abatement costs of the period. This visual argument suggests a consistent misallocation of CO~2~ abatement across countries and significant frictions in ETS market price discovery.
+For an emissions trading scheme to work efficiently, allocation of abatement across countries would require that the marginal abatement cost is the same in all countries and over time. The results from table 4 suggest this is not the case. The mean MAC is trending up in both groupings and is typically most significant for target setting countries. Furthermore, the EU-ETS market, which allows firms from different countries to buy and sell CO~2~ emission allowances to achieve an efficient allocation of abatement, are not working to lower the marginal abatement costs of the period. This visual argument suggests a consistent misallocation of CO~2~ abatement across countries and significant frictions in ETS market price discovery.
 
 ## Marginal effect of the environmental variable
 Following @Gallagher2019, we investigate the marginal effect of the environmental variables in equation 1 to understand how they impact inefficiency.  Specifically, we consider how inefficiency is affected by the proportion of trade to GDP, the percentage of the urban living in a country's population, and whether the country explicitly sets CO~2~ emission targets in the analysis period. 
