@@ -433,7 +433,7 @@ This study provides substantial evidence to the ongoing debate on target setting
 
 The results reveal important implications for emissions trading schemes. For an emissions trading scheme to work efficiently, allocation of abatement across countries would require that the marginal abatement cost is the same in all countries and over time. Table 4 shows a substantive difference across the groups, with the mean MAC increasing over time and typically more significant for target setting countries. 
 
-Furthermore, the various regional ETS carbon price discovery mechanisms, which allow firms from different countries to buy and sell CO~2~ emission allowances to achieve an efficient allocation of abatement, are not working to lower the marginal abatement costs of the period. Our chronological ordering analysis suggests a consistent inefficient allocation of CO~2~ abatement across countries and significant frictions in ETS market price discovery.
+Furthermore, the various regional ETS carbon price discovery mechanisms, which allow firms from different countries to buy and sell CO~2~ emission allowances to achieve an efficient allocation of abatement, are not working to lower the marginal abatement costs of the period. Our chronological ordering analysis suggests a consistent inefficient allocation of CO~2~ abatement across countries and significant frictions in ETS market price discovery.  Encouragingly, in recent years the emissions trading market price is beginning to approach the lower end of our shadow price estimates. 
 
 Finally, marginal effects estimate of the environmental variables suggests that setting the explicit emissions targets result, having higher trade and more urbanisation typically induces more environmental inefficiency.
 
