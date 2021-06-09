@@ -5,7 +5,7 @@ author:
   - Ronan Gallagher (Edinburgh Business School)
   - Timo Kuosmanen (Aalto Business School)
 date: "`r format(Sys.time(),'%B %d, %Y')`"
-abstract: "This paper interrogates the impact of the Kyoto Protocol target setting regime on carbon *shadow* pricing and environmental efficiency. We extract shadow price estimates and efficiency scores from a comprehensive dataset of 125 countries over the four years period using the unified StoNED framework. We exploit recent work, which uses the *least-cost alternative* procedure to estimate CO~2~ marginal abatement costs from initial model estimation. Results reveal abatement costs are significantly higher for target setting countries, increase over the sample period, and are an order of magnitude greater than the prevailing emissions pricing mechanisms. Given the number on developing countries in our sample, this findings highlights a shadow price inequality gap at that time. Typically, environmental inefficiency scores are higher in countries with higher trade to GDP ratios, higher urban density, and explicit C0~2~ emission targets set under the Kyoto Protocol. Our findings provide insights into the consequences of policies to curb unwanted byproducts in a regulated system and reveal *future price* consequences of the regulation used to mitigate undesirable outputs."
+abstract: "This paper interrogates the impact of the Kyoto Protocol target setting regime on carbon *shadow* pricing and environmental efficiency. We extract shadow price estimates and efficiency scores from a comprehensive dataset of 125 countries over the four years period using the unified StoNED framework. We exploit recent work, which uses the *least-cost alternative* procedure to estimate CO~2~ marginal abatement costs from initial model estimation. Results reveal abatement costs are significantly higher for target setting countries, increase over the sample period, and are an order of magnitude greater than the prevailing emissions pricing mechanisms. Given the number on developing countries in our sample, this findings highlights a shadow price inequality at that time. Typically, environmental inefficiency scores are higher in countries with higher trade to GDP ratios, higher urban density, and explicit C0~2~ emission targets set under the Kyoto Protocol. Our findings provide insights into the consequences of policies to curb unwanted byproducts in a regulated system and reveal *future price* consequences of the regulation used to mitigate undesirable outputs."
 
 acknowledgements:
   "We would like to acknowledge Professor Donal McKillop and Professor John Turner for the helpful commentary and advice on this paper."
@@ -62,7 +62,7 @@ load("dat_anal.RData")
 ```
 
 
-# Introduction
+# 1 Introduction
 Target setting stringency in climate policy has attracted considerable debate since the Kyoto Protocol (hereafter KP) [for example, see @De_Angelis2019]. The impact of climate change and the production of greenhouse gas (GHG) emissions are existential challenges of the 21^st^ century. The World Health Organisation estimates a health risk associated with climate change of 250,000 additional deaths per year between 2030 and 2050, assuming the status quo of current abatement practices and global economic growth^[https://www.who.int/news-room/fact-sheets/detail/climate-change-and-health]. 
 
 @Fare2012 describes shadow prices as 'virtual' or unforeseen costs to a firm's management. A shadow price obtained from an economic model is the implicit value of *untradeable* outputs such as pollutants or undesirable by-products [@Lee2012].   Technically, they value the marginal product faced by the decision-maker based on the optimal choice of outputs and inputs, which maximises utility [@Murray1995]. Under the assumption of rationality, shadow prices reveal the underlying opportunity costs hidden from the researcher [@Kuosmanen2006]. Importantly, this opportunity cost (economic price) definition can also take the form of marginal substitution (transformation) rates between inputs (outputs).]. @Luhmann2020 argue that shadow pricing is as crucial as emission pricing (for example, emissions trading schemes) for appropriate carbon price discovery.  They argue shadow pricing can also be called "future pricing". The word "shadow" highlights that, for financiers to assess a project's actual economic value, fuel is priced higher than current levels. The rationale being, even if there is no carbon emissions pricing,  carbon prices are taken into account, factoring in *future* value ignored by markets. Shadow prices have a long history of revealing the cost of reducing undesirable outputs^[Shadow prices assess the costs of producing some by-product, or more technically, an undesirable output. They are helpful for regulatory and supervision analysis where quality control of by-products plays an integral part in the sustainable growth of the regulated system. Shadow price usage is dependent on the observability of a market price for the undesirable output. When we observe output prices, then shadow pricing models can identify the appropriate output mix for revenue maximisation. More commonly, shadow price calculations numerate the price of an undesirable output in units of foregone desirable output.] in terms of reducing the production of desirable outputs (See @Zhou2014 for recent literature on shadow price estimation).  Framed in this way, the shadow price of air pollution emissions is equivalent to a marginal abatement cost and provides valuable guidance to emission reduction policies. 
@@ -73,11 +73,11 @@ This paper aims to add to this debate by investigating the impact of KP target s
 
 Our results provide a consistent economic cost of the KP.  Taking advantage of the explicit target-setting regime from 2008 to 2012, we estimate the marginal abatement cost of CO~2~ emissions.  Unlike previous shadow price estimates of CO~2~ emissions calculated ignoring country-level inefficiencies^[Technically, abatement cost estimates assume the entity under investigation is on the efficient frontier.], our model uses a quantile approach to incorporate additional information on the relative inefficiency of each country. The analysis results in shadow prices measured as the cost of abatement in constant international dollar terms. 
 
-To disentangle abatement cost differences, we apply a trigonometric procedure proposed in @Gallagher2019. This innovative test reveals that specific target setting countries typical experienced a higher marginal abatement cost than their non-target setting counterparts, the estimated difference being economically and statistically significant.  Our findings suggest an unintended consequence of climate policy target setting. Our paper is a direct extension of @Kuosmanen2020 in two ways; the sample includes a large number of developing countries (non-annex countries) and provides explicit evidence of a shadow price inequality gap between *rich and poor* countries. The proposed market mechanism for trading emissions failed to eliminate this shadow price gap. 
+To disentangle abatement cost differences, we apply a trigonometric procedure proposed in @Gallagher2019. This innovative test reveals that specific target setting countries typical experienced a higher marginal abatement cost than their non-target setting counterparts, the estimated difference being economically and statistically significant.  Our findings suggest an unintended consequence of climate policy target setting. Our paper is a direct extension of @Kuosmanen2020 in two ways; the sample includes a large number of developing countries (non-annex countries) and provides explicit evidence of a shadow price inequality between *rich and poor* countries. The proposed market mechanism for trading emissions failed to eliminate this shadow price gap. 
 
 In the next section, we will outline the sample design and define the variables used. Section 2 briefly outlines the innovative model used to estimate CO~2~ emission production. Section 3 presents the results and some brief discussion.
 
-# Literature Review
+# 2 Literature Review
 
 The academic inquiry into the effective control of climate change has a rich 40-year history.  Historically, holistic models seek to understand how human development, societal choices, and the natural world integrate and influence each other. At their simplistic level, they can provide an estimate of the social cost of carbon pollutants. This top-down approach to the economics of climate change has been at the forefront of the discipline [@Vale2016].  Such a global approach may be dating in the face of stalled international coordination to climate change policy.  
 
@@ -85,7 +85,7 @@ In the run-up to the end of the first commitment period of the KP, there were po
 
 As global cooperation seems less attainable in the last decade, attention in the policy debate has shifted towards a bottom-up strategy to mitigation solutions.  @Vale2016 argues that the lack of collective political will, in turn, has seen a shift in the scope of the academic literature. The recent focus on the economics of catastrophic risk insurance, trade and climate, and climate change adaptation represents a shift towards a more realistic investigation of climate policy in an age where the ideal scenario of globally coordinated climate action seems illusory.
 
-## Cost of KP literature
+## 2.1 Cost of KP literature
 
 @Zhang1998 document and critique the myriad of marginal abatement cost models. They consider both bottom-up technology-based models and top-down macroeconomic models. They conclude, a combination of these models best assesses the overall consequences of controlling CO~2~ emissions.  @Nordhaus1999 use a scenario-based approach to analyze the economics of various trading emission schemes (ETS) for Annex I countries for the KP. They find costs of the ETS's are seven times greater than the benefits, two/thirds of the net global cost of $716 billion, are borne by the US^[@Brechin2003 uses various public opinion polls to revisits the questions of international public concern for global warming. They find, while the perception has been a slight improvement in the public's understanding regarding the anthropogenic causes of global warming, the data reveals the public remains largely uninformed. They note that President Bush's withdrawal of the KP in 1991 was supported mainly by the US public while citizens of several European countries voiced considerable outrage about the decision.] and conclude that the proposed schemes are highly cost-ineffective^[ Compared to a *so-called" efficient abatement strategy for global temperature reduction, the proposed strategy was eight times more costly.]. 
 
@@ -99,7 +99,7 @@ In the later years of the KP period, researchers consider a more statistically s
 More recent studies focus on a bottom-up approach, showing how a country's economic characteristics fluctuate with abatement challenges. @Halkos2014 applies a probabilistic DEA approach to estimate conditional and unconditional environmental efficiency of 110 countries in 2007. They find that a country's environmental efficiency is influenced in a non-linear fashion by both the obliged percentage levels of emission reductions the duration in which a country has signed the KP.  @Cifci2018 use regression techniques to illustrate the conflicting political strands of the climate change argument. The results show that the KP reduced Annex I countries GHG emissions by approximately 1 million metric tons of CO^2^ equivalent relative to non-Annex I countries. Contrariwise, these countries experienced an average reduction in GDP per capita growth of 1-2 per cent relative to non-Annex I countries. Both findings illustrate that the international climate change agreements are fragile because, at a national level, political constituencies' value systems may conflict to reduce greenhouse gas (GHG) emissions to sustainable levels. 
 
 
-# Model
+# 3 Model
 The primary focus of our analysis is shadow prices estimates for CO~2~ emission from fossil fuel. Previous studies have provided inaccurate measures as a result of several missteps, including: 
 
 - only considering downscaling of production and not increasing in input use.
@@ -123,7 +123,7 @@ These factors combine to overestimate shadow prices, group differences in shadow
 
 Equation 1 is a probabilistic distance function, where the two errors terms ($\epsilon^-$ and $\epsilon^+$) allow for deviations from the frontier, and $\tau$ defines the quantile.  We estimate the model using a balanced panel of 105 countries for five years (2008-2012) where the $Z$ vector includes, trade to GDP ratio, the percentage of the population which is urban, a dummy to the indicator if the country is a target setting, and a set of year dummies.  These environmental variable adjust for observed cross-country and through time fluctuation in the production technology. The estimated model results in performance adjusted dual prices $\gamma^{'}_{it},\beta^{'}_{it} ,\delta^{'}_{it}$ which serve as inputs for the marginal abatement calculations. An additional appealing feature of the specification in equation 1 is a separately estimated intercept for each observation; $\alpha_{it}$. These intercept terms are analogous to *random* effects in multi-level modelling, capturing unobserved time series and cross-sectional variation. 
 
-## Marginal abatement
+## 3.1 Marginal abatement
 
 Marginal abatement estimation uses a series of levels to find the local quantile $\tau^{*}$ for each observed data point. For example, a set of ten quantile levels $\tau=(0.05,0.15,0.25,0.35,0.45,0.55,0.65,0.75,0.85,0.95)$^[We use the GAMS software and the CPLEX solver to find an optimal solution to equation 1]. In general, the number of quantiles is not fixed but should depend on sample size and signal to noise ratio. 
 
@@ -154,14 +154,14 @@ MAC(b_{j})=\displaystyle \min_{i,k}\{MRT_{\tau}(y_{i},b_{j}), MP_{\tau}(x_{k},b_
 In the above calculation, it is essential to ensure that the MRT and MP enter the model simultaneously, given the scale of the inputs and outputs entering the model.  In our model, as both capital stock and GDP enter the model in billions of dollars, the MRT and MP are directly comparably in terms of minimum cost.
 
 
-## Application of Statistical Test
+## 3.2 Application of Statistical Test
 Appendix A:1 details the theoretical exposition of shadow price group difference testing first proposed in @Gallagher2019.  Suppose we have two series of the output ratio y2/y1, representing two groups of firms observed in the same period or the same sample of firms observed in two different periods. There are several methods for testing whether the two series are significantly different. 
 
 An obvious possibility is to apply a two-sample t-test for testing the equality of means or the F-test for equal variances. This test requires either that sample size is sufficiently large for asymptotic inferences or that the ratio y2/y1 is normally distributed. 
 
 There are also several nonparametric alternatives. The (Wilcoxon) Mann-Whitney U tests whether the medians of two independent distributions are different. Another possibility is the two-sample Kolmogorov-Smirnov test. If there is a pair of series(e.g., the same firms observed in two different periods), then nonparametric rank-order tests such as Spearman's rho and Kendall's tau can be used to test for correlation between two series of y2/y1.
 
-### Testing procedure 
+### 3.2.1 Testing procedure 
 
 There are three steps to the testing procedure for the difference in the ratio series y2/y1.  The first two steps are preliminary in that they establish the statistical properties of the series, which informs the choice of group difference test in the three-step.
 
@@ -172,7 +172,7 @@ There are three steps to the testing procedure for the difference in the ratio s
 3. If the equal group variance and the normality assumptions are not rejected, then perform a Welch t-test for group mean differences [@Welch1947].  The Kolmogorov-Smirnov nonparametric test provides a more robust statistical inference [@Conover1999]. If only the normality assumption is rejected, the Wilcoxon Mann Whitney test is more appropriate. 
 
 
-# Data and variables
+# 4 Data and variables
 
 The KP offers a unique empirical framework to assess the effects of explicit target setting in climate change policy.  The first commitment period for the KP was 2008 to 2012. Countries defined as developing (non-annexe 1) were not subject to targets, although most ratified the Protocol.  The US was the only signatory of the Protocol that did not ratify.  This decision was likely the combination, a weak green lobby in Washington DC[@Hovi2012], excessive compliance costs[@Manne2004], poor public understanding of climate change [@Brechin2003], and a strong energy lobby during Bush's tenure.^[Andorra, Palestine, South Sudan and the Vatican also do not follow the Protocol. Canada ratified but withdrew effective in December 2012.].  In the run-up to the end of the first commitment period, there were political moves to create targets for a second commitment period. Critics argued that the Paris agreement fell well short of the KP in set explicit targets and punitive penalties.  
 
@@ -180,7 +180,7 @@ For these reasons, we focus on emissions data from 2008 to 2012, the first commi
 
 We specify a two input-two output frontier efficiency model.  Specifically, we define GDP as a desirable output, CO^2^ emissions from fuel combustion as an undesirable output, and labour force numbers and capital stock as inputs.  GDP and labour force numbers are sourced from the World Bank.  The capital stock captures both current and past accumulations of capital investment. Finally, to capture cross-country and time-varying heterogeneity in CO^2^ production, we use several environmental $Z$ variables. Table 1 provides a detailed description of the modelling variables.
 
-```{r variables, results="asis"}
+```{r table 1 descriptions, results="asis"}
 library(WDI)
 library(RJSONIO)
 VarCodes<-c("NY.GDP.MKTP.PP.KD",
@@ -199,7 +199,7 @@ Emissions were calculated using IEA energy databases and the default methods and
 kable(text_tbl,booktabs=TRUE,caption = "Description of variables",longtable=T) %>% 
   kable_styling(latex_options = c("repeat_header","hold_position"),font_size=8,full_width=T) %>% 
   column_spec(2, bold = T, border_right = T) %>%
-  column_spec(column = c(1:4),width = c("5em","5em","30em","5em")) %>%
+  column_spec(column = c(1:4),width = c("5em","10em","20em","10em")) %>%
   footnote(general="A detailed description of the inputs, outputs and enviromental variables which index the production frontier model.  Capital stock and GDP are monetary variables and enter the model in real terms measured at purchasing power parity or constant international dollar billions.",threeparttable = T)
 ```
 
@@ -207,7 +207,7 @@ kable(text_tbl,booktabs=TRUE,caption = "Description of variables",longtable=T) %
 We use the International Energy Association (IEA) database^[http://data.iea.org/payment/products/115-co2-emissions-from-fuel-combustion-2018-edition-coming-soon.aspx] which provides the most extensive global coverage of CO~2~ emission data. This database estimates CO^2^ from fuel emission measured in Metric Tonnes for over 140 countries from 1960 to 2016.  After removing countries with missing observations, we have a balanced sample of 525 observations for 2008-2012.  Table 2 describes the countries in the sample in terms of target-setting.
 
 
-```{r targetSetters, results="asis"}
+```{r table 2 summary statistics, results="asis"}
 ClimatePolicy_anal %>% 
   filter(TargetSet==1) %>%
   dplyr::select(country) %>%
@@ -226,16 +226,15 @@ ClimatePolicy_anal %>%
 tibble("Target Setting Country"=v1,
        "Non Target Setting Country"=v2) %>% 
   kable(booktabs=TRUE,caption = "Target Setting Countries") %>% 
-  kable_styling(font_size = 8,latex_options = c("hold_position"),full_width=T) %>%
+  kable_styling(latex_options = c("hold_position"),font_size=8,full_width=T) %>%
   column_spec(c(1,2), bold = T, border_right = T) %>%
   column_spec(c(1,2),width = c("20em","20em")) 
 ```
 
 Some summary statistics of the model variables are presented in Table 3. These statistics reveal that significant variation in outputs and inputs highlights considerable cross-sectional heterogeneity.  The variation is not surprising given the mix of countries outlined in table 2.  Furthermore, notice that some countries have a trade which exceeds GDP (more than 100%).  This excess is usually a feature of small countries with high productivity. Due to their small size, instead of being self-sufficient and producing all the products their population needs, they specialize in a few highly profitable industries. These industries may produce more money from exports than the entire domestic economy, which allows them to purchase imports far above what their domestic economy could otherwise support.  For example, in the sample, three countries have a Trade to GDP ratio of over 200%; Luxembourg, Malta and Singapore.    
 
-\newpage
 
-```{r sumstats1, results="asis"}
+```{r table 3 summary statistics, results="asis"}
 sumThatFinal<-function(x){
   p5=quantile(x,na.rm = T,0.05)
   Median=median(x,na.rm = T)
@@ -257,18 +256,18 @@ rownames(sumStats)<-c("C02 emissions (Million Metric Tons)","GDP (Billion PPP $U
 
 sumStats %>% 
   kable("latex",booktabs=T, longtable=T,caption = "Summary statistics of inputs, outputs and z variables",align = "c",row.names =T,col.names =rep(c("Non Target","Target"),5))  %>% 
-  kable_styling(latex_options =c("hold_position"), font_size = 10, full_width=T) %>% 
+  kable_styling(latex_options =c("HOLD_position"), font_size = 8, full_width=T) %>% 
   add_header_above(header =c(" "=1,"Mean"=2,"StdDev"=2,"5th%ile"=2,"Median"=2,"95th%ile"=2)) %>%
   column_spec(1,width="10em") %>%
  footnote(general="This table provides central tendency and spread statistics for the model variables for the sample period by target setting groups. Variables are presented on the measurement basis with which they enter the model, for example Capital stock enters the model in constant $Billions.",threeparttable=T)
 ```
 
 
-# Results and discussion
+# 5 Results and discussion
 
 We estimate a stepwise yield curve of probabilistic benchmark technologies. These technologies extract, at the observed performance level, country-year marginal abatement costs of CO~2~ emissions. We use the direction vector $g(x)=\bar{x}, g(y)=0, g(x)=0$ to estimate the directional distance function model for 10 quantiles $\tau=(0.05,0.15,\dots,0.85,0.95)$, which should be sufficient granularity for a sample size of 525.  Finally, we include a noise term that can capture measurement error in the data.
 
-```{r SPs2, results="asis"}
+```{r table 4 MAC summary, results="asis"}
 ClimatePolicy_anal %>% 
   group_by(year) %>%
   summarise("MAC Overall"=mean(MAC,na.rm = T),
@@ -278,45 +277,20 @@ ClimatePolicy_anal %>%
             "MAC Non Target Setters"=mean(MAC_No_T,na.rm = T),
             "IQR2"=IQR(MAC_No_T,na.rm = T)) %>%
   kable("latex",digits = 2,caption = "Marginal abatement costs in 2011 dollars per CO2 tonne",align = "c",booktabs=T,col.names = c("",rep(c("Mean","Interquartile Range"),3)),longtable=T) %>%
-  kable_styling(latex_options =c("hold_position","scale_down"), full_width=T) %>%
+  kable_styling(font_size=8,latex_options =c("hold_position"), full_width=T) %>%
   add_header_above(c("","Full Sample"=2,"Target Setting Countries"=2,"Non Target Setting Countries"=2),bold = T,italic = T) %>%
   row_spec(0,bold = T,italic = T)  %>%
-  footnote(general="This table presents yearly mean and interquartile estimates of the marginal abatement costs calculated for the full sample and for each group of countries.  The last four columns disaggregates the mean analysis to compare countries which set emission reduction targets against countries which did not.  GDP(y) and capital stock (x1) are deflated to 2011 international dollars, and are considered to have a unit price.  An alternative interpretation is that the the price multipliers (p,w)=1 in the calculations of the marginal rate of transformation of GDP and the marginal product of the capital stock as they represent both quantity and price. The marginal abatement cost is thus calculated as the minimum of the marginal rate of transformation of GDP and the marginal product of capital stock on C0~2~ emissions.  The MAC is measured in USD per metric ton of CO~2~ emission. Labour (x2) is the total labour force in each country (in millions).  The marginal product of labour is the dual without a price multiplier and is measured in millions of labour force per ton of CO2 emission.",threeparttable = T)
+  footnote(general="This table presents yearly mean and interquartile estimates of the marginal abatement costs calculated for the full sample and for each group of countries.  The last four columns disaggregates the mean analysis to compare countries which set emission reduction targets against countries which did not.  GDP(y) and capital stock (x1) are deflated to 2011 international dollars, and are considered to have a unit price.  An alternative interpretation is that the the price multipliers (p,w)=1 in the calculations of the marginal rate of transformation of GDP and the marginal product of the capital stock as they represent both quantity and price. The marginal abatement cost is thus calculated as the minimum of the marginal rate of transformation of GDP and the marginal product of capital stock on C0~2~ emissions.  The MAC is measured in USD per metric ton of CO~2~ emission. Labour (x2) is the total labour force in each country (in millions).  The marginal product of labour is the dual without a price multiplier and is measured in millions of labour force per ton of CO2 emission.",threeparttable=T)
 ```
 
 
 Table 4 summarises the marginal abatement cost estimates for each year in our sample period. This table presents the mean and interquartile range for the entire sample, targeting setting countries and their non-target setting counterparts.  Marginal abatement costs illustrate the carbon intensity, where countries with larger manufacturing sectors will have relatively higher MAC estimates.  The MAC estimates are similar to those reported in the literature [@Lee2019;@Bohringer2003;@Viguier2003]. , and comparatively similar to the cost of C0~2~ capture and storage of coal plants estimated by @Rubin2015, who estimates a mitigation cost (constant 2013 dollar per metric tonne of CO~2~) for the capture of *46-99 US dollars* and storage of *53-137 US dollars*.  
 
-## Carbon emissions pricing comparison
+## 5.1 Carbon emissions pricing comparison
 
 There is a common theoretical starting point for *carbon emissions* pricing and *carbon shadow* pricing, a sufficiently high emissions price for imposing zero emissions that cause global warming. An appropriate carbon pricing regime should treat these two options as mutually reinforcing.  Carbon emission pricing being where policymakers add a carbon component to the current market price of pollutants, Shadow pricing, which ascertains a *future price* of the actual economic cost of a climate-relevant project.  Both have a real-world impact in that they drive markets towards factoring in long-term impacts. In practice, the pricing schemes diverge due to political inconvenience and inadequate multilateral commitments.
 
 Since the introduction of the KP, emission pricing schemes are political motivators to state actors, where it is politically inconvenient to increase such tax in line with climate impacts.  While efforts such as the EU emission trading scheme, introduced in 2008 for major industrial facilities, have been shown to only cover about 40% of the European greenhouse-gas emissions^[https://www.dandc.eu/en/article/why-carbon-emissions-pricing-and-carbon-shadow-pricing-both-make-sense#:~:text=Appropriate%20carbon%20prices&text=%E2%80%9CCarbon%20emissions%20pricing%E2%80%9D%20means%20that,not%20reflect%20those%20impacts%20yet.].  In contrast, shadow pricing essentially bypasses national governments, as it is in commonly used by multilateral development banks.  At present, only projects in emerging and developing countries routinely apply shadow pricing [@Luhmann2020].  The approach essentially adopted here is a social value of carbon (SVC). The @CPLC2017 commission report established an SVC shadow price range necessary to achieve the Paris temperature target as \$40-80/tCO~2~ by 2020, and \$50-100/tCO~2~ by 2030.
-
-
-```{r ETSprice, fig.cap="Daily ECX EUA Futures Price", eval=FALSE}
-# This is the ICE ECX EUA Future price which is a proxy  
-library(Quandl)
-library(latex2exp)
-Quandl.api_key("xgqqrhAtsi5zPtXvnrxp")
-USD_EURO<-Quandl("CUR/EUR", start_date="2008-01-01", end_date="2012-12-3")
-pr<-Quandl("CHRIS/ICE_C1",start_date="2008-01-01",end_date="2012-12-31")
-
-pr_usd<-left_join(pr %>% dplyr::select(Date,Settle),USD_EURO %>% rename(Date=DATE),by="Date") %>%
-  mutate(pr_usd=Settle*RATE)
-
-pr_usd %>%
-  ggplot(aes(x=Date,y=pr_usd)) + 
-  geom_line(colour="red")
-
-
-
-+
-  annotate("text",x=as.Date("2010-07-01"),y=31,label=paste0("Hi =",max(pr$Settle)))+
-  annotate("text",x=as.Date("2010-07-01"),y=29,label=paste0("Lo =",min(pr$Settle))) +
-  ylab(TeX("\text(Price in) /tCO~2)")) +
-  xlab("")
-```
 
 
 ```{r ETS comparision,fig.cap="ETS pricing mechanism comparison"}
@@ -345,10 +319,11 @@ df %>%
   geom_line(aes(colour=Initiative),linetype="dotdash") +
   labs(x="", y="US$/tCO2e",caption = "Source: World Bank Carbon Pricing Dashboard") +
   # coord_flip() +
-  theme(text = element_text(size=20),
-        legend.position = "right",
-    legend.text = element_text(size=10)) +
-  scale_shape_manual(values=1:9) +
+  theme(
+    text = element_text(size=20),
+        legend.position = "top"
+       ,legend.text = element_text(size=15)
+        ) +
   scale_fill_brewer(type = "qual")
 ```
 
@@ -356,11 +331,11 @@ Figure 1 compares the 2011 nominal Carbon Prices from the EU emission trading sc
   
 For an emissions trading scheme to work efficiently, allocation of abatement across countries would require that the marginal abatement cost is the same in all countries and over time. The results from table 4 suggest this is not the case. The mean MAC is trending up in both groupings and is typically most significant for target setting countries. Furthermore, the EU-ETS market, which allows firms from different countries to buy and sell CO~2~ emission allowances to achieve an efficient allocation of abatement, are not working to lower the marginal abatement costs of the period. This visual argument suggests a consistent misallocation of CO~2~ abatement across countries and significant frictions in ETS market price discovery.
 
-## Marginal effect of the environmental variable
+## 5.3 Marginal effect of the environmental variable
 Following @Gallagher2019, we investigate the marginal effect of the environmental variables in equation 1 to understand how they impact inefficiency.  Specifically, we consider how inefficiency is affected by the proportion of trade to GDP, the percentage of the urban living in a country's population, and whether the country explicitly sets CO~2~ emission targets in the analysis period. 
 
 
-```{r reg,results="asis"}
+```{r table 5 regression results,results="asis"}
 ClimatePolicy_anal %>% mutate(logGDP=log(GDP),
                    logx=log((Capital+LABOUR+CO2)/3+1),
                    regY=logGDP-logx,
@@ -379,12 +354,12 @@ lm(regY~TRADEtoGDP+URBAN+Setter+Yr,data=df_anal) %>%
 
 The results from table 5 reveal some interesting features of the inefficient patterns at the country level.  Typically, those with higher trade to GDP ratios and higher urban populations tend to be less efficient over the sample. Interestingly, those countries which are setting targets tend to be more inefficient in the sample period. Finally, there is an overall reduction in inefficiency over the period indicated by the year dummies, although this relationship is not significant in the data.  
 
-## Application of testing
+## 5.4 Application of testing
 
 Our statistical shadow price difference test is based on the underlying data for frontier efficiency. Specifically, it is the ratio of the corresponding bad output to either good output or input that is represented in a shadow price estimate. For example the ratio of CO^2^ emissions to GDP could be used to test statistical differences in the shadow price of the good output calculated as $MRT_{\tau}(y_{i},b_{j})=-\frac{\delta \vec{D}_{\tau}/\delta b_{j}}{\delta \vec{D}_{\tau}/\delta y_{i}}$.
 
 
-```{r Test1, results="asis"}
+```{r table 6 test results, results="asis"}
 library(pander)
 # LeveneTest only works with factor variables in the formula
 ClimatePolicy_anal$Target<-as.factor(ClimatePolicy_anal$TargetSet)
@@ -419,15 +394,15 @@ out
 }
 
 StatTest(ClimatePolicy_anal,CO2,LABOUR,Target,2008,2012) %>% 
-kable(caption = "Statistical Analysis of Marginal Abatement Cost Differences",align = "c",booktabs=T, col.names=c("Normality Test","Equality of Variance","Rank sum z-test","Equality of distribution D-test")) %>%  kable_styling(latex_options =c("HOLD_position")) %>% add_header_above(header = c("","Preliminary"=2,"Group Difference "=2),italic = T,bold = T) %>%
-  footnote(general="This table provides the group difference statistical testing on the ratios of the bad output with either GDP and Capital depending on which corresponding shadow price satisfying MAC equation. Column 1 presents the Anderson Darling test which is the recommended empirical distribution test for normality by Stephens (1986) as it as it gives more weight to the tails of the distribution.  If normality is rejected, we perform heterogeneity of variance tests. The Brown-Forsythe test is presented in column 2 and is robust in the presence of non-normal data. Finally, columns 3 and 4 present the non-parametric group differenc tests.",threeparttable = T)
+kable(caption = "Statistical Analysis of Marginal Abatement Cost Differences",align = "c",booktabs=T, col.names=c("Normality Test","Equality of Variance","Rank sum z-test","Equality of distribution D-test")) %>%  
+  kable_styling(font_size=8,latex_options =c("HOLD_position")) %>% add_header_above(header = c("","Preliminary"=2,"Group Difference "=2),italic = T,bold = T) %>% 
+  footnote(general="This table provides the group difference statistical testing on the ratios of the bad output with either GDP and Capital depending on which corresponding shadow price satisfying MAC equation. Column 1 presents the Anderson Darling test which is the recommended empirical distribution test for normality by Stephens (1986) as it as it gives more weight to the tails of the distribution.  If normality is rejected, we perform heterogeneity of variance tests. The Brown-Forsythe test is presented in column 2 and is robust in the presence of non-normal data. Finally, columns 3 and 4 present the non-parametric group differenc tests.",threeparttable=T)
 
 ```
 
 Table 6 shows the results of the testing approach described in test steps applied each year to the ratio of the variables represented by the MAC estimates. The first column presents the test results of the empirical distribution of the ratio and shows that normality is rejected for all years.  This result means we should use a nonparametric group difference test.  Column 2 presents the equality of variance test across the groups of interest, robust to non-normal distribution.  Equality of variance is not rejected for all years. Columns 3 and 4 of Table 6 provide a statistical analysis of the observed mean differences in shadow prices presented in table 4. In column 3, the Wilcoxon Mann Whitney test provides robust inference when we cannot reject the hypothesis of equality of variance in groups assessed in column 2. The  Kolmogorov Smirnov test provides robust inference if the equality of variance hypothesis is rejected. Given the results of column 2, column 3 results suggest a statistically significant difference in the shadow prices of the two cohorts.  This finding provides some meaningful evidence that target setting countries consistently experienced increased abatement costs over the Kyoto protocol period.
-\newpage
 
-# Concluding Remarks
+# 6 Concluding Remarks
 
 This study provides substantial evidence to the ongoing debate on target setting implications in climate policy. We use a unifying frontier efficiency approach that reveals some essential and economically meaningful CO~2~ emissions target setting implications.  The study exploits the explicit target setting period of the Kyoto Protocol to reveal unintended consequences in terms of increased inefficiencies and marginal abatement costs.
 
@@ -457,7 +432,7 @@ X=C(x,y) + \epsilon
 \end{equation}
 where $X$ is the observed cost and $\epsilon$ is a random disturbance term. The partial derivative of $C$ with respect to output $m$ is referred to as the shadow price of output $m$ (in other words, the marginal cost). The vector of all $M$ shadow prices is called the gradient vector and is denoted by $VC$.  Figure 2 illustrates the output isoquant in the case of two firms, where the gradient vector $VC$ includes two shadow prices illustrated by the dashed lines. The shadow prices define the slope of the tangent line on the output frontier. 
 
-```{r isoquant, fig.cap=" Two output isoquant", fig.height=5,fig.width=8}
+```{r isoquant, fig.cap=" Two output isoquant", fig.height=3,fig.width=4, fig.align="center"}
 library(ggforce)
 arrow = arrow(angle=15, type = "closed")
 tibble(y1=c(2,3),y2=c(3,2)) %>% # some data to plot
