@@ -37,9 +37,9 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-  pdftitle={Lurking in the shadows: The impact of emissions target setting on carbon pricing and enviromental efficiency.},
-  pdfauthor={Barry Quinn (Queen's Management School); Ronan Gallagher (Edinburgh Business School); Timo Kuosmanen (Aalto Business School)},
-  pdfkeywords={Marginal abatement costs, Enviromental efficiency, Stochastic nonparametric envelopment of data (StoNED), Carbon emissions target setting, Kyoto Protocol, Development economics},
+  pdftitle={Lurking in the shadows: The impact of emissions target setting on carbon pricing and environmental efficiency.},
+  pdfauthor={Barry Quinn (Queen's Management School); Ronan Gallagher (University of Edinburgh Business School); Timo Kuosmanen (Aalto Business School)},
+  pdfkeywords={Marginal abatement costs, Environmental efficiency, Stochastic nonparametric envelopment of data (StoNED), Carbon emissions target setting, Kyoto Protocol, Development economics},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
@@ -77,31 +77,21 @@
 \usepackage{xcolor}
 
 \title{\emph{Lurking in the shadows:} The impact of emissions target setting on
-carbon pricing and enviromental efficiency.}
-\author{Barry Quinn (Queen's Management School) \and Ronan Gallagher (Edinburgh Business School) \and Timo Kuosmanen (Aalto Business School)}
+carbon pricing and environmental efficiency.}
+\author{Barry Quinn (Queen's Management School) \and Ronan Gallagher (University of Edinburgh Business School) \and Timo Kuosmanen (Aalto Business School)}
 \date{June 08, 2021}
 
 \begin{document}
 \maketitle
 \begin{abstract}
-This paper interrogates the impact of the Kyoto Protocol target setting
-regime on carbon \emph{shadow} pricing and environmental efficiency. We
+This paper examines the impact of Kyoto Protocol target setting
+regime on environmental efficiency and carbon \emph{shadow} pricing. We
 extract shadow price estimates and efficiency scores from a
-comprehensive dataset of 125 countries over the four years period using
-the unified StoNED framework. We exploit recent work, which uses the
-\emph{least-cost alternative} procedure to estimate CO\textsubscript{2}
-marginal abatement costs from initial model estimation. Results reveal
-abatement costs are significantly higher for target setting countries,
-increase over the sample period, and are an order of magnitude greater
-than the prevailing emissions pricing mechanisms. Given the number on
-developing countries in our sample, this findings highlights a shadow
-price inequality gap at that time. Typically, environmental inefficiency
-scores are higher in countries with higher trade to GDP ratios, higher
-urban density, and explicit C0\textsubscript{2} emission targets set
-under the Kyoto Protocol. Our findings provide insights into the
-consequences of policies to curb unwanted byproducts in a regulated
-system and reveal \emph{future price} consequences of the regulation
-used to mitigate undesirable outputs.
+comprehensive data set of 125 countries in the first Kyoto commitment period (2008-2012) using
+a stochastic non-parametric estimation framework. We estimate CO\textsubscript{2}
+marginal abatement costs which: are significantly higher for target setting countries; increase over the sample period, and are an order of magnitude greater
+than the prevailing emissions pricing mechanisms. Our findings provide insights into the consequences of policies to curb unwanted by-products in a regulated
+system and shed light on the price efficiency of carbon markets.
 \end{abstract}
 
 \hypertarget{introduction}{%
@@ -112,10 +102,12 @@ debate since the Kyoto Protocol (hereafter KP) (for example, see
 Angelis, Di Giacomo, and Vannoni 2019). The impact of climate change and
 the production of greenhouse gas (GHG) emissions are existential
 challenges of the 21\textsuperscript{st} century. The World Health
-Organisation estimates a health risk associated with climate change of
+Organisation (WHO) estimates a health risk associated with climate change of
 250,000 additional deaths per year between 2030 and 2050, assuming the
 status quo of current abatement practices and global economic
 growth\footnote{\url{https://www.who.int/news-room/fact-sheets/detail/climate-change-and-health}}.
+
+The Kyoto protocol was principled on the idea of hard target setting for industrialised nations and the EU. This was in tandem with the development of carbon trading mechanism, the largest of which being EU-ETS. These developments brought not just matters of environmental production efficiency to the fore but also those relating to carbon price discovery.
 
 Färe and Primont (2012) describes shadow prices as `virtual' or
 unforeseen costs to a firm's management. A shadow price obtained from an
@@ -131,7 +123,7 @@ marginal substitution (transformation) rates between inputs
 (outputs).{]}. Luhmann, Balk, and Dembowski (2020) argue that shadow
 pricing is as crucial as emission pricing (for example, emissions
 trading schemes) for appropriate carbon price discovery. They argue
-shadow pricing can also be called ``future pricing''. The word
+shadow pricing is forward focused capturing the price of all ``future'' ways to abate carbon production. The word
 ``shadow'' highlights that, for financiers to assess a project's actual
 economic value, fuel is priced higher than current levels. The rationale
 being, even if there is no carbon emissions pricing, carbon prices are
@@ -141,15 +133,13 @@ undesirable outputs\footnote{Shadow prices assess the costs of producing
   some by-product, or more technically, an undesirable output. They are
   helpful for regulatory and supervision analysis where quality control
   of by-products plays an integral part in the sustainable growth of the
-  regulated system. Shadow price usage is dependent on the observability
-  of a market price for the undesirable output. When we observe output
+  regulated system. Shadow price usage is dependent on the observably market price for the undesirable output. When we observe output
   prices, then shadow pricing models can identify the appropriate output
   mix for revenue maximisation. More commonly, shadow price calculations
   numerate the price of an undesirable output in units of foregone
   desirable output.} in terms of reducing the production of desirable
 outputs (See Zhou, Zhou, and Fan (2014) for recent literature on shadow
-price estimation). Framed in this way, the shadow price of air pollution
-emissions is equivalent to a marginal abatement cost and provides
+price estimation). Framed in this way, the shadow price of emissions is equivalent to a marginal abatement cost and provides
 valuable guidance to emission reduction policies.
 
 Lee and Wang (2019) critique the body of work on marginal abatement
@@ -169,7 +159,9 @@ develop a methodology to counteract this systematic bias, which we
 follow in our analysis.
 
 This paper aims to add to this debate by investigating the impact of KP
-target setting on carbon pricing and environmental efficiency.
+target setting on carbon pricing and environmental efficiency.  The KP offers a unique empirical framework to assess the effects of
+explicit target setting in climate change policy. The first commitment
+period for the KP was 2008 to 2012. 
 Specifically, we exploit state-of-the-art frontier methods, namely
 \textbf{Sto}chastic \textbf{N}onparametric \textbf{e}nvelopment of
 \textbf{D}ata (StoNeD), to produce consistent environmental efficiency
@@ -186,7 +178,7 @@ estimate the marginal abatement cost of CO\textsubscript{2} emissions.
 Unlike previous shadow price estimates of CO\textsubscript{2} emissions
 calculated ignoring country-level inefficiencies\footnote{Technically,
   abatement cost estimates assume the entity under investigation is on
-  the efficient frontier.}, our model uses a quantile approach to
+  the efficient frontier.}, our model uses a quantile approach (introduced in Kuosmanen, Zhou, and Dai (2020)) to
 incorporate additional information on the relative inefficiency of each
 country. The analysis results in shadow prices measured as the cost of
 abatement in constant international dollar terms.
@@ -215,11 +207,15 @@ results and some brief discussion.
 The academic inquiry into the effective control of climate change has a
 rich 40-year history. Historically, holistic models seek to understand
 how human development, societal choices, and the natural world integrate
-and influence each other. At their simplistic level, they can provide an
+and influence each other. At their most simplistic level, they can provide an
 estimate of the social cost of carbon pollutants. This top-down approach
 to the economics of climate change has been at the forefront of the
-discipline (Vale 2016). Such a global approach may be dating in the face
+discipline (Vale 2016). Such a global approach may be dated in the face
 of stalled international coordination to climate change policy.
+
+Against the bedrock of climate science knowledge, the KP agreement was an ambitious attempt to coordinate across borders on tangent targets for emissions reduction. The KP set-out to differentiate reduction targets in a equitable way in terms of their industrial development, comparable level of pollution, the ability to mitigate the ecological damage of global emissions levels. Specifically, countries where categorised into two Annexes.  Annex 2 countries, who were set explicit targets, where mostly developed nations, with highest industrial production. Annex 1 countries, defined as developing
+were not subject to targets, although most ratified the
+Protocol.
 
 In the run-up to the end of the first commitment period of the KP, there
 were political moves to create second commitment period targets. The
@@ -239,13 +235,15 @@ political will, in turn, has seen a shift in the scope of the academic
 literature. The recent focus on the economics of catastrophic risk
 insurance, trade and climate, and climate change adaptation represents a
 shift towards a more realistic investigation of climate policy in an age
-where the ideal scenario of globally coordinated climate action seems
-illusory.
+where the idealised scenario of globally coordinated climate action seems
+elusive.
 
 \hypertarget{cost-of-kp-literature}{%
 \subsection{Cost of KP literature}\label{cost-of-kp-literature}}
 
-Zhang and Folmer (1998) document and critique the myriad of marginal
+A common approach to establishing a world-wide cost estimates for the reduction of polluting emissions is to establish a global production model.  In such a model, based on a set of capital and human inputs,  each country acts as a producer of desirable outputs such as GDP at the cost of producing some undesirable outputs such as pollutants from industrial activity. Under various assumptions, such a model can reveal each country's inefficiency can be calibrated from a global level of optimal environmental efficiency.  Furthermore, abatement of pollutant output can be costed at the marginal of the desirable output foregone.
+
+Zhang and Folmer (1998) assess a number of of marginal
 abatement cost models. They consider both bottom-up technology-based
 models and top-down macroeconomic models. They conclude, a combination
 of these models best assesses the overall consequences of controlling
@@ -257,7 +255,7 @@ the net global cost of \$716 billion, are borne by the US\footnote{Brechin
   (2003) uses various public opinion polls to revisits the questions of
   international public concern for global warming. They find, while the
   perception has been a slight improvement in the public's understanding
-  regarding the anthropogenic causes of global warming, the data reveals
+  regarding the anthropomorphic causes of global warming, the data reveals
   the public remains largely uninformed. They note that President Bush's
   withdrawal of the KP in 1991 was supported mainly by the US public
   while citizens of several European countries voiced considerable
@@ -267,14 +265,14 @@ are highly cost-ineffective\footnote{Compared to a *so-called" efficient
   strategy was eight times more costly.}.
 
 This early work was suggestive of a broad approach to abatement cost
-analytics beyond the consideration of CO\textsubscript{2} pollution.
+analysis beyond the consideration of CO\textsubscript{2} pollution.
 Reilly et al. (1999) use the Regional Integrated Model of Climate and
 Economy (RICE) to show that a multi-gas control strategy could
 significantly reduce the costs of fulfilling the KP compared with a
 CO\textsubscript{2}-only strategy. Extending the KP to 2100 without more
 severe emissions reductions shows little difference between the two
 strategies in climate and ecosystem effects. They argue that the global
-warming potential of the KP are limited in terms and argue for a more
+warming reduction potential of the KP are limited in terms and argue for a more
 comprehensive multi-gas approach. Burniaux (2000) extends previous OECD
 analysis to emission abatement of methane and nitrous oxide. They
 conclude that the economic costs of implementing the targets in the KP
@@ -284,14 +282,14 @@ CO\textsubscript{2}, and the inclusion of other gases in the analysis
 may not substantially alter estimates of economic costs.
 
 In the later years of the KP period, researchers consider a more
-statistically sophisticated approach for critiquing the KP. Buonanno,
+statistically sophisticated approach for evaluating the KP. Buonanno,
 Carraro, and Galeotti (2003) adapt the RICE integrated assessment model
-to account for endogenous technical change\^{} {[}They explore three
+to account for endogenous technical change\footnote{They explore three
 formulations; technical change is endogenous and enters the production
 function via the domestic stock of knowledge; there is an additional
 effect of domestic stock of knowledge on the emission-output ratio; the
 output of domestic R\&D spills over the other regions' productivity and
-emission-output ratio.{]}. and shows that results are significantly
+emission-output ratio.} and shows that results are significantly
 impacted when modelling R\&D. They find that total costs of compliance
 with Kyoto; are higher with induced technical change; are reduced when
 trading permits are introduced, and technological spillover reduces the
@@ -301,55 +299,50 @@ of the cost of the KP using the
 \href{https://unfccc.int/topics/mitigation/workstreams/response-measures/modelling-tools-to-assess-the-impact-of-the-implementation-of-response-measures/response-measures-models-g-cubed}{G-Cubed
 model}, taking into account the new sink allowances from recent
 negotiations as well as allowing for multiple gases and new land
-clearing estimates. They perform a sensitivity analysis of compliance
-costs to unexpected changes in future economic conditions. The paper
-evaluates the policies under two plausible alternative assumptions about
-a single aspect of the future world economy: the rate of productivity
-growth in Russia. They find moderate growth in Russia would raise the
-cost of the KP by as much as fifty per cent but would have little effect
-on the cost of the alternative policy. They conclude that the KP is
+clearing estimates. They perform a sensitivity analysis, on this alternative policy model, of compliance
+costs to unexpected changes in future economic conditions. They conclude that the KP is
 inherently unstable because unexpected future events could raise
 compliance costs substantially and place enormous pressure on
-governments to abrogate the agreement. The alternative policy would be
+governments to abrogate the agreement.  Using their alternative model would be
 far more stable because it does not subject future governments to
 adverse shocks in compliance costs. Fischer and Morgenstern (2006) find
 that estimates of marginal abatement costs for reducing carbon emissions
-in the United States by the significant economic-energy models vary by a
+in the United States  vary by a
 factor of five, undermining support for mandatory policies to reduce
 greenhouse gas emissions. Their meta-analysis explains which modelling
 assumptions are most important for understanding these cost differences
 and argues for developing more consistent modelling practices for policy
 analysis.
 
-More recent studies focus on a bottom-up approach, showing how a
+In more recent studies researchers focused on how
 country's economic characteristics fluctuate with abatement challenges.
 Halkos and Tzeremes (2014) applies a probabilistic DEA approach to
 estimate conditional and unconditional environmental efficiency of 110
 countries in 2007. They find that a country's environmental efficiency
-is influenced in a non-linear fashion by both the obliged percentage
-levels of emission reductions the duration in which a country has signed
-the KP. Cifci and Oliver (2018) use regression techniques to illustrate
-the conflicting political strands of the climate change argument. The
-results show that the KP reduced Annex I countries GHG emissions by
+is influenced by both the obliged percentage
+levels of emission reductions and  the duration since signing
+the KP. Cifci and Oliver (2018) illustrate
+the conflicting political strands of the climate change argument. Their
+results show that the KP reduced Annex I countries green house gas emissions by
 approximately 1 million metric tons of CO\textsuperscript{2} equivalent
 relative to non-Annex I countries. Contrariwise, these countries
 experienced an average reduction in GDP per capita growth of 1-2 per
 cent relative to non-Annex I countries. Both findings illustrate that
-the international climate change agreements are fragile because, at a
-national level, political constituencies' value systems may conflict to
-reduce greenhouse gas (GHG) emissions to sustainable levels.
+international climate change agreements are fragile due to the clash of short-term political goals with long-term reduction ambitions.
 
 \hypertarget{model}{%
 \section{Model}\label{model}}
 
+Effectively we model the economy as a production machine.  Capital and labour go in with a view to creating economic output (desirable).  However in doing so the economic "machine" also produces CO\textsuperscript{2} emissions which are undesirable.  We use the general idea of an efficiency frontier to model combinations of inputs and outputs.  We do so not in a deterministic way, but using stochastic nonparametric methods.  This affords us the advantage of not having to specify a functional form of the input output relationship a priori and also the ability to model noise in the data.  We are concerned both with measuring environmental inefficiency (distance from the frontier), but perhaps more subtly shadow costs.  These shadow costs can be interpreted as opportunity costs which allow us to price CO\textsuperscript{2} emissions, or put differently to calculate the marginal cost of CO\textsuperscript{2} abatement. 
+
 The primary focus of our analysis is shadow prices estimates for
-CO\textsubscript{2} emission from fossil fuel. Previous studies have
+CO\textsubscript{2} emission from fossil fuel. Previous studies (See Kuosmanen et al., (2020) for a detailed overview) have
 provided inaccurate measures as a result of several missteps, including:
 
 \begin{itemize}
 \tightlist
 \item
-  only considering downscaling of production and not increasing in input
+  only considering down scaling of production and not increasing in input
   use.
 \item
   measuring estimates on the frontier, ignoring the actual level of
@@ -359,14 +352,20 @@ provided inaccurate measures as a result of several missteps, including:
   in the data.
 \end{itemize}
 
-These factors combine to overestimate shadow prices, group differences
-in shadow prices grossly, and the impact of emissions reduction
-targeting. Our study uses convex quantile regression methods to estimate
+These factors combine to overestimate shadow prices and the impact of emissions reduction
+targeting.  This mispricing in turn will induce bias in the difference of shadow prices, a key value of interesting in our analysis.
+
+
+Our study uses convex quantile regression methods to estimate
 local approximations of shadow prices calibrated using observed
 inefficiencies. Specifically, we exploit the benefits of Kuosmanen and
 Johnson (2017) directional distance convex regression and Wang et al.
 (2014) quantile formulation to reveal shadow prices at observed
-performance levels. Importantly, this approach is robust to the observed
+performance levels. 
+
+We argue that such an approach can allow a more direct comparison against the market pricing of carbon.  Adjusting shadow prices to an observed level of producers' environmental inefficiency can improve the price discovery process.  Observed market pricing inefficiencies reflect both latent fundamentals of an asset and the behavioural nuisances of market participants. Our quantile based shadow prices allows us to observer the latent fundamentals of a countries carbon asset holding in terms production efficiency shortcomings.    
+
+Furthermore, this approach is robust to the observed
 heterogeneity, the choice of direction vector and accommodates
 noise-based uncertainty. The following linear programming problem is
 solved to estimate the distance function:
@@ -384,14 +383,16 @@ solved to estimate the distance function:
 \end{split}
 \end{equation}
 
-Equation 1 is a probabilistic distance function, where the two errors
+Equation 1\footnote{We
+  use the GAMS software and the CPLEX solver to find an optimal solution
+  to equation 1} is a probabilistic distance function, where the two errors
 terms (\(\epsilon^-\) and \(\epsilon^+\)) allow for deviations from the
 frontier, and \(\tau\) defines the quantile. We estimate the model using
 a balanced panel of 105 countries for five years (2008-2012) where the
 \(Z\) vector includes, trade to GDP ratio, the percentage of the
 population which is urban, a dummy to the indicator if the country is a
-target setting, and a set of year dummies. These environmental variable
-adjust for observed cross-country and through time fluctuation in the
+target setting, and a set of year dummies. These environmental variables
+adjust for observed cross-country and through time series heterogeneity in the
 production technology. The estimated model results in performance
 adjusted dual prices \(\gamma^{'}_{it},\beta^{'}_{it} ,\delta^{'}_{it}\)
 which serve as inputs for the marginal abatement calculations. An
@@ -407,10 +408,8 @@ cross-sectional variation.
 Marginal abatement estimation uses a series of levels to find the local
 quantile \(\tau^{*}\) for each observed data point. For example, a set
 of ten quantile levels
-\(\tau=(0.05,0.15,0.25,0.35,0.45,0.55,0.65,0.75,0.85,0.95)\)\footnote{We
-  use the GAMS software and the CPLEX solver to find an optimal solution
-  to equation 1}. In general, the number of quantiles is not fixed but
-should depend on sample size and signal to noise ratio.
+\(\tau=(0.05,0.15,0.25,0.35,0.45,0.55,0.65,0.75,0.85,0.95)\)\footnote{Our choice of levels is predicated on the OECD study by Kuosmanen et al., (2020). We perform a sensitivity analysis of this choice of levels, finding qualitatively similar results.}. In general, the number of quantiles is not fixed but
+should depend on sample size and signal to noise ratio (Kuosmanen et al., 2020). 
 
 Kuosmanen and Zhou (2018) note that in the traditional approach to
 shadow pricing using frontier estimation, marginal abatement costs and
@@ -418,7 +417,7 @@ shadow prices are interchangeable terms. This feature is because
 previous approaches only use bad output shadow prices measured in
 forgone \emph{good} output units. They expand the marginal abatement
 cost definition to include incremental use of inputs by considering an
-optimal combination of shadow price definitions:
+optimal combination\footnote{Optimal is this context refers to the least cost alternative to reducing of the bad output CO \textsuperscript{2} emissions} of shadow price definitions:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -446,8 +445,8 @@ In our study, we similarly calculate marginal abatement costs as:
   For most observations, we find the nearest expectile by checking where
   the residual \(\epsilon = (\epsilon^+) - (\epsilon^-)\) changes sign.
   For those observations, we take the weighted average of the shadow
-  prices of the nearest executives, weighted by \(\epsilon\). For some
-  observations, residuals are positive (or negative) for all executives
+  prices of the nearest expectile, weighted by \(\epsilon\). For some
+  observations, residuals are positive (or negative) for all expectiles
   (the best and the worst performers, respectively). For those, we use
   shadow prices of the highest/lowest expectile.
 \end{itemize}
@@ -479,7 +478,7 @@ be abated by either reducing \emph{good} outputs (i.e., downscaling the
 GDP activity) or increasing the input use (for example, investment in
 the labour force or capital stock). This approach uses the least-cost
 alternative. In the case where the \emph{good} outputs possess a
-monetary value, the sub derivatives (dual prices) provide monetary
+monetary value, the subderivatives\footnote{In mathematics, the subderivative, generalize the derivative to convex functions which are not necessarily differentiable. Subderivatives arise in convex analysis, the study of convex functions, often in connection to convex optimization.} (dual prices) provide monetary
 shadow prices for bad outputs, and the above equation simplifies to:
 
 \begin{equation}
@@ -490,11 +489,13 @@ In the above calculation, it is essential to ensure that the MRT and MP
 enter the model simultaneously, given the scale of the inputs and
 outputs entering the model. In our model, as both capital stock and GDP
 enter the model in billions of dollars, the MRT and MP are directly
-comparably in terms of minimum cost.
+comparable in terms of minimum cost.
 
 \hypertarget{application-of-statistical-test}{%
 \subsection{Application of Statistical
 Test}\label{application-of-statistical-test}}
+
+In order to examine the impact of KP on environmental efficiency and shadow prices (MACs) for CO\textsuperscript{2} we want to look at group differences between those countries who signed up to explicit emissions reduction targets and those who did not. We utilize a test for group differences in shadow prices first proposed by Gallagher and Quinn (2019).
 
 Appendix A:1 details the theoretical exposition of shadow price group
 difference testing first proposed in Gallagher and Quinn (2019). Suppose
@@ -508,11 +509,11 @@ equality of means or the F-test for equal variances. This test requires
 either that sample size is sufficiently large for asymptotic inferences
 or that the ratio y2/y1 is normally distributed.
 
-There are also several nonparametric alternatives. The (Wilcoxon)
+There are also several non-parametric alternatives. The (Wilcoxon)
 Mann-Whitney U tests whether the medians of two independent
 distributions are different. Another possibility is the two-sample
 Kolmogorov-Smirnov test. If there is a pair of series(e.g., the same
-firms observed in two different periods), then nonparametric rank-order
+firms observed in two different periods), then non-parametric rank-order
 tests such as Spearman's rho and Kendall's tau can be used to test for
 correlation between two series of y2/y1.
 
@@ -529,7 +530,7 @@ choice of group difference test in the three-step.
 \item
   Test the empirical distribution of the series for normality. Whether
   the series is normally distributed determines whether a parametric or
-  nonparametric test is needed. Stephens (1986) recommend the use of a
+  non-parametric test is needed. Stephens (1986) recommend the use of a
   normality test introduced by Anderson and Darling (1952) Anderson and
   Darling (1954). This procedure is a rank-sum test for goodness of fit
   based on the empirical distribution and has the advantage of giving
@@ -574,8 +575,7 @@ short of the KP in set explicit targets and punitive penalties.
 
 For these reasons, we focus on emissions data from 2008 to 2012, the
 first commitment period. For this period, it is easier to say
-definitively who had set targets and who had not. The lines got blurred
-post-2012 when a new negotiation phase began. The Protocol set a target
+definitively who had set targets and who had not. Post-2012 the target setting line became less obvious when a new negotiation phase began. The Protocol set a target
 for emissions of a basket of greenhouse gases\footnote{carbon dioxide,
   CO\textsuperscript{2}; methane, CH\textsuperscript{4}; nitrous oxide,
   NO\textsuperscript{2}; sulphur fluoride, SF\textsuperscript{6};
@@ -587,7 +587,7 @@ targets\footnote{Halkos and Tzeremes (2014) investigate the overall
   environmental efficiency impact of the KP.}.
 
 We specify a two input-two output frontier efficiency model.
-Specifically, we define GDP as a desirable output, CO\textsuperscript{2}
+Specifically, we define GDP as a desirable output, CO\textsubscript{2}
 emissions from fuel combustion as an undesirable output, and labour
 force numbers and capital stock as inputs. GDP and labour force numbers
 are sourced from the World Bank. The capital stock captures both current
@@ -601,7 +601,7 @@ provides a detailed description of the modelling variables.
 \begin{ThreePartTable}
 \begin{TableNotes}
 \item \textit{Note: } 
-\item A detailed description of the inputs, outputs and enviromental variables which index the production frontier model.  Capital stock and GDP are monetary variables and enter the model in real terms measured at purchasing power parity or constant international dollar billions.
+\item A detailed description of the inputs, outputs and environmental variables which index the production frontier model.  Capital stock and GDP are monetary variables and enter the model in real terms measured at purchasing power parity or constant international dollar billions.
 \end{TableNotes}
 \begin{longtabu} to \linewidth {>{\raggedright\arraybackslash}p{5em}>{\raggedright\arraybackslash}p{5em}>{\raggedright\arraybackslash}p{30em}>{\raggedright\arraybackslash}p{5em}}
 \caption{\label{tab:variables}Description of variables}\\
@@ -623,11 +623,11 @@ Undesirable Output & \textbf{CO2 emissions from fossil fuel (Millions of metric 
 Desirable Output & \textbf{GDP, PPP (constant 2017 international \$)} & PPP GDP is gross domestic product converted to international dollars using purchasing power parity rates. An international dollar has the same purchasing power over GDP as the U.S. dollar has in the United States. GDP is the sum of gross value added by all resident producers in the country plus any product taxes and minus any subsidies not included in the value of the products. It is calculated without making deductions for depreciation of fabricated assets or for depletion and degradation of natural resources. Data are in constant 2017 international dollars. & International Comparison Program, World Bank | World Development Indicators database, World Bank | Eurostat-OECD PPP Programme.\\
 Input & \textbf{Labor force, total} & Labor force comprises people ages 15 and older who supply labor for the production of goods and services during a specified period. It includes people who are currently employed and people who are unemployed but seeking work as well as first-time job-seekers. Not everyone who works is included, however. Unpaid workers, family workers, and students are often omitted, and some countries do not count members of the armed forces. Labor force size tends to vary during the year as seasonal workers enter and leave. & Derived using data from International Labour Organization, ILOSTAT database. The data retrieved in March 1, 2020.\\
 Input & \textbf{Capital Stock, PPP (constant international \$Billions)} & Total capital stock is the sum of government capital stock, private capital stock, and public-private partnerships (PPP) capital stock.  When the PPP capital stock is missing we assume zero. & IMF and World Bank\\
-Enviromental Variable & \textbf{Trade (\% of GDP)} & Trade is the sum of exports and imports of goods and services measured as a share of gross domestic product. & World Bank national accounts data, and OECD National Accounts data files.\\
+Environmental Variable & \textbf{Trade (\% of GDP)} & Trade is the sum of exports and imports of goods and services measured as a share of gross domestic product. & World Bank national accounts data, and OECD National Accounts data files.\\
 \addlinespace
-Enviromental Variable & \textbf{Urban population (\% of total population)} & Urban population refers to people living in urban areas as defined by national statistical offices. The data are collected and smoothed by United Nations Population Division. & United Nations Population Division. World Urbanization Prospects: 2018 Revision.\\
-Enviromental Variable & \textbf{Target Setting Indicator} & This variable takes a value of 1 for a country which committed to a hard target of emission reduction during the Kyoto Protocol period and zero otherwise. & author's own calculation\\
-Enviromental Variable & \textbf{Year Indicators} & A proxy for unobserved between group temporal variation & author's own calculation\\*
+Environmental Variable & \textbf{Urban population (\% of total population)} & Urban population refers to people living in urban areas as defined by national statistical offices. The data are collected and smoothed by United Nations Population Division. & United Nations Population Division. World Urbanization Prospects: 2018 Revision.\\
+Environmental Variable & \textbf{Target Setting Indicator} & This variable takes a value of 1 for a country which committed to a hard target of emission reduction during the Kyoto Protocol period and zero otherwise. & author's own calculation\\
+Environmental Variable & \textbf{Year Indicators} & A proxy for unobserved between group temporal variation & author's own calculation\\*
 \end{longtabu}
 \end{ThreePartTable}
 \endgroup{}
@@ -655,9 +655,9 @@ Target Setting Country & Non Target Setting Country\\
 \end{table}
 
 Some summary statistics of the model variables are presented in Table 3.
-These statistics reveal that significant variation in outputs and inputs
-highlights considerable cross-sectional heterogeneity. The variation is
-not surprising given the mix of countries outlined in table 2.
+These statistics reveal that significant cross -country heterogeniety in outputs and inputs
+. The variation is
+not surprising given the mix of countries outlined in table 2.\footnote{
 Furthermore, notice that some countries have a trade which exceeds GDP
 (more than 100\%). This excess is usually a feature of small countries
 with high productivity. Due to their small size, instead of being
@@ -667,7 +667,7 @@ may produce more money from exports than the entire domestic economy,
 which allows them to purchase imports far above what their domestic
 economy could otherwise support. For example, in the sample, three
 countries have a Trade to GDP ratio of over 200\%; Luxembourg, Malta and
-Singapore.
+Singapore.}
 
 \newpage
 
@@ -706,15 +706,18 @@ technologies. These technologies extract, at the observed performance
 level, country-year marginal abatement costs of CO\textsubscript{2}
 emissions. We use the direction vector \(g(x)=\bar{x}, g(y)=0, g(x)=0\)
 to estimate the directional distance function model for 10 quantiles
-\(\tau=(0.05,0.15,\dots,0.85,0.95)\), which should be sufficient
+\(\tau=(0.05,0.15,\dots,0.85,0.95)\), which is similar to the OECD study of Kousmenan et al. (2020) and should be sufficient
 granularity for a sample size of 525. Finally, we include a noise term
 that can capture measurement error in the data.
 
 \begin{ThreePartTable}
 \begin{TableNotes}
 \item \textit{Note: } 
-\item This table presents yearly mean and interquartile estimates of the marginal abatement costs calculated for the full sample and for each group of countries.  The last four columns disaggregates the mean analysis to compare countries which set emission reduction targets against countries which did not.  GDP(y) and capital stock (x1) are deflated to 2011 international dollars, and are considered to have a unit price.  An alternative interpretation is that the the price multipliers (p,w)=1 in the calculations of the marginal rate of transformation of GDP and the marginal product of the capital stock as they represent both quantity and price. The marginal abatement cost is thus calculated as the minimum of the marginal rate of transformation of GDP and the marginal product of capital stock on C0\textasciitilde{}2\textasciitilde{} emissions.  The MAC is measured in USD per metric ton of CO\textasciitilde{}2\textasciitilde{} emission. Labour (x2) is the total labour force in each country (in millions).  The marginal product of labour is the dual without a price multiplier and is measured in millions of labour force per ton of CO2 emission.
+\item This table presents yearly mean and interquartile estimates of the marginal abatement costs calculated for the full sample and for each group of countries.  The last four columns decompose the mean analysis to compare countries which set emission reduction targets against countries which did not.  GDP(y) and capital stock (x1) are deflated to 2011 international dollars, and are considered to have a unit price.  An alternative interpretation is that the the price multipliers (p,w)=1 in the calculations of the marginal rate of transformation of GDP and the marginal product of the capital stock as they represent both quantity and price. The marginal abatement cost is thus calculated as the minimum of the marginal rate of transformation of GDP and the marginal product of capital stock on C0\textasciitilde{}2\textasciitilde{} emissions.  The MAC is measured in USD per metric ton of CO\textasciitilde{}2\textasciitilde{} emission. Labour (x2) is the total labour force in each country (in millions).  The marginal product of labour is the dual without a price multiplier and is measured in millions of labour force per ton of CO2 emission.
 \end{TableNotes}
+
+\newpage
+
 \begin{longtabu} to \linewidth {>{\centering}X>{\centering}X>{\centering}X>{\centering}X>{\centering}X>{\centering}X>{\centering}X}
 \caption{\label{tab:SPs2}Marginal abatement costs in 2011 dollars per CO2 tonne}\\
 \toprule
@@ -787,7 +790,7 @@ trading schemes (ETS) to our shadow price mean estimates. Over the four
 years of the KP, the shadow price for both groups (target setting and
 non-target setting) is a multiple of the prices from the ETS. While our
 estimates trend up over the period the ETS prices actually fall.
-Interestingly, in the last year the EU-ETS price has increased
+In keep with Lukman et al. (2020) 'future' definition of shadow prices, in the last year the EU-ETS price has increased
 dramatically and is beginning to approach our shadow price estimates.
 
 For an emissions trading scheme to work efficiently, allocation of
@@ -809,10 +812,12 @@ variable}\label{marginal-effect-of-the-environmental-variable}}
 
 Following Gallagher and Quinn (2019), we investigate the marginal effect
 of the environmental variables in equation 1 to understand how they
-impact inefficiency. Specifically, we consider how inefficiency is
+impact inefficiency. Following Halkos et al. (2020), we consider how inefficiency is
 affected by the proportion of trade to GDP, the percentage of the urban
 living in a country's population, and whether the country explicitly
 sets CO\textsubscript{2} emission targets in the analysis period.
+
+\newpage 
 
 \begin{ThreePartTable}
 \begin{TableNotes}
@@ -820,7 +825,7 @@ sets CO\textsubscript{2} emission targets in the analysis period.
 \item This table shows the marginal effects from the z coefficients in equation (1) by exploiting statistical procedure first outlined in Kuosmenan \& Johnson (2015).
 \end{TableNotes}
 \begin{longtabu} to \linewidth {>{\centering}X>{\centering}X>{\centering}X>{\centering}X>{\centering}X}
-\caption{\label{tab:reg}Marginal effect of enviromental variables}\\
+\caption{\label{tab:reg}Marginal effect of environmental variables}\\
 \toprule
 term & estimate & std.error & statistic & p.value\\
 \midrule
@@ -842,8 +847,8 @@ inefficient patterns at the country level. Typically, those with higher
 trade to GDP ratios and higher urban populations tend to be less
 efficient over the sample. Interestingly, those countries which are
 setting targets tend to be more inefficient in the sample period.
-Finally, there is an overall reduction in inefficiency over the period
-indicated by the year dummies, although this relationship is not
+Finally, there a reduction in inefficiency over the period
+indicated by the year 2012 indicator estimate, although this relationship is not
 significant in the data.
 
 \hypertarget{application-of-testing}{%
@@ -852,7 +857,7 @@ significant in the data.
 Our statistical shadow price difference test is based on the underlying
 data for frontier efficiency. Specifically, it is the ratio of the
 corresponding bad output to either good output or input that is
-represented in a shadow price estimate. For example the ratio of
+represented in a shadow price estimate.  The choice of denominator depends on the least cost alternative for CO\textsubscript{2} emissions. For example the ratio of
 CO\textsuperscript{2} emissions to GDP could be used to test statistical
 differences in the shadow price of the good output calculated as
 \(MRT_{\tau}(y_{i},b_{j})=-\frac{\delta \vec{D}_{\tau}/\delta b_{j}}{\delta \vec{D}_{\tau}/\delta y_{i}}\).
@@ -868,10 +873,10 @@ differences in the shadow price of the good output calculated as
 \cmidrule(l{3pt}r{3pt}){2-3} \cmidrule(l{3pt}r{3pt}){4-5}
   & Normality Test & Equality of Variance & Rank sum z-test & Equality of distribution D-test\\
 \midrule
-2008 & 4.25 * * * & 2.83 & 25.8 * * * & 0.64 * * *\\
-2009 & 4.3 * * * & 2.92 & 25.51 * * * & 0.62 * * *\\
+2008 & 4.25 * * * & 2.83 & 25.80 * * * & 0.64 * * *\\
+2009 & 4.30 * * * & 2.92 & 25.51 * * * & 0.62 * * *\\
 2010 & 4.18 * * * & 2.29 & 25.58 * * * & 0.64 * * *\\
-2011 & 4.2 * * * & 2.64 & 23.97 * * * & 0.62 * * *\\
+2011 & 4.20 * * * & 2.64 & 23.97 * * * & 0.62 * * *\\
 2012 & 4.08 * * * & 2.95 & 23.09 * * * & 0.62 * * *\\
 \bottomrule
 \end{tabular}
@@ -899,14 +904,14 @@ variance hypothesis is rejected. Given the results of column 2, column 3
 results suggest a statistically significant difference in the shadow
 prices of the two cohorts. This finding provides some meaningful
 evidence that target setting countries consistently experienced
-increased abatement costs over the Kyoto protocol period. \newpage
+increased abatement costs over the Kyoto protocol period.
 
 \hypertarget{concluding-remarks}{%
 \section{Concluding Remarks}\label{concluding-remarks}}
 
-This study provides substantial evidence to the ongoing debate on target
+This study contributes substantial evidence to the ongoing debate on target
 setting implications in climate policy. We use a unifying frontier
-efficiency approach that reveals some essential and economically
+efficiency approach that reveals some interesting and economically
 meaningful CO\textsubscript{2} emissions target setting implications.
 The study exploits the explicit target setting period of the Kyoto
 Protocol to reveal unintended consequences in terms of increased
@@ -926,7 +931,7 @@ allocation of abatement, are not working to lower the marginal abatement
 costs of the period. Our chronological ordering analysis suggests a
 consistent inefficient allocation of CO\textsubscript{2} abatement
 across countries and significant frictions in ETS market price
-discovery. Encouragingly, in recent years the emissions trading market
+discovery. Encouragingly, although ignore the trading period since the KP, in recent years the emissions trading market
 price is beginning to approach the lower end of our shadow price
 estimates.
 
