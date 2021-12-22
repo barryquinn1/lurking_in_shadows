@@ -76,7 +76,7 @@
 \usepackage{makecell}
 \usepackage{xcolor}
 
-\title{\emph{Lurking in the shadows:} The impact of emissions target setting on
+\title{\emph{Lurking in the shadows:} The impact of CO\textsubscript{2} emissions target setting on
 carbon pricing and environmental efficiency.}
 \author{Ronan Gallagher (University of Edinburgh Business School) \and Timo Kuosmanen (Aalto Business School\and Barry Quinn (Queen's Management School) )}
 \date{July 10, 2021}
@@ -100,17 +100,18 @@ system and shed light on the price efficiency of carbon markets.
 The World Health
 Organisation (WHO) estimates that health risk associated with climate change will result in around 250,000 additional deaths per year between 2030 and 2050, assuming the status quo of current abatement practices and global economic
 growth\footnote{\url{https://www.who.int/news-room/fact-sheets/detail/climate-change-and-health}}.  The reduction of greenhouse gases (GHG) emissions and the impact on climate change are existential
-challenges of the 21\textsuperscript{st} century. In response to this challenge many countries have adopted emissions reductions targets since the dawn of the Kyoto Protocol (hereafter KP).  The nature and efficacy of these targets have attracted considerable debate (for example, see
-Angelis, Di Giacomo, and Vannoni 2019).
+challenges of the 21\textsuperscript{st} century. In response to this challenge many countries have adopted emissions reductions targets since the dawn of the Kyoto Protocol (hereafter KP) \footnote{The KP was principled on the idea of hard targets for emissions reduction for industrialised nations and the EU. These were developed in tandem with carbon trading mechanisms, the largest of which is the EU Emissions Trading System (EU-ETS). These developments brought not just matters of environmental production efficiency to the fore but also those relating to carbon price discovery.}.  The nature and efficacy of these targets have attracted considerable debate (for example, see
+Angelis, Di Giacomo, and Vannoni 2019), but this puzzle has lacked rigorous empirical investigation.
 
-The KP was principled on the idea of hard targets for emissions reduction for industrialised nations and the EU. These were developed in tandem with carbon trading mechanisms, the largest of which is the EU Emissions Trading System (EU-ETS). These developments brought not just matters of environmental production efficiency to the fore but also those relating to carbon price discovery.
+We attempt to solve this puzzle by using an empirical identification strategy which we argue can more accurate estimate the impact of emissions target setting on carbon pricing and environmental efficiency. Specifically, we use the KP as a clean sample period for accurate statistical inference on explicit target setting. By focusing on CO\textsubscript{2} emission we can capture 125 countries using the International Energy Agency's emissions database. This allows for a representative sample of non-target setting Countries (non-annexed 1 Countries), and more meaningful group comparisons in our statistical tests.
 
-  The KP offers a unique empirical framework to assess the effects of
-explicit target setting in climate change policy. The first commitment
-period for the KP was 2008 to 2012. In this paper we use state-of-the-art efficiency frontier methods (namely \textbf{Sto}chastic \textbf{N}onparametric \textbf{e}nvelopment of
+
+In this paper we use state-of-the-art efficiency frontier methods (namely \textbf{Sto}chastic \textbf{N}onparametric \textbf{e}nvelopment of
 \textbf{D}ata (StoNeD)) to analyse the impact of explicit targets on environmental efficiency (that is the ability to produce a given level of economic output whilst minimising emissions).  Moreover we examine other contributing factors which help explain relative (in)efficiencies.  Following a rich strand of literature (Lee and Zhang 2012; Lee and Zhou 2015; Lee, Oh and Lee 2014; Wei and Zhang 2020)  our model is able to infer "shadow prices" embedded in the production process.  These can be thought of as measures of the Marginal Abatement Cost (MAC) of GHG emissions and can be compared to market pricing from emissions trading systems.
 
-We find that target setters during the first KP commitment period were more environmentally inefficient than non target setters,an unintended consequence of the regulation.  We also note that countries with a higher degree of industrialisation and those with more urban populations exhibit lower environmental efficiency. Our results also assert that the marginal cost of CO\textsubscript{2} abatement during the first KP period was an order of magnitude higher than the trading price of CO\textsubscript{2} in the EU-ETS. This suggests considerable price inefficiency in the emissions market.   
+We find that target setters during the first KP commitment period were more environmentally inefficient than non target setters,an unintended consequence of the regulation.  We also note that countries with a higher degree of industrialisation and those with more urban populations exhibit lower environmental efficiency. Our results also assert that the marginal cost of CO\textsubscript{2} abatement during the first KP period was an order of magnitude higher than the trading price of CO\textsubscript{2} in the EU-ETS. This suggests considerable price inefficiency in the emissions market.
+
+Our findings have important implications for international carbon regulation. Authors have highlighted potential gains in CO\textsubscript{2} mitigation from emission trading schemes (Kumar,Managi and Jain 2020). Our findings add to this debate. We show that the shadow price and market price of CO\textsubscript{2} diverge in the KP period, suggestive of a consistent mis-allocation of the traded allowances in the EU emissions trading scheme (ETS). Our results also show an imbalance in shadow pricing due to target setting.  These significant frictions in the price discovery of the an ETS market may result in a surplus of allowances, exacerbating market instability, and a lower carbon price.  The latter likely weakened the incentive to lower emissions.  We argue that when policy makers debate structural measures to promote market stability, such pre-defined rules to place unallocated allowances in a market stability reserve, shadow price imbalances due to target setting must be considered. \footnote{https://ec.europa.eu/clima/eu-action/eu-emissions-trading-system-eu-ets/market-stability-reserve_en} 
 
 In the next section we review the literature on the impact of the KP on emissions and productive efficiency.  This is followed with a description of the frontier models and data used.  We follow with a discussion of our findings and conclusions.
 
@@ -151,8 +152,6 @@ shift towards a more realistic investigation of climate policy in an age
 where the idealised scenario of globally coordinated climate action seems
 elusive.
 
-\hypertarget{cost-of-kp-literature}{%
-\subsection{Cost of KP literature}\label{cost-of-kp-literature}}
 
 A common approach to establishing world-wide cost estimates for the reduction of polluting emissions is to establish a global production model.  In such a model, based on a set of capital and human inputs,  each country acts as a producer of desirable outputs such as GDP at the cost of producing some undesirable outputs such as pollutants from industrial activity. Under various assumptions, such a model can reveal each country's inefficiency can be calibrated from a global level of optimal environmental efficiency.  Furthermore, abatement of pollutant output can be costed at the marginal cost of the desirable output foregone.
 
@@ -227,7 +226,7 @@ assumptions are most important for understanding these cost differences
 and argues for developing more consistent modelling practices for policy
 analysis.
 
-In more recent studies researchers focus on how a country's economic characteristics fluctuate with abatement challenges.
+In more recent studies researchers focus on how a country's economic characteristics fluctuate with standards and targets for abatement.
 Halkos and Tzeremes (2014) apply a probabilistic DEA approach to
 estimate conditional and unconditional environmental efficiency of 110
 countries in 2007. They find that a country's environmental efficiency
@@ -240,6 +239,13 @@ relative to non-Annex I countries. Contrariwise, these countries
 experienced an average reduction in GDP per capita growth of 1-2 per
 cent relative to non-Annex I countries. Both findings illustrate that
 international climate change agreements are fragile due to the clash of short-term political goals with long-term reduction ambitions.
+
+We add to the literature on standard setting for emission targetting (Hampf and  Rødseth 2015)
+
+We add to the important literature on marginal abatement cost of emissions. (Du, Hanley and Wei 2015; Ji and Zhou 2020) 
+
+We have chosen to use only a one pollutant model, mostly to allow for the broadest possible coverage of countries using the IEA database.  There is a rich literature on joint production of multiple pollutant shadow price estimation, which would have been an alternative approach (Rezek and Campbell 2007; Färe et al., 2012;Wei, Löschel Liu 2013; Lee and Zhou 2015) 
+
 
 \hypertarget{model}{%
 \section{Model}\label{model}}
@@ -466,7 +472,7 @@ choice of group difference test in the three-step.
 The KP offers a unique empirical framework to assess the effects of
 explicit target setting in climate change policy. The first commitment
 period for the KP was 2008 to 2012. Countries defined as developing
-(non-annexe 1) were not subject to targets, although most ratified the
+(non-annexed 1) were not subject to targets, although most ratified the
 Protocol. The US was the only signatory of the Protocol that did not
 ratify. This decision was likely the combination, a weak green lobby in
 Washington DC(Hovi, Sprinz, and Bang 2012), excessive compliance
@@ -788,7 +794,7 @@ differences in the shadow price of the good output calculated as
 \end{tabular}
 \begin{tablenotes}
 \item \textit{Note: } 
-\item This table provides the group difference statistical testing on the ratios of the bad output with either GDP and Capital depending on which corresponding shadow price satisfying MAC equation. Column 1 presents the Anderson Darling test which is the recommended empirical distribution test for normality by Stephens (1986) as it as it gives more weight to the tails of the distribution.  If normality is rejected, we perform heterogeneity of variance tests. The Brown-Forsythe test is presented in column 2 and is robust in the presence of non-normal data. Finally, columns 3 and 4 present the non-parametric group differenc tests.
+\item This table provides the group difference statistical testing on the ratios of the bad output with either GDP and Capital depending on which corresponding shadow price satisfying MAC equation. Column 1 presents the Anderson Darling test which is the recommended empirical distribution test for normality by Stephens (1986) as it as it gives more weight to the tails of the distribution.  If normality is rejected, we perform heterogeneity of variance tests. The Brown-Forsythe test is presented in column 2 and is robust in the presence of non-normal data. Finally, columns 3 and 4 present the non-parametric group difference tests.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}
@@ -933,7 +939,6 @@ Math. Stat.} 23 (2): 193--212.
 \leavevmode\hypertarget{ref-Anderson1954}{}%
 ---------. 1954. ``A Test of Goodness of Fit.'' \emph{J. Am. Stat.
 Assoc.} 49 (268): 765--69.
-
 
 \leavevmode\hypertarget{ref-De_Angelis2019}{}%
 Angelis, Enrico Maria de, Marina Di Giacomo, and Davide Vannoni. 2019.
