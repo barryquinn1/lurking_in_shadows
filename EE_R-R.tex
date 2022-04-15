@@ -1,0 +1,285 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  letterpaper,
+  DIV=11,
+  numbers=noendperiod]{scrartcl}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.46,0.14}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\renewcommand*\contentsname{Table of contents}
+\renewcommand*\listfigurename{List of Figures}
+\renewcommand*\listtablename{List of Tables}
+\renewcommand*\figurename{Figure}
+\renewcommand*\tablename{Table}
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[many]{tcolorbox}}
+\makeatother
+\makeatletter
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
+\makeatother
+\makeatletter
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Lurking in the shadows: The impact of CO2 emissions target setting on carbon pricing and environmental efficiency.},
+  pdfauthor={Barry Quinn (Queen's Management School); Ronan Gallagher (University of Edinburgh Business School); Timo Kuosmanen (Aalto Business School)},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{\emph{Lurking in the shadows:} The impact of CO\textsubscript{2}
+emissions target setting on carbon pricing and environmental
+efficiency.}
+\author{Barry Quinn (Queen's Management School) \and Ronan Gallagher
+(University of Edinburgh Business School) \and Timo Kuosmanen (Aalto
+Business School)}
+\date{}
+
+\begin{document}
+\maketitle
+
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, sharp corners, interior hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced, frame hidden, breakable]}{\end{tcolorbox}}\fi
+
+\hypertarget{abstract}{%
+\subsection{Abstract}\label{abstract}}
+
+This paper studies the impact of CO\textsubscript{2} emissions target
+setting. We empirically investigate the targets set during the Kyoto
+Protocol period using a convex non-parametric least squares system,
+quantile regressions, and a comprehensive data set of 125 countries. Our
+findings reveal CO\textsubscript{2} marginal abatement costs, which: (1)
+are significantly higher for target setting countries; (2) increase over
+the sample period; (3) and are an order of magnitude greater than the
+prevailing emissions pricing mechanisms. The results provide insights
+into the consequences of policies to curb unwanted by-products in a
+regulated system and shed light on the price efficiency of carbon
+markets. Furthermore, we contribute to the debate on emission reduction
+standard-setting and highlight the importance of shadow price estimates
+when regulating market instabilities in an emission trading scheme.
+
+\hypertarget{introduction}{%
+\subsection{Introduction}\label{introduction}}
+
+The World Health Organization predicts significant health risks
+associated with climate change. Their analysis estimates around 250,000
+additional deaths per year from 2030 to 2050, assuming the status quo of
+current abatement practices and global economic growth\footnote{These
+  statistics are taken from the WHO factsheet on climate change and
+  health
+  \url{https://www.who.int/news-room/fact-sheets/detail/climate-change-and-health}}.
+The reduction of greenhouse emissions and the impact on climate change
+are existential challenges of the 21st century. Many countries have
+adopted emissions reductions targets since the dawn of the Kyoto
+Protocol (hereafter KP)\footnote{The KP was principled on the idea of
+  hard targets for emissions reduction for industrialised nations and
+  the EU. These were developed in tandem with carbon trading mechanisms,
+  the largest of which is the EU Emissions Trading System (EU-ETS).
+  These developments brought not just matters of environmental
+  production efficiency to the fore but also those relating to carbon
+  price discovery.} in response to this challenge. The nature and
+efficacy in response to this challenge of these targets have attracted
+considerable conceptual debate (for example, see Angelis, Di Giacomo,
+and Vannoni 2019). Still, there are scant empirical studies on the
+impact of explicit KP target setting. We attempt to solve this puzzle by
+testing the differences between target-setting and non-target-setting
+countries. We use an identification strategy that more accurately
+estimates the impact of target setting on carbon pricing and
+environmental efficiency. Specifically, we focus on the KP target
+setting period and analyse CO2 emissions for 125. countries. Considering
+only CO2. emissions allow for a representative sample of non-target
+setting Countries (non-annexed 1 Countries) and more meaningful group
+comparisons in our statistical tests. We use convex quantile regression
+(CQR) to estimate shadow prices (see equation (1))(Kuosmanen and Zhou
+2021a) and an improved marginal abatement cost (MAC) of CO2 emissions
+(Xian et al.~2022; Dai, Zhou, and Kuosmanen 2020; Kuosmanen, Zhou, and
+Dai 2020a, 2020b). Moreover, our method allows for an examination of the
+factors which help explain relative (in)efficiencies.
+
+We find that target setters during the first KP commitment period were
+more environmentally inefficient than non-target setters, an unintended
+consequence of the regulation. We also note that countries with a higher
+degree of industrialisation and those with more urban populations
+exhibit lower environmental efficiency. Our results also assert that the
+marginal cost of CO2 reduction during the first KP period was an order
+of magnitude higher than the trading price of CO2 in the EU-ETS. This
+result suggests considerable price inefficiency in the emissions market.
+
+Our findings have important implications for international carbon
+regulation. Authors have highlighted potential gains in CO2 mitigation
+from emission trading schemes (for example, Kumar, Managi, and Jain
+2020). Our findings add to this debate. We show that the shadow prices
+and market prices of CO2 diverge in the KP period, suggestive of a
+consistent misallocation of the traded allowances in the EU emissions
+trading scheme (ETS). Our results also show an imbalance in shadow
+pricing due to target setting. These significant frictions in the price
+discovery of an ETS market may result in a surplus of allowances,
+exacerbating market instability, and a lower carbon price. The latter
+likely weakened the incentives to lower emissions. We argue that when
+policymakers debate structural measures to promote market stability,
+such as predefined rules to place unallocated allowances in a market
+stability reserve, shadow price imbalances due to target setting must be
+considered{[}3{]}.
+
+In the next section, we review the literature on the impact of the KP on
+emissions and productive efficiency. Next, we describe the frontier
+models and data used. We follow with a discussion of our findings and
+conclusions.
+
+\hypertarget{running-code}{%
+\subsection{Running Code}\label{running-code}}
+
+When you click the \textbf{Render} button a document will be generated
+that includes both content and the output of embedded code. You can
+embed code like this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1} \SpecialCharTok{+} \DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 2
+\end{verbatim}
+
+You can add options to executable code like this
+
+\begin{verbatim}
+[1] 4
+\end{verbatim}
+
+The \texttt{echo:\ false} option disables the printing of code (only
+output is displayed).
+
+\end{document}

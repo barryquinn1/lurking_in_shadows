@@ -5,16 +5,16 @@ author:
   - Ronan Gallagher (Edinburgh Business School)
   - Timo Kuosmanen (Aalto Business School)
 date: "`r format(Sys.time(),'%B %d, %Y')`"
-abstract: "This paper is an empirical exercise which investigates the impact of Kyoto Protocol target setting regime on environmental efficiency and carbon \emph{shadow} pricing. We extract shadow price estimates and efficiency scores from a comprehensive data set of 125 countries in the first Kyoto commitment period (2008-2012) using a stochastic non-parametric estimation framework. We estimate CO~2~  marginal abatement costs which: (1) are significantly higher for target setting countries; (2) increase over the sample period; (3) and are an order of magnitude greater than the prevailing emissions pricing mechanisms. Our findings provide insights into the consequences of policies to curb unwanted by-products in a regulated system and shed light on the price efficiency of carbon markets.Our results contribute to the debate on emission reduction standard setting, and highlight the important of shadow price estimates when regulating market instabilities in an emission trading schemes"
+abstract: "This paper studies the impact of  CO2 emissions target setting.  We empirically investigate the targets set during the Kyoto Protocol period, using marginal abatement cost estimates and efficiency analysis.  We conduct our research using convex non-parametric least squares (CNLS) system and a comprehensive data set of 125 countries.  Our findings reveal CO2 marginal abatement costs, which: (1) are significantly higher for target setting countries; (2) increase over the sample period; (3) and are an order of magnitude greater than the prevailing emissions pricing mechanisms. The results provide insights into the consequences of policies to curb unwanted by-products in a regulated system and shed light on the price efficiency of carbon markets. Furthermore, we contribute to the debate on emission reduction standard-setting and highlight the importance of shadow price estimates when regulating market instabilities in an emission trading scheme."
 
 acknowledgements:
   "We would like to acknowledge Professor Donal McKillop and Professor John Turner for the helpful commentary and advice on this paper."
 
 keywords:
-  - Carbon finance
+  - climate finance
   - Marginal abatement
   - Enviromental efficiency
-  - Stochastic nonparametric envelopment of data (StoNED)
+  - convex non-paraemtric least squares
   - Carbon policy target setting
   - Development economics
 fontsize: 10pt
