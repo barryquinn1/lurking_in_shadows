@@ -8,6 +8,7 @@ format:
   pdf:
     keep-tex: true
 editor: visual
+bibliography: references.bib
 ---
 
 ## Abstract
@@ -18,9 +19,13 @@ This paper studies the impact of CO~2~ emissions target setting. We empirically 
 
 ## Introduction
 
-The World Health Organization predicts significant health risks associated with climate change. Their analysis estimates around 250,000 additional deaths per year from 2030 to 2050, assuming the status quo of current abatement practices and global economic growth^[These statistics are taken from the WHO factsheet on climate change and health <https://www.who.int/news-room/fact-sheets/detail/climate-change-and-health>]. The reduction of greenhouse emissions and the impact on climate change are existential challenges of the 21st century. Many countries have adopted emissions reductions targets since the dawn of the Kyoto Protocol (hereafter KP)^[The KP was principled on the idea of hard targets for emissions reduction for industrialised nations and the EU. These were developed in tandem with carbon trading mechanisms, the largest of which is the EU Emissions Trading System (EU-ETS). These developments brought not just matters of environmental production efficiency to the fore but also those relating to carbon price discovery.] in response to this challenge. The nature and efficacy in response to this challenge of these targets have attracted considerable conceptual debate (for example, see Angelis, Di Giacomo, and Vannoni 2019), but few empirical studies on the impact of explicit target setting. 
+The World Health Organization predicts significant health risks associated with climate change. Their analysis estimates around 250,000 additional deaths per year from 2030 to 2050, assuming the status quo of current abatement practices and global economic growth[^1]. The reduction of greenhouse emissions and the impact on climate change are existential challenges of the 21st century. Many countries have adopted emissions reductions targets since the dawn of the Kyoto Protocol (hereafter KP)[^2] in response to this challenge. The nature and efficacy in response to this challenge of these targets have attracted considerable conceptual debate (for example, see @De_Angelis2019 ), but few empirical studies on the impact of explicit target setting.
 
-We attempt to solve this puzzle by testing the differences between target-setting and non-target-setting countries. We use an identification strategy that more accurately estimates the impact of target setting on carbon pricing and environmental efficiency. Specifically, we focus on the KP target setting period and analyse CO~2~ emissions for 125 countries. Considering only CO~2~ emissions allow for a representative sample of non-target setting Countries (non-annexed 1 Countries) and more meaningful group comparisons in our statistical tests. We use convex quantile regression (CQR) to estimate shadow prices (see equation (1))(Kuosmanen and Zhou 2021a) and an improved marginal abatement cost (MAC) of CO2 emissions (Xian et al. 2022; Dai, Zhou, and Kuosmanen 2020; Kuosmanen, Zhou, and Dai 2020a, 2020b). Moreover, our method allows for an examination of the factors which help explain relative (in)efficiencies.
+[^1]: These statistics are taken from the WHO factsheet on climate change and health <https://www.who.int/news-room/fact-sheets/detail/climate-change-and-health>
+
+[^2]: The KP was principled on the idea of hard targets for emissions reduction for industrialised nations and the EU. These were developed in tandem with carbon trading mechanisms, the largest of which is the EU Emissions Trading System (EU-ETS). These developments brought not just matters of environmental production efficiency to the fore but also those relating to carbon price discovery.
+
+We attempt to solve this puzzle by testing the differences between target-setting and non-target-setting countries. We use an identification strategy that more accurately estimates the impact of target setting on carbon pricing and environmental efficiency. Specifically, we focus on the KP target setting period and analyse CO~2~ emissions for 125 countries. Considering only CO~2~ emissions allow for a representative sample of non-target setting Countries (non-annexed 1 Countries) and more meaningful group comparisons in our statistical tests. We use quantile system of convex nonparametric least squares regressions (CQR) to estimate shadow prices (see equation (1) in @Kuosmanen.2021 ) and an improved marginal abatement cost (MAC) of CO~2~ emissions [@Xian.2022; @Dai.2020; @Kuosmanen.2020; @Kousmanen.2021]. Convex nonparametric least squares has recently been found to admit a causal interpretation between inefficiency and productivity [@Tsionas.2022]. Moreover, our method allows for an examination of the factors which help explain relative (in)efficiencies.
 
 We find that target setters during the first KP commitment period were more environmentally inefficient than non-target setters, an unintended consequence of the regulation. We also note that countries with a higher degree of industrialisation and those with more urban populations exhibit lower environmental efficiency. Our results also assert that the marginal cost of CO2 reduction during the first KP period was an order of magnitude higher than the trading price of CO2 in the EU-ETS. This result suggests considerable price inefficiency in the emissions market.
 
@@ -28,19 +33,10 @@ Our findings have important implications for international carbon regulation. Au
 
 In the next section, we review the literature on the impact of the KP on emissions and productive efficiency. Next, we describe the frontier models and data used. We follow with a discussion of our findings and conclusions.
 
-## Running Code
+# Literature Review
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+The academic inquiry into the effective management of climate change has a rich history. Historically, holistic models seek to understand how human development, societal choices, and the natural world integrate and influence each other. At a simplistic level, they can estimate the social cost of carbon pollutants. This top-down approach to the economics of climate change has been at the forefront of the discipline
 
-```{r}
-1 + 1
-```
+. However, such a global approach may prove dated in the face of stalled international coordination on climate change policy.
 
-You can add options to executable code like this
-
-```{r}
-#| echo: false
-2 * 2
-```
-
-The `echo: false` option disables the printing of code (only output is displayed).
+Against the bedrock of climate science, the KP agreement was an ambitious attempt to coordinate across borders on targets for emissions reduction. The KP set out to differentiate reduction targets equitably in terms of a nation's industrial development, a comparable level of pollution, and the ability to mitigate the ecological damage of global emissions levels. Specifically, countries were categorised into two Annexes. Annexe 2 countries, which set explicit targets, were mostly developed nations, with higher industrial production. Annexe 1 countries, defined as developing, were not subject to targets, although most ratified the Protocol.
