@@ -37,7 +37,7 @@ In the next section, we review the literature on the impact of the KP on emissio
 
 The academic inquiry into the effective management of climate change has a rich history. Historically, holistic models seek to understand how human development, societal choices, and the natural world integrate and influence each other. At a simplistic level, they can estimate the social cost of carbon pollutants. This top-down approach to the economics of climate change has been at the forefront of the discipline [@Vale2016]. However, such a global approach may prove dated in the face of stalled international coordination on climate change policy.
 
-Against the bedrock of climate science, the KP agreement was an ambitious attempt to coordinate across borders on targets for emissions reduction. The KP set out to differentiate reduction targets equitably in terms of a nation's industrial development, a comparable level of pollution, and the ability to mitigate the ecological damage of global emissions levels. Specifically, countries were categorised into two Annexes. Annexe 2 countries, which set explicit targets, were mostly developed nations, with higher industrial production. Annexe 1 countries, defined as developing, were not subject to targets, although most ratified the Protocol.
+Against the bedrock of climate science, the KP agreement was an ambitious attempt to coordinate across borders on targets for emissions reduction. The KP set out to differentiate reduction targets equitably in terms of a nation's industrial development, a comparable level of pollution, and the ability to mitigate the ecological damage of global emissions levels. Specifically, countries were categorised into two Annexes. Annex 2 countries, which set explicit targets, were mostly developed nations, with higher industrial production. Annex 1 countries, defined as developing, were not subject to targets, although most ratified the Protocol.
 
 In the run-up to the end of the first commitment period of the KP, there were political moves to create second commitment period targets. The Doha amendment in 2012 extended the scope of the protocol targets to cover the period until 2020. The Doha Amendment was a bridge arrangement up to 2020 until a new global agreement; the Paris Agreement came into force. The Paris agreement has attracted considerable criticism. Commentators cite a lack of explicit targets, ambiguity in regard to sanctions for failing to meet targets, and a more explicit international focus as a critical weakness to country policymakers taking direct ownership of their emissions targets.
 
@@ -122,5 +122,43 @@ There are three steps to the testing procedure for the difference in the ratio s
 2.  Test the homogeneity of variance in the two groups. If step 1 establishes normality, a simple F test of the homogeneity of variance can be performed. In the presence of non-normality, we turn to the @Brown1974 test, which extended the @Levene1961 ANOVA procedure applied to absolute deviations from the corresponding group mean. This Brown-Forsythe test transforms the variances into the absolute values of their deviations from the median. It uses a ratio of this transformed data as test statistics (See @OBrien1981 for full explanation).
 
 3.  If the equal group variance and the normality assumptions are not rejected, then perform a Welch t-test for group mean differences [@Welch1947]. The Kolmogorov-Smirnov nonparametric test provides a more robust statistical inference [@Conover1999]. If only the normality assumption is rejected, the Wilcoxon Mann Whitney test is more appropriate.
+
+# Data and variables
+
+The KP offers a unique empirical framework to assess the effects of explicit target setting in climate change policy. The first commitment period for the KP was 2008 to 2012. Countries defined as developing (non-annexe 1) were not subject to targets, although most ratified the Protocol. The US was the only signatory of the Protocol that did not ratify. This decision was likely the combination of a weak green lobby in Washington DC [@Hovi2012], perceived excessive compliance costs [@Manne2004] , poor public understanding of climate change [@Brechin2003], and a strong energy lobby during President G.W. Bush's tenure.\[\^7\]. In the run-up to the end of the first commitment period, there were political moves to create targets for a second commitment period culminating in the Paris Agreement. However critics argued that the Paris agreement fell well short of the explicit target setting that was central to the KP. For these reasons, we focus on emissions data from 2008 to 2012, the first commitment period. For this period, it is easier to say definitively who had set targets and who had not. The lines wereblurred post-2012 when a new negotiation phase began. The Protocol set a target for emissions of a basket of greenhouse gases\[8\] to be reached by the signatories in the period 2008-2012. This paper extends the work of Halkos and Tzeremes (2014). To the best of our knowledge, it is the first study to explicitly provide an economic cost of these emissions targets\[9\].
+
+\[\^7\] : Andorra, Palestine, South Sudan and the Vatican also do not follow the Protocol. Canada ratified but withdrew effective in December 2012.
+
+We specify a two input-two output frontier efficiency model. Specifically, we define GDP as a desirable output, CO~2~ emissions from fuel combustion as an undesirable output, and labour force numbers and capital stock as inputs. GDP and labour force numbers are sourced from the World Bank. The capital stock captures both current and past accumulations of capital investment. Finally, to capture cross-country and time-varying heterogeneity in CO~2~ production, we use several environmental variables. Table 1 provides a detailed description of the modelling variables.
+
+```{r table 1 descriptions, results="asis"}
+library(WDI)
+
+library(RJSONIO)
+
+VarCodes<-c("NY.GDP.MKTP.PP.KD",
+
+            "SL.TLF.TOTL.IN",
+
+            "NE.TRD.GNFS.ZS",
+
+            'SP.URB.TOTL.IN.ZS')
+
+GDP<-WDIsearch(VarCodes[1],field="indicator",short = F)
+
+Lab<-WDIsearch(VarCodes[2],field="indicator",short = F)
+
+Trade<-WDIsearch(VarCodes[3],field="indicator",short = F)
+
+Pop<-WDIsearch(VarCodes[4],field="indicator",short = F)
+
+info<-as.data.frame(rbind(GDP,Lab,Trade,Pop),row.names = F,stringsAsFactors = F) %>% filter(description!="")
+
+text_tbl<-tibble(Type=c("Undesirable Output","Desirable Output",rep("Input",2),rep("Enviromental Variable",4)),Variable=c("CO2 emissions from fossil fuel (Millions of metric tonnes)",info$name[1:2],"Capital Stock, PPP (constant international $Billions)",info$name[3:4],"Target Setting Indicator","Year Indicators"),Detail=c("
+
+Emissions were calculated using IEA energy databases and the default methods and emission factors given in the 2006 GLs for National Greenhouse Gas Inventories.",info$description[1:2],"Total capital stock is the sum of government capital stock, private capital stock, and public-private partnerships (PPP) capital stock.  When the PPP capital stock is missing we assume zero.",info$description[3:4],"This variable takes a value of 1 for a country which committed to a hard target of emission reduction during the Kyoto Protocol period and zero otherwise.","A proxy for unobserved between group temporal variation"),Source=c("International Energy Agency" ,info$sourceOrganization[1:2],"IMF and World Bank",info$sourceOrganization[3:4],rep("author's own calculation",2)))
+
+text_tbl %>% flextable()
+```
 
 # References
