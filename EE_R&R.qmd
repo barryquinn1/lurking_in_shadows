@@ -12,13 +12,13 @@ bibliography: references.bib
 ---
 
 ```{r}
-#| include: FALSE
+#| include: false
 library(tidyverse); library(readxl); library(broom); library(kableExtra); library(knitr); library(gridExtra); library(gtable); library(grid); library(stringr); library(moments); library(nortest); library(car); library(Matching);library(flextable)
 ```
 
 # Abstract
 
-This paper studies the impact of CO~2~ emissions target setting. We empirically investigate the targets set during the Kyoto Protocol period using a convex non-parametric least squares system, quantile regressions, and a comprehensive data set of 125 countries. Our findings reveal CO~2~ marginal abatement costs, which: (1) are significantly higher for target setting countries; (2) increase over the sample period; (3) and are an order of magnitude greater than the prevailing emissions pricing mechanisms. The results provide insights into the consequences of policies to curb unwanted by-products in a regulated system and shed light on the price efficiency of carbon markets. Furthermore, we contribute to the debate on emission reduction standard-setting and highlight the importance of shadow price estimates when regulating market instabilities in an emission trading scheme.
+This paper studies the impact of CO~2~ emissions target setting. We empirically investigate the targets set during the Kyoto Protocol period using a convex nonparametric least squares system, quantile regressions, and a comprehensive data set of 125 countries. Our findings reveal CO~2~ marginal abatement costs, which: (1) are significantly higher for target setting countries; (2) increase over the sample period; (3) and are an order of magnitude greater than the prevailing emissions pricing mechanisms. The results provide insights into the consequences of policies to curb unwanted by-products in a regulated system and shed light on the price efficiency of carbon markets. Furthermore, we contribute to the debate on emission reduction standard-setting and highlight the importance of shadow price estimates when regulating market instabilities in an emission trading scheme.
 
 \newpage
 
@@ -76,10 +76,13 @@ The primary focus of our analysis is shadow prices estimation for CO^2^ emission
 
 These factors lead to overestimation of both shadow prices and group differences in shadow prices between target setting and non-target setting countries. Our study uses convex quantile regression methods to estimate local approximations of shadow prices calibrated using observed inefficiencies. Specifically, we exploit the CQR framework in @Kuosmanen.2021 to estimate shadow prices at observed performance levels. Importantly, this approach is robust to the observed heterogeneity, the choice of direction vector and accommodates noise-based uncertainty. The following linear programming problem is solved to estimate the distance function:
 
-$$
-\begin{equation}\begin{split}& \underset{\alpha,\beta,\gamma,\delta,\epsilon^-,\epsilon^+}{\text{min}} (1-\tau) \sum^{T}_{t=1} \sum^{n}_{i=1}\epsilon^-_{it} + \tau \sum^{T}_{t=1}  \sum^{n}_{i=1}\epsilon^+_{it}  \\&\text{s.t.} \\&\gamma^{'}_{it}y_{it}=\alpha_{it}+\beta^{'}_{it}x_{it}+\delta^{'}_{it}b_{it} + \omega Z_{it} -\epsilon^-_{it}+\epsilon^+_{it} \; \forall i ,\forall t \\&\alpha_{it}+\beta^{'}_{it}x_{it}+\delta^{'}_{it}b_{it}-\gamma^{'}_{it}y_{it} \leq \alpha_{hs}+\beta^{'}_{hs}x_{it}+\delta^{'}_{hs}b_{it}-\gamma^{'}_{hs}y_{it} \; \forall i,h ; \forall t,s \\& \beta^{'}_{it}g^x+\delta^{'}_{it}g^b+\gamma^{'}_{it}g^y=1 \; \forall i,t\\& \beta_{it} \geq0,\gamma_{it} \geq0,\delta_{it} \geq0 \; \forall i,t \\& \epsilon^-_{it} \geq0, \epsilon^+_{it} \geq 0 \; \forall i,t\end{split}\end{equation}
-$$ {#eq-1}
-
+```{=latex}
+\begin{equation}
+\begin{split}
+& \underset{\alpha,\beta,\gamma,\delta,\epsilon^-,\epsilon^+}{\text{min}} (1-\tau) \sum^{T}_{t=1} \sum^{n}_{i=1}\epsilon^-_{it} + \tau \sum^{T}_{t=1}  \sum^{n}_{i=1}\epsilon^+_{it}  \\&\text{s.t.} \\&\gamma^{'}_{it}y_{it}=\alpha_{it}+\beta^{'}_{it}x_{it}+\delta^{'}_{it}b_{it} + \omega Z_{it} -\epsilon^-_{it}+\epsilon^+_{it} \; \forall i ,\forall t \\&\alpha_{it}+\beta^{'}_{it}x_{it}+\delta^{'}_{it}b_{it}-\gamma^{'}_{it}y_{it} \leq \alpha_{hs}+\beta^{'}_{hs}x_{it}+\delta^{'}_{hs}b_{it}-\gamma^{'}_{hs}y_{it} \; \forall i,h ; \forall t,s \\& \beta^{'}_{it}g^x+\delta^{'}_{it}g^b+\gamma^{'}_{it}g^y=1 \; \forall i,t\\& \beta_{it} \geq0,\gamma_{it} \geq0,\delta_{it} \geq0 \; \forall i,t \\& \epsilon^-_{it} \geq0, \epsilon^+_{it} \geq 0 \; \forall i,t
+\end{split}
+\end{equation}
+```
 @eq-1 [\^6] is a probabilistic distance function, where the two errors terms ($\epsilon^-$ and $\epsilon^+$) allow for deviations from the frontier, and $\tau$ defines the quantile. We estimate the model using a balanced panel of 105 countries for five years (2008-2012) where the $Z$ vector includes, trade to GDP ratio, the percentage of the population which is urban, a dummy to the indicator if the country is a target setting, and a set of year dummies. These environmental variables adjust for observed cross-country and through time fluctuation in the production technology. The estimated model results in performance adjusted dual prices $\gamma^{'}_{it},\beta^{'}_{it} ,\delta^{'}_{it}$ which serve as inputs for the marginal abatement calculations. An appealing feature of the specification in equation 1 is a separately estimated intercept for each observation; $\alpha_{it}$. These intercept terms are analogous to random effects in hierarchical model statistics, capturing unobserved time series and cross-sectional variation.
 
 \[\^6\]: We use GAMS software to encode our CQR and the CPLEX solver to find an optimal solution.
@@ -96,16 +99,21 @@ In our study, we similarly calculate marginal abatement costs as:
 1.  Find the largest expectile ($\tau^{*}$) for which the residual ($\epsilon^+ + \epsilon^-$) is non-negative.
     i.  For most observations, we find the nearest expectile by checking where the residual changes sign. For those observations, we take the weighted average of the shadow prices of the nearest executives, weighted by . For some observations, residuals are positive (or negative) for all executives (the best and the worst performers, respectively). For those, we use shadow prices of the highest/lowest expectile.
 2.  Calculate MRT and MP as the weighted average of quantiles for ($\tau^{*}$) and ($\tau^{*+1}$) weighted by the distance to the frontier of the quantiles(i.e. the absolute value of the residuals). Specifically, these can be thought of as the sub derivatives with respect to the bad outputs from the distance function, where the marginal rate of substitution of output \$i\$ on bad output $j$ is $MRT_{\tau}(y_{i},b_{j})=-\frac{\delta \vec{D}_{\tau}/\delta b_{j}}{\delta \vec{D}_{\tau}/\delta y_{i}}$. Similarly the MP of input k on bad output j is $MP_{\tau}(x_{k},b_{j})=\frac{\delta \vec{D}_{\tau}/\delta b_{j}}{\delta \vec{D}_{\tau}/\delta x_{k}}$
-3.  Use the results from step 2, the marginal abatement cost (MAC) for bad output is defined as:
-4.  $$
-    \begin{equation}MAC(b_{j})=\displaystyle \min_{i,k}\{p_{i}MRT_{\tau}(y_{i},b_{j}), w_{k}MP_{\tau}(x_{k},b_{j})\}\end{equation}
-    $$ {#eq-2}
-    i.  In @eq-2 $p_{i}$ is the price of output $i$ and $w_{k}$ is the price of input $k$. This flexible definition of the MAC provides multiple opportunities for abatement. Specifically, bad output $j$ can be abated by either reducing *good* outputs (i.e., downscaling the GDP activity) or increasing the input use (for example, investment in the labour force or capital stock). This approach uses the least-cost alternative. In the case where the good outputs possess a monetary value, the sub derivatives (dual prices) provide monetary shadow prices for bad outputs, and the above equation simplifies to:
 
-$$
-\begin{equation}MAC(b_{j})=\displaystyle \min_{i,k}\{MRT_{\tau}(y_{i},b_{j}), MP_{\tau}(x_{k},b_{j})\} \end{equation}
-$$ {#eq-3}
+Use the results from step 2, the marginal abatement cost (MAC) for bad output is defined as:
 
+```{=latex}
+\begin{equation}
+MAC(b_{j})=\displaystyle \min_{i,k}\{MRT_{\tau}(y_{i},b_{j}), MP_{\tau}(x_{k},b_{j})\} 
+\end{equation}
+```
+
+i.  In @eq-2 $p_{i}$ is the price of output $i$ and $w_{k}$ is the price of input $k$. This flexible definition of the MAC provides multiple opportunities for abatement. Specifically, bad output $j$ can be abated by either reducing *good* outputs (i.e., downscaling the GDP activity) or increasing the input use (for example, investment in the labour force or capital stock). This approach uses the least-cost alternative. In the case where the good outputs possess a monetary value, the sub derivatives (dual prices) provide monetary shadow prices for bad outputs, and the above equation simplifies to:
+
+```{=latex}
+\begin{equation}
+MAC(b_{j})=\displaystyle \min_{i,k}\{MRT_{\tau}(y_{i},b_{j}), MP_{\tau}(x_{k},b_{j})\} \end{equation}
+```
 In the above calculation, it is essential to ensure that the MRT and MP enter the model simultaneously, given the scale of the inputs and outputs entering the model. In our model, as both capital stock and GDP enter the model in billions of dollars, the MRT and MP are directly comparable in terms of minimum cost.
 
 ## Application of Statistical Test
@@ -238,7 +246,7 @@ do.call(addMapLegendBoxes, c(mapParams,
                              bty = "n"))
 ```
 
-Table @tab-1 shows the summary statistics of the variables entering the model. These statistics reveal that significant variation in outputs and inputs highlights considerable cross-sectional heterogeneity. The variation is not surprising given the mix of countries outlined @fig-map\[\^12\].
+Table @tab-1 shows the summary statistics of the variables entering the model. These statistics reveal that significant variation in outputs and inputs highlights considerable cross-sectional heterogeneity. The variation is not surprising given the mix of countries outlined @fig-map \[\^12\].
 
 \[\^12\]: Notice that some countries have a trade which exceeds GDP (more than 100%). This excess is usually a feature of small countries with high productivity. Due to their small size, instead of being self-sufficient and producing all the products their population needs, they specialize in a few highly profitable industries. These industries may produce more money from exports than the entire domestic economy, which allows them to purchase imports far above what their domestic economy could otherwise support. For example, in the sample, three countries have a Trade to GDP ratio of over 200%; Luxembourg, Malta and Singapore.
 
@@ -269,15 +277,15 @@ sumStats %>%
   kable_styling(latex_options =c("HOLD_position"), font_size = 8, full_width=T) %>% 
   add_header_above(header =c(" "=1,"Mean"=2,"StdDev"=2,"5th%ile"=2,"Median"=2,"95th%ile"=2)) %>%
   column_spec(1,width="10em") %>%
- kableExtra::add_footnote(general="This table provides central tendency and spread statistics for the model variables for the sample period by target setting groups. Variables are presented on the measurement basis with which they enter the model, for example Capital stock enters the model in constant $Billions.",threeparttable=T)
+ kableExtra::add_footnote(label="This table provides central tendency and spread statistics for the model variables for the sample period by target setting groups. Variables are presented on the measurement basis with which they enter the model, for example Capital stock enters the model in constant $Billions.",threeparttable=T)
 ```
 
 # Results and Discussion
 
-We estimate a stepwise yield curve of probabilistic benchmark technologies. These technologies extract, at the observed performance level, country-year marginal abatement costs of CO~2~ emissions. We use the direction vector to estimate the directional distance function model for 10 quantiles , which should be sufficient granularity for a sample size of 525. Finally, we include a noise term that captures measurement error in the data.
+We estimate a step-wise yield curve of probabilistic benchmark technologies. These technologies extract, at the observed performance level, country-year marginal abatement costs of CO~2~ emissions. We use the direction vector to estimate the directional distance function model for 10 quantiles, which should be sufficient granularity for a sample size of 525. Finally, we include a noise term that captures measurement errors in the data.
 
 ```{r}
-#| label: tab-2
+#| label: tab-macdiff
 #| tbl-cap: "Marginal abatement costs in 2011 dollars per CO2 tonne"
 ClimatePolicy_anal %>% 
   group_by(year) %>%
@@ -291,10 +299,10 @@ ClimatePolicy_anal %>%
   kable_styling(font_size=8,latex_options =c("hold_position"), full_width=T) %>%
   add_header_above(c("","Full Sample"=2,"Target Setting Countries"=2,"Non Target Setting Countries"=2),bold = T,italic = T) %>%
   row_spec(0,bold = T,italic = T)  %>%
-  footnote(general="This table presents yearly mean and interquartile estimates of the marginal abatement costs calculated for the full sample and for each group of countries.  The last four columns disaggregates the mean analysis to compare countries which set emission reduction targets against countries which did not.  GDP(y) and capital stock (x1) are deflated to 2011 international dollars, and are considered to have a unit price.  An alternative interpretation is that the the price multipliers (p,w)=1 in the calculations of the marginal rate of transformation of GDP and the marginal product of the capital stock as they represent both quantity and price. The marginal abatement cost is thus calculated as the minimum of the marginal rate of transformation of GDP and the marginal product of capital stock on C0~2~ emissions.  The MAC is measured in USD per metric ton of CO~2~ emission. Labour (x2) is the total labour force in each country (in millions).  The marginal product of labour is the dual without a price multiplier and is measured in millions of labour force per ton of CO2 emission.",threeparttable=T)
+  add_footnote(label="This table presents yearly mean and interquartile estimates of the marginal abatement costs calculated for the full sample and for each group of countries.  The last four columns disaggregates the mean analysis to compare countries which set emission reduction targets against countries which did not.  GDP(y) and capital stock (x1) are deflated to 2011 international dollars, and are considered to have a unit price.  An alternative interpretation is that the the price multipliers (p,w)=1 in the calculations of the marginal rate of transformation of GDP and the marginal product of the capital stock as they represent both quantity and price. The marginal abatement cost is thus calculated as the minimum of the marginal rate of transformation of GDP and the marginal product of capital stock on C0~2~ emissions.  The MAC is measured in USD per metric ton of CO~2~ emission. Labour (x2) is the total labour force in each country (in millions).  The marginal product of labour is the dual without a price multiplier and is measured in millions of labour force per ton of CO2 emission.",threeparttable=T)
 ```
 
-Table @tab-2 summarises the marginal abatement cost estimates for each year in our sample period. This table presents the mean and interquartile range for the entire sample, targeting setting countries and their non-target setting counterparts. Marginal abatement costs illustrate the carbon intensity, where countries with larger manufacturing sectors will have relatively higher MAC estimates. The MAC estimates are similar to those reported in the literature [@lee2014; @Bohringer2003; @Viguier2003] , and comparatively similar to the cost of C0~2~ capture and storage of coal plants estimated by @Rubin2015 , who estimates a mitigation cost (constant 2013 dollar per metric tonne of CO2) for the capture of 46-99 US dollars and storage of 53-137 US dollars.
+Table @tab-macdiff summarises the marginal abatement cost estimates for each year in our sample period. This table presents the mean and interquartile range for the entire sample, targeting setting countries and their non-target setting counterparts. Marginal abatement costs illustrate the carbon intensity, where countries with larger manufacturing sectors will have relatively higher MAC estimates. The MAC estimates are similar to those reported in the literature [@lee2014; @Bohringer2003; @Viguier2003] , and comparatively similar to the cost of C0~2~ capture and storage of coal plants estimated by @Rubin2015 , who estimates a mitigation cost (constant 2013 dollar per metric tonne of CO2) for the capture of 46-99 US dollars and storage of 53-137 US dollars.
 
 ## Carbon emissions pricing comparison
 
@@ -361,7 +369,7 @@ lm(regY~TRADEtoGDP+URBAN+Setter+Yr,data=df_anal) %>%
   # mutate(estimate=exp(estimate))
   slice(-1) %>%
   kable("latex",digits = 3,caption = "Marginal effect of enviromental variables",align = "c",booktabs=T,longtable=T) %>%
-  footnote(general="This table shows the marginal effects from the z coefficients in equation (1) by exploiting statistical procedure first outlined in Kuosmenan & Johnson (2015).",threeparttable = T) %>%
+  add_footnote(label="This table shows the marginal effects from the z coefficients in equation (1) by exploiting statistical procedure first outlined in Kuosmenan & Johnson (2015).",threeparttable = T) %>%
   kable_styling(full_width = T)
 ```
 
@@ -410,5 +418,99 @@ out
 StatTest(ClimatePolicy_anal,CO2,LABOUR,Target,2008,2012) %>%
   kable(caption = "Statistical Analysis of Marginal Abatement Cost Differences",align = "c", col.names=c("Normality Test","Equality of Variance","Rank sum z-test","Equality of distribution D-test")) 
 ```
+
+Table @tab-stattest shows the results of the testing approach described in test steps applied each year to the ratio of the variables represented by the MAC estimates. The first column presents the test results of the empirical distribution of the ratio and shows that normality is rejected for all years. This result implies that we should use a nonparametric group difference test. Column 2 presents the equality of variance test across the groups of interest, robust to non-normal distribution. Equality of variance is not rejected for all years. Columns 3 and 4 of table @tab-stattest provide a statistical analysis of the observed mean differences in shadow prices presented in table @tab-macdiff . In column 3, the Wilcoxon Mann Whitney test provides robust inference when we cannot reject the hypothesis of equality of variance in groups assessed in column 2. The Kolmogorov Smirnov test provides robust inference if the equality of variance hypothesis is rejected. Given the results of column 2, column 3 results suggest a statistically significant difference in the shadow prices of the two cohorts. This finding provides some meaningful evidence that target setting countries consistently experienced increased abatement costs than non-target setting counties during the Kyoto protocol period.
+
+# Concluding remarks
+
+This study contributes to the ongoing debate on target setting implications in climate policy. We use a frontier efficiency approach which reveals unintended consequences of target setting in the first KP commitment period (2008-2012). Target setters were less environmentally efficient and had higher marginal abatement costs for CO 2 emissions. We also note both international variation in marginal abatement costs as well as variation between marginal abatement costs and market pricing of carbon. Our findings have important implications for international carbon regulation.
+
+Firstly, in contrast to previous work, we show that the shadow price and market price of CO~2~ diverge in the KP period, suggestive of a consistent misallocation of the traded allowances in the EU emissions trading scheme (ETS).
+
+Secondly, our results also show an imbalance in shadow pricing due to target setting. For an emissions trading scheme to work efficiently, marginal abatement costs across countries should be identical and equal to the market clearing price of carbon. Recently, EU policymakers, to control market instability, passed legislation that allows for a surplus in carbon trading allowance due to the production shock of the COVID-19 pandemic. A structural consequence of our findings could also be a surplus of allowances, exacerbating market instability, lowering the carbon price, and weakening the incentives to reduce emissions. We argue that market stability rules for surplus allowances must also consider the heterogeneity in regional standards and targets for emission abatement.
+
+Encouragingly, although ignoring the trading period since the KP, in recent years the emissions trading market price is beginning to approach the lower end of our shadow price estimates which suggests that prices are perhaps more accurately representing the fundamentals of carbon abatement.
+
+Finally, marginal effects estimates of the environmental variables suggest that typically countries which set hard emission reduction targets, have higher trade, and are more urbanised experience higher environmental inefficiency.
+
+Our study has some limitations. Firstly, we only focus on one pollutant but argue that the correlation in abatement practices for other pollutants means our results hold some validity. Secondly, we restrict our environmental variable study to a common set of variables from previous literature, but we appreciate this is just one of many possible choices of statistical controls in a StoNEZD model.
+
+Taken together, our results add value to the regulatory economic analysis toolbox, by providing a coherent means to investigate statistically meaningful differences in regulating climate change and the price discovery markets for pollutants.
+
+# Appendix
+
+What follows is a theoretical exposition of our shadow price difference testing procedure. Specifically, we appeal to the trigonometric nature of the relationship between isoquants in a conventional production function model.
+
+We illustrate our test using a cost function but argue it can be generalised to any production technology specification. @Fare2012 prove, using duality theory, that production technologies are validly represented by either a cost function, the conventional production function, or a distance function. The cost function is defined as: where is the input vector, is the vector of input prices, and is the vector of outputs. To estimate the cost function from data, we assume a cost frontier model: where is the observed cost and is a random disturbance term. The partial derivative of with respect to output is referred to as the shadow price of output (in other words, the marginal cost). The vector of all shadow prices is called the gradient vector and is denoted by . Figure @fig-iso illustrates the output isoquant in the case of two firms, where the gradient vector includes two shadow prices illustrated by the dashed lines. The shadow prices define the slope of the tangent line on the output frontier.
+
+Thehe cost function is defined as:
+
+$$
+C(x,y)=\text{min} \{wx:\text{input x can produce output y}\}
+$$
+
+where $x$ is the input vector, $w$ is the vector of input prices, and $y$ is the vector of $M$ outputs. To estimate the cost function from data, we assume a cost frontier model:
+
+$$X=C(x,y) + \epsilon$$
+
+where $X$ is the observed cost and $\epsilon$ is a random disturbance term. The partial derivative of \$C\$ with respect to output \$m\$ is referred to as the shadow price of output $m$ (in other words, the marginal cost). The vector of all \$M\$ shadow prices is called the gradient vector and is denoted by $VC$. Figure 2 illustrates the output isoquant in the case of two firms, where the gradient vector \$VC\$ includes two shadow prices illustrated by the dashed lines. The shadow prices define the slope of the tangent line on the output frontier.
+
+```{r}
+#| label: fig-iso
+#| fig-cap: "Two output isoquant"
+library(ggforce)
+arrow = arrow(angle=15, type = "closed")
+tibble(y1=c(2,3),y2=c(3,2)) %>% # some data to plot
+  ggplot(aes(y1,y2)) +
+  # plot point to represent firms
+  geom_point(lwd=3, shape=21) + 
+  # add a curve to represent frontier
+  geom_curve(aes(x=0, y=5,yend=0,xend=5),lwd=2,curvature =-0.4) + 
+    # label angle A
+  annotate("text",label="A",x=1.25,y=0.25) +
+  # label firms
+  annotate("text",label="Firm 1",x=2.5,y=3) +
+  annotate("text",label="Firm 2",x=3.5,y=2) +
+  # theme_classic() +
+  xlab("y1") +ylab("y2") + 
+  # add radial lines
+  geom_segment(aes(x=0,y=0,xend=2.7,yend=4.05),linetype="solid",colour="red") + 
+  geom_segment(aes(x=0,y=0,xend=4.05,yend=2.7),linetype="solid",colour="blue") +
+  # fixes axes to have the same scale
+  coord_fixed(xlim = c(0,6),ylim=c(0,6)) + 
+  # allows the graph to start at the origin
+  scale_x_continuous(expand = c(0, 0)) + scale_y_continuous(expand = c(0, 0)) +
+  # Tangents to represent shadow prices
+  geom_segment(aes(x=1.5,y=5.0,xend=4,yend=3.3),linetype="dashed",colour="red") + 
+  geom_segment(aes(x=5,y=1.5,xend=3,yend=4.5),linetype="dashed",colour="blue") +
+  # curve for angle
+  geom_curve(aes(x=1,y=0,xend=0.75,yend=0.5),linetype="dashed",curvature =0.1,colour="blue") +
+  # Axis arrows
+  # geom_segment(aes(x=0,y=0,xend=0,yend=6),lwd=2,arrow = arrow()) + 
+  # geom_segment(aes(x=0,y=0,xend=6,yend=0),lwd=2,arrow = arrow()) +
+  theme(axis.ticks = element_blank(), 
+        axis.text = element_blank(), 
+        axis.line = element_line(arrow = arrow,size = 2),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank())
+```
+
+```{=tex}
+\begin{footnotesize}
+
+The figure represents a two output production model, where the black arc line is the best practice output frontier. Firm one and Firm two are operating below the frontier and are inefficient. These firms can improve their production efficiency (move towards the output frontier) by simultaneously producing more y2 and y1 for a given level of inputs (costs). Efficiency for each firm is the length of the dashed lines from the origin, the radial distance. The dashed tangents on the output frontier represent the shadow prices for the firms.
+
+\end{footnotesize}
+```
+From figure @fig-iso , it is easy to see that the shadow prices depend on both the curvature of the output isoquant and the output mix, which the ratio y2/y1 can measure. Note that tan A = y2/y1, where A is the angle indicated in figure @fig-iso. Note further that the shadow prices depend on this angle (the polar coordinates), \*\*not\*\* the distance to the frontier. Proportional scaling of all outputs by some arbitrary constant along the dashed rays from the origin does not affect the shadow prices.
+
+What if we have empirically observed a change in the shadow prices (via some regulatory or supervisory shock), and our objective is to test whether this change is statistically significant? If the output isoquant is held constant, the shadow prices can only change due to a change in the output mix y2/y1. Therefore, we can test if there is a significant change in the output mix. Note that the ratio y2/y1 is entirely independent of the estimation of the frontier. Therefore, the test is immune to possible serial correlation in the finite sample estimates of the shadow prices. Some standard approaches to testing the significance of the changes in the distribution of y2/y1 are reviewed in the next section\[\^15\]
+
+\[\^15\]: For completeness, it is worth noting that if the output isoquant is linear (outputs are perfect substitutes in production), then the shadow prices do not change even if the output mix changes. We could test if the curvature of the output set is significant (i.e., if there are significant economies of scope) by comparing the linear and convex regression (see @Meyer2003 , for details), but this is not our primary objective. Instead, we are interested in the effect of a change in the regulatory and supervisory environment on shadow prices. This effect can only occur through the change in the output mix.
+
+Regulation can influence the output allocation, but not the economies of scope or the shape of the production possibility set. @Zhou2014 argues that a genuine objective of a production unit in the presence of the introduction of a regulatory abatement target is to reduce their undesirable output to the target level. If there is an external abatement target, the producer primarily focuses on achieving that target emissions level. After attaining this target, the economic objective of the producer is to maximise the production of the desired output to maximise profit. Thus, this external regulatory shock changes the output allocation mix of desirable output to undesirable output but not the shape of the production possibility set.
+
+As a practical example, consider a regulatory shock that imposes a new supervisory framework on a regulated system. In the efficiency literature, regulatory externalities impose technological shifts to the best-practice frontier technology (the solid line in figure @fig-iso). If Hicks neutrality can be assumed, the effect on the frontier is a parallel shift where the shape of the production possibility set remains unchanged.
 
 # References
