@@ -11,6 +11,11 @@ editor: visual
 bibliography: references.bib
 ---
 
+```{r}
+#| include: FALSE
+library(tidyverse); library(readxl); library(broom); library(kableExtra); library(knitr); library(gridExtra); library(gtable); library(grid); library(stringr); library(moments); library(nortest); library(car); library(Matching);library(flextable)
+```
+
 # Abstract
 
 This paper studies the impact of CO~2~ emissions target setting. We empirically investigate the targets set during the Kyoto Protocol period using a convex non-parametric least squares system, quantile regressions, and a comprehensive data set of 125 countries. Our findings reveal CO~2~ marginal abatement costs, which: (1) are significantly higher for target setting countries; (2) increase over the sample period; (3) and are an order of magnitude greater than the prevailing emissions pricing mechanisms. The results provide insights into the consequences of policies to curb unwanted by-products in a regulated system and shed light on the price efficiency of carbon markets. Furthermore, we contribute to the debate on emission reduction standard-setting and highlight the importance of shadow price estimates when regulating market instabilities in an emission trading scheme.
@@ -168,5 +173,242 @@ text_tbl %>% flextable()
 We use the International Energy Association (IEA) database\[\^10\] which provides the most extensive global coverage of CO2 emission data. This database estimates CO2 from fuel emission measured in Metric Tonnes for over 140 countries from 1960 to 2016. After removing countries with missing observations, we have a balanced sample of 525 observations for 2008-2012. Table 2 describes the countries in the sample in terms of target-setting.
 
 \[\^10\]: <http://data.iea.org/payment/products/115-co2-emissions-from-fuel-combustion-2018-edition-coming-soon.aspx>
+
+```{r}
+#| warning: false
+#| message: false
+# load library
+library(rworldmap)
+library(tidyverse)
+library(flextable)
+# get map
+worldmap <- getMap(resolution = "coarse")
+# plot world map
+plot(worldmap, col = "lightgrey", 
+     fill = T, border = "darkgray",
+     xlim = c(-180, 180), ylim = c(-90, 90),
+     bg = "aliceblue",
+     asp = 1, wrap=c(-180,180))
+```
+
+```{r}
+library(countrycode)
+load("dat_anal.RData")
+
+ClimatePolicy_anal %>% 
+  distinct(iso2c,.keep_all = T) %>%
+  dplyr::select(iso2c,TargetSet) %>%
+  mutate(Type=if_else(TargetSet==1,"Target setting country","Non-target setting country"))-> countries
+# countries %>%
+#   as.data.frame() %>%
+#   head(15) %>%
+#   flextable() %>%
+#   flextable::set_table_properties(width = .5, layout = "autofit") %>%
+#   flextable::theme_zebra() %>%
+#   flextable::fontsize(size = 12) %>%
+#   flextable::fontsize(size = 12, part = "header") %>%
+#   flextable::align_text_col(align = "center") %>%
+#   flextable::set_caption(caption = "First 15 rows of the country codes.")  %>%
+#   flextable::border_outer()
+```
+
+```{r}
+#| fig-cap: "Map of target setting countries"
+#| label: fig-map
+# combine data frame with map
+visitedMap <- joinCountryData2Map(countries, 
+                                  joinCode = "ISO2",
+                                  nameJoinColumn = "iso2c")
+# def. map parameters, e.g. def. colors
+mapParams <- mapCountryData(visitedMap, 
+                            nameColumnToPlot="Type",
+                            oceanCol = "azure2",
+                            catMethod = "categorical",
+                            missingCountryCol = gray(.8),
+                            colourPalette = c("coral"),
+                            addLegend = F,
+                            mapTitle = "",
+                            border = NA)
+# add legend and display map
+do.call(addMapLegendBoxes, c(mapParams,
+                             x = 'bottom',
+                             title = "",
+                             horiz = TRUE,
+                             bg = "transparent",
+                             bty = "n"))
+```
+
+Table @tab-1 shows the summary statistics of the variables entering the model. These statistics reveal that significant variation in outputs and inputs highlights considerable cross-sectional heterogeneity. The variation is not surprising given the mix of countries outlined @fig-map\[\^12\].
+
+\[\^12\]: Notice that some countries have a trade which exceeds GDP (more than 100%). This excess is usually a feature of small countries with high productivity. Due to their small size, instead of being self-sufficient and producing all the products their population needs, they specialize in a few highly profitable industries. These industries may produce more money from exports than the entire domestic economy, which allows them to purchase imports far above what their domestic economy could otherwise support. For example, in the sample, three countries have a Trade to GDP ratio of over 200%; Luxembourg, Malta and Singapore.
+
+```{r}
+#| label: tab-1
+#| tbl-cap: "Summary statistics"
+sumThatFinal<-function(x){
+  p5=quantile(x,na.rm = T,0.05)
+  Median=median(x,na.rm = T)
+  Mean=mean(x,na.rm = T)
+  SD=sd(x,na.rm = T)
+  p95=quantile(x,na.rm = T,0.95)
+  round(c(Mean,SD,p5,Median,p95),2)
+}
+
+sumStats<-ClimatePolicy_anal %>% 
+  as_tibble() %>%
+  dplyr::select(CO2,y1,x2,x1,z1,z2,z3) %>% 
+  group_by(z3) %>% 
+  summarise(across(.fns = sumThatFinal)) %>% t
+
+
+sumStats<-sumStats[-1,c(1,6,2,7,3,8,4,9,5,10)]
+rownames(sumStats)<-c("C02 emissions (Million Metric Tons)","GDP (Billion PPP $USD)","Labour Force (Millions)","Capital Stock (Billions PPP $USD)","Urban to Total Population (%)","Trade to GDP (%)")
+
+sumStats %>% 
+  kable("latex",booktabs=T, longtable=T,caption = "Summary statistics of inputs, outputs and z variables",align = "c",row.names =T,col.names =rep(c("Non Target","Target"),5))  %>% 
+  kable_styling(latex_options =c("HOLD_position"), font_size = 8, full_width=T) %>% 
+  add_header_above(header =c(" "=1,"Mean"=2,"StdDev"=2,"5th%ile"=2,"Median"=2,"95th%ile"=2)) %>%
+  column_spec(1,width="10em") %>%
+ kableExtra::add_footnote(general="This table provides central tendency and spread statistics for the model variables for the sample period by target setting groups. Variables are presented on the measurement basis with which they enter the model, for example Capital stock enters the model in constant $Billions.",threeparttable=T)
+```
+
+# Results and Discussion
+
+We estimate a stepwise yield curve of probabilistic benchmark technologies. These technologies extract, at the observed performance level, country-year marginal abatement costs of CO~2~ emissions. We use the direction vector to estimate the directional distance function model for 10 quantiles , which should be sufficient granularity for a sample size of 525. Finally, we include a noise term that captures measurement error in the data.
+
+```{r}
+#| label: tab-2
+#| tbl-cap: "Marginal abatement costs in 2011 dollars per CO2 tonne"
+ClimatePolicy_anal %>% 
+  group_by(year) %>%
+  summarise("MAC Overall"=mean(MAC,na.rm = T),
+            "IQR"=IQR(MAC,na.rm = T),
+            "MAC Target Setters"=mean(MAC_T,na.rm = T),
+            "IQR1"=IQR(MAC_T,na.rm = T),
+            "MAC Non Target Setters"=mean(MAC_No_T,na.rm = T),
+            "IQR2"=IQR(MAC_No_T,na.rm = T)) %>%
+  kable("latex",digits = 2,caption = "Marginal abatement costs in 2011 dollars per CO2 tonne",align = "c",booktabs=T,col.names = c("",rep(c("Mean","Interquartile Range"),3)),longtable=T) %>%
+  kable_styling(font_size=8,latex_options =c("hold_position"), full_width=T) %>%
+  add_header_above(c("","Full Sample"=2,"Target Setting Countries"=2,"Non Target Setting Countries"=2),bold = T,italic = T) %>%
+  row_spec(0,bold = T,italic = T)  %>%
+  footnote(general="This table presents yearly mean and interquartile estimates of the marginal abatement costs calculated for the full sample and for each group of countries.  The last four columns disaggregates the mean analysis to compare countries which set emission reduction targets against countries which did not.  GDP(y) and capital stock (x1) are deflated to 2011 international dollars, and are considered to have a unit price.  An alternative interpretation is that the the price multipliers (p,w)=1 in the calculations of the marginal rate of transformation of GDP and the marginal product of the capital stock as they represent both quantity and price. The marginal abatement cost is thus calculated as the minimum of the marginal rate of transformation of GDP and the marginal product of capital stock on C0~2~ emissions.  The MAC is measured in USD per metric ton of CO~2~ emission. Labour (x2) is the total labour force in each country (in millions).  The marginal product of labour is the dual without a price multiplier and is measured in millions of labour force per ton of CO2 emission.",threeparttable=T)
+```
+
+Table @tab-2 summarises the marginal abatement cost estimates for each year in our sample period. This table presents the mean and interquartile range for the entire sample, targeting setting countries and their non-target setting counterparts. Marginal abatement costs illustrate the carbon intensity, where countries with larger manufacturing sectors will have relatively higher MAC estimates. The MAC estimates are similar to those reported in the literature [@lee2014; @Bohringer2003; @Viguier2003] , and comparatively similar to the cost of C0~2~ capture and storage of coal plants estimated by @Rubin2015 , who estimates a mitigation cost (constant 2013 dollar per metric tonne of CO2) for the capture of 46-99 US dollars and storage of 53-137 US dollars.
+
+## Carbon emissions pricing comparison
+
+There is a common theoretical starting point for carbon emissions pricing and carbon shadow pricing, a sufficiently high emissions price for imposing zero emissions that cause global warming. An appropriate carbon pricing regime should treat these two options as mutually reinforcing. Carbon emission pricing being where policymakers add a carbon component to the current market price of pollutants. Shadow pricing being where policymakers ascertains a future price of the actual economic cost of a climate-relevant project. Both have a real-world impact in that they drive markets towards factoring in long-term impacts. In practice, the pricing schemes diverge due to political inconvenience and inadequate multilateral commitments [@Hans-Jochen.2020]
+
+Since the introduction of the KP, emission pricing schemes are political motivators to state actors, where it is politically inconvenient to increase such tax in line with climate impacts. While efforts such as the EU emission trading scheme, introduced in 2008 for major industrial facilities, have been shown to only cover about 40% of the European greenhouse-gas emissions . In contrast, shadow pricing essentially bypasses national governments, as it is commonly used by multilateral development banks. At present, only projects in emerging and developing countries routinely apply shadow pricing[@Hans-Jochen.2020]. The approach essentially adopted here is a social value of carbon (SVC). The @stiglitz2017report report on carbon prices established an SVC shadow price range necessary to achieve the Paris temperature target as \$40-80/tCO2 by 2020, and \$50-100/tCO2 by 2030.
+
+```{r}
+#| label: fig-ets
+#| tbl-cap: "ETS pricing mechanism comparison"
+library(readxl)
+library(dplyr)
+read_excel("CPI_Data_DashboardExtract.xlsx",
+           sheet = "Data_Price",
+           skip = 2,na="N/A") ->df
+df <- df[,colSums(is.na(df))<nrow(df)]
+df %>% filter(`Name of the initiative`=="EU ETS")->df
+df %>% 
+  dplyr::select(-`Jurisdiction Covered`,-`Instrument Type`) %>%
+  gather(Year,Price_USD_2011,-`Name of the initiative`) %>%
+  mutate(Year=as.numeric(str_replace(Year,"Price_rate_1_","")),
+         Price_USD_2011=as.numeric(Price_USD_2011)) %>%
+  rename(Initiative="Name of the initiative") %>%
+  filter(Year>=2008) %>%
+  rbind(
+  ClimatePolicy_anal %>% 
+  group_by(year) %>%
+  summarise("Shadow Price KP target-setters"=mean(MAC_T,na.rm = T),          
+            "Shadow Price KP non- target setters"=mean(MAC_No_T,na.rm = T)) %>% rename(Year=year) %>%
+    gather(Initiative,Price_USD_2011,-Year)) %>%
+  ggplot(aes(x=as.character(Year),y=Price_USD_2011,group=Initiative)) +
+  geom_point(aes(shape=Initiative,colour=Initiative)) +
+  geom_line(aes(colour=Initiative),linetype="dotdash") +
+  labs(x="", y="US$/tCO2e",caption = "Source: World Bank Carbon Pricing Dashboard") +
+  # coord_flip() +
+  theme(
+    text = element_text(size=20),
+        legend.position = "top"
+       ,legend.text = element_text(size=15)
+        ) +
+  scale_fill_brewer(type = "qual")
+```
+
+Figure @fig-ets compares the 2011 nominal Carbon Prices from the EU emission trading schemes (ETS) to our shadow price mean estimates. Over the four years of the KP, the shadow price for both groups (target setting and non-target setting) is a multiple of the prices from the ETS. While our estimates trend up over the period the ETS prices actually fall. In keeping with @Hans-Jochen.2020 forward looking definition of shadow prices, in the last year the EU-ETS price has increased dramatically and is beginning to approach our shadow price estimates.
+
+For an emissions trading scheme to work efficiently, allocation of abatement across countries would require that the marginal abatement cost is the same in all countries and over time. The results from table @tab-2 suggest this is not the case. The mean MAC is trending up in both groupings and is typically most significant for target setting countries. Furthermore, the EU-ETS market, which allows firms from different countries to buy and sell CO~2~ emission allowances to achieve an efficient allocation of abatement, is not working to lower the marginal abatement costs of the period. This visual argument suggests a consistent sub-optimal allocation of CO~2~ abatement across countries and significant frictions in ETS market price discovery.
+
+## Marginal effect of the environmental variable
+
+Following @Gallagher2019, we investigate the marginal effect of the environmental variables in equation @eq-1 to understand how they impact inefficiency. Specifically, we consider how inefficiency is affected by the proportion of trade to GDP, the percentage of the urban living in a country's population, and whether the country explicitly sets CO~2~ emission targets in the analysis period.
+
+```{r}
+#| label: tab-effects
+#| tbl-cap: "Marginal effect of enviromental variables"
+ClimatePolicy_anal %>% mutate(logGDP=log(GDP),
+                   logx=log((Capital+LABOUR+CO2)/3+1),
+                   regY=logGDP-logx,
+                   Yr=as.factor(year),
+                   Setter=as.factor(TargetSet)) %>%
+  dplyr::select(regY,TRADEtoGDP,URBAN,Setter,Yr,country) ->df_anal
+
+lm(regY~TRADEtoGDP+URBAN+Setter+Yr,data=df_anal) %>%
+  tidy() %>%
+  # mutate(estimate=exp(estimate))
+  slice(-1) %>%
+  kable("latex",digits = 3,caption = "Marginal effect of enviromental variables",align = "c",booktabs=T,longtable=T) %>%
+  footnote(general="This table shows the marginal effects from the z coefficients in equation (1) by exploiting statistical procedure first outlined in Kuosmenan & Johnson (2015).",threeparttable = T) %>%
+  kable_styling(full_width = T)
+```
+
+The results from table @tab-effects reveal some interesting features of the inefficient patterns at the country level. Typically, those with higher trade to GDP ratios and higher urban populations tend to be less efficient over the sample. Interestingly, those countries which are setting targets tend to be more inefficient in the sample period. Finally, there is an overall reduction in inefficiency over the period indicated by the year dummies, although this relationship is not significant in the data.
+
+## Shadow price differences
+
+Our statistical shadow price difference test is based on the underlying data for frontier efficiency. Specifically, it is the ratio of the corresponding bad output to either good output or input that is represented in a shadow price estimate. For example, the ratio of CO~2~ emissions to GDP could be used to test statistical differences in the shadow price of the good output calculated as $MRT_{\tau}(y_{i},b_{j})=-\frac{\delta \vec{D}_{\tau}/\delta b_{j}}{\delta \vec{D}_{\tau}/\delta y_{i}}$.
+
+```{r}
+#| label: tab-stattest
+#| tbl-cap: "Statistical Analysis of Marginal Abatement Cost Differences"
+library(pander)
+# LeveneTest only works with factor variables in the formula
+ClimatePolicy_anal$Target<-as.factor(ClimatePolicy_anal$TargetSet)
+ClimatePolicy_anal <- ClimatePolicy_anal %>% as_tibble
+StatTest<-function(df,x,netput,grp,start,end) {
+  p<-c(start:end)
+  out<-matrix(NA,nrow =length(p),ncol =8)
+  for (i in p) {
+    dftest<-subset(df,year==i)
+    j=i-2007
+    # Allows the function inputs to call the netput variable
+    dftest$ratio<-eval(substitute(x),dftest)/eval(substitute(netput),dftest)
+    TR<-dftest[eval(substitute(grp),dftest)==1,]$ratio
+    CO<-dftest[eval(substitute(grp),dftest)==0,]$ratio
+    # Allows grp input to be called as a string
+    f<-as.formula(paste0("ratio","~",deparse(substitute(grp))))
+    
+      out[j,1:4]<-c(ad.test(dftest$ratio)$statistic,
+                    leveneTest(f,dftest,center=mean)$`F value`[1],
+                    kruskal.test(f,dftest)$statistic,
+                    ks.boot(TR,CO)$ks$statistic)
+      
+      out[j,5:8]<-c(ad.test(dftest$ratio)$p.value,
+                    leveneTest(f,dftest,center=mean)$`Pr(>F)`[1],
+                    kruskal.test(f,dftest)$p.value,
+                    ks.boot(TR,CO)$ks$p.value)
+  }
+  # To produce a more statistical output required the additional of "stariness" to the out matrix using the pander function add.significance.stars
+out<-matrix(paste0(as.matrix(round(out[,c(1:4)],2)),as.matrix(add.significance.stars(out[,c(5:8)]))),nrow=nrow(out))
+rownames(out)<-p
+out
+}
+
+StatTest(ClimatePolicy_anal,CO2,LABOUR,Target,2008,2012) %>%
+  kable(caption = "Statistical Analysis of Marginal Abatement Cost Differences",align = "c", col.names=c("Normality Test","Equality of Variance","Rank sum z-test","Equality of distribution D-test")) 
+```
 
 # References
