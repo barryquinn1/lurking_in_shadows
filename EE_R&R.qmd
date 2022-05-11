@@ -125,9 +125,13 @@ There are three steps to the testing procedure for the difference in the ratio s
 
 # Data and variables
 
-The KP offers a unique empirical framework to assess the effects of explicit target setting in climate change policy. The first commitment period for the KP was 2008 to 2012. Countries defined as developing (non-annexe 1) were not subject to targets, although most ratified the Protocol. The US was the only signatory of the Protocol that did not ratify. This decision was likely the combination of a weak green lobby in Washington DC [@Hovi2012], perceived excessive compliance costs [@Manne2004] , poor public understanding of climate change [@Brechin2003], and a strong energy lobby during President G.W. Bush's tenure.\[\^7\]. In the run-up to the end of the first commitment period, there were political moves to create targets for a second commitment period culminating in the Paris Agreement. However critics argued that the Paris agreement fell well short of the explicit target setting that was central to the KP. For these reasons, we focus on emissions data from 2008 to 2012, the first commitment period. For this period, it is easier to say definitively who had set targets and who had not. The lines wereblurred post-2012 when a new negotiation phase began. The Protocol set a target for emissions of a basket of greenhouse gases\[8\] to be reached by the signatories in the period 2008-2012. This paper extends the work of Halkos and Tzeremes (2014). To the best of our knowledge, it is the first study to explicitly provide an economic cost of these emissions targets\[9\].
+The KP offers a unique empirical framework to assess the effects of explicit target setting in climate change policy. The first commitment period for the KP was 2008 to 2012. Countries defined as developing (non-annexe 1) were not subject to targets, although most ratified the Protocol. The US was the only signatory of the Protocol that did not ratify. This decision was likely the combination of a weak green lobby in Washington DC [@Hovi2012], perceived excessive compliance costs [@Manne2004] , poor public understanding of climate change [@Brechin2003], and a strong energy lobby during President G.W. Bush's tenure.[\^7]. In the run-up to the end of the first commitment period, there were political moves to create targets for a second commitment period culminating in the Paris Agreement. However critics argued that the Paris agreement fell well short of the explicit target setting that was central to the KP. For these reasons, we focus on emissions data from 2008 to 2012, the first commitment period. For this period, it is easier to say definitively who had set targets and who had not. The lines were blurred post-2012 when a new negotiation phase began. The Protocol set a target for emissions of a basket of greenhouse gases[\^8] to be reached by the signatories in the period 2008-2012. This paper extends the work of @Halkos2014. To the best of our knowledge, it is the first study to explicitly provide an economic cost of these emissions targets[\^9].
 
 \[\^7\] : Andorra, Palestine, South Sudan and the Vatican also do not follow the Protocol. Canada ratified but withdrew effective in December 2012.
+
+\[\^8\]: Carbon dioxide, CO~2~; methane, CH~4~; nitrous oxide, NO~2~; sulphur fluoride, SF~6~; hydrofluorocarbons, HFCs; and perfluorocarbons; PFCs.
+
+\[\^9\]: @Halkos2014 investigate the overall environmental efficiency impact of the KP.
 
 We specify a two input-two output frontier efficiency model. Specifically, we define GDP as a desirable output, CO~2~ emissions from fuel combustion as an undesirable output, and labour force numbers and capital stock as inputs. GDP and labour force numbers are sourced from the World Bank. The capital stock captures both current and past accumulations of capital investment. Finally, to capture cross-country and time-varying heterogeneity in CO~2~ production, we use several environmental variables. Table 1 provides a detailed description of the modelling variables.
 
@@ -160,5 +164,9 @@ Emissions were calculated using IEA energy databases and the default methods and
 
 text_tbl %>% flextable()
 ```
+
+We use the International Energy Association (IEA) database\[\^10\] which provides the most extensive global coverage of CO2 emission data. This database estimates CO2 from fuel emission measured in Metric Tonnes for over 140 countries from 1960 to 2016. After removing countries with missing observations, we have a balanced sample of 525 observations for 2008-2012. Table 2 describes the countries in the sample in terms of target-setting.
+
+\[\^10\]: <http://data.iea.org/payment/products/115-co2-emissions-from-fuel-combustion-2018-edition-coming-soon.aspx>
 
 # References
