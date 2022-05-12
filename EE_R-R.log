@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2022.5.4)  11 MAY 2022 15:50
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Debian) (preloaded format=xelatex 2022.5.4)  12 MAY 2022 08:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1453,30 +1453,40 @@ $[] [] [][][][][][] [][][][][] [][][][][] [][][][][] [][][][][] [][][][][] [][]
  []
 
 [7] [8] [9]
-Overfull \hbox (1.64236pt too wide) in paragraph at lines 757--757
+Overfull \hbox (1.64236pt too wide) in paragraph at lines 745--745
 []\TU/lmtt/m/n/10.95 Warning: Warning: fonts used in []flextable[] are ignored 
 because the []pdflatex[][] 
  []
 
-[10]
-Overfull \hbox (7.39111pt too wide) in paragraph at lines 760--760
+
+Overfull \hbox (7.39111pt too wide) in paragraph at lines 748--748
 []\TU/lmtt/m/n/10.95 compatible engine by defining []latex_engine: xelatex[] in
  the YAML header of the[] 
  []
 
 
-Overfull \hbox (1.2045pt too wide) in paragraph at lines 790--790
+Overfull \hbox (1.2045pt too wide) in paragraph at lines 778--778
 []|[]\TU/lmr/m/n/11 Undesirable 
  []
 
 
-Overfull \hbox (6.8475pt too wide) in paragraph at lines 790--790
+Overfull \hbox (6.8475pt too wide) in paragraph at lines 778--778
 []|[]\TU/lmr/m/n/11 International 
  []
 
 
-Overfull \hbox (6.8475pt too wide) in paragraph at lines 796--796
+Overfull \hbox (6.8475pt too wide) in paragraph at lines 784--784
 []|[]\TU/lmr/m/n/11 International 
+ []
+
+
+Overfull \hbox (9.0915pt too wide) in paragraph at lines 802--802
+[]|[]\TU/lmr/m/n/11 Enviromental 
+ []
+
+
+Overfull \hbox (9.0915pt too wide) in paragraph at lines 808--808
+[]|[]\TU/lmr/m/n/11 Enviromental 
  []
 
 
@@ -1489,34 +1499,20 @@ Overfull \hbox (9.0915pt too wide) in paragraph at lines 820--820
 []|[]\TU/lmr/m/n/11 Enviromental 
  []
 
-
-Overfull \hbox (9.0915pt too wide) in paragraph at lines 826--826
-[]|[]\TU/lmr/m/n/11 Enviromental 
- []
-
-
-Overfull \hbox (9.0915pt too wide) in paragraph at lines 832--832
-[]|[]\TU/lmr/m/n/11 Enviromental 
- []
-
-[11] [12] [13] [14] [15]
-File: EE_R-R_files/figure-pdf/unnamed-chunk-2-1.pdf Graphic file (type pdf)
-<use EE_R-R_files/figure-pdf/unnamed-chunk-2-1.pdf>
-[16]
-Overfull \hbox (674.24596pt too wide) in paragraph at lines 930--930
+[10] [11] [12] [13] [14] [15] [16]
+Overfull \hbox (674.24596pt too wide) in paragraph at lines 890--890
 []\TU/lmtt/m/n/10.95 Warning in rwmGetColours(colourPalette, numColours): colou
 rPalette should be set to either a vector of colours or one of :white2Black bla
 ck2White palette heat topo terrain rainbow negpos8 negpos9[] 
  []
 
-[17]
 File: EE_R-R_files/figure-pdf/fig-map-1.pdf Graphic file (type pdf)
 <use EE_R-R_files/figure-pdf/fig-map-1.pdf>
 
-LaTeX Warning: Reference `fig-map' on page 18 undefined on input line 960.
+LaTeX Warning: Reference `fig-map' on page 17 undefined on input line 920.
 
-[18]
-Overfull \hbox (1.64236pt too wide) in paragraph at lines 993--993
+[17]
+Overfull \hbox (1.64236pt too wide) in paragraph at lines 953--953
 [][]\TU/lmtt/m/n/10.95 summarise()[] has grouped output by []z3[]. You can over
 ride using the [].groups[][] 
  []
@@ -1530,12 +1526,12 @@ Runaway argument?
 <*> EE_R-R.tex
                
 Here is how much of TeX's memory you used:
- 38152 strings out of 481804
- 765981 string characters out of 5937877
- 1444837 words of memory out of 5000000
- 54512 multiletter control sequences out of 15000+600000
+ 38147 strings out of 481804
+ 765789 string characters out of 5937877
+ 1451717 words of memory out of 5000000
+ 54508 multiletter control sequences out of 15000+600000
  543750 words of font info for 112 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 63i,20n,115p,10129b,889s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 63i,20n,115p,10129b,991s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on EE_R-R.pdf (18 pages).
+Output written on EE_R-R.pdf (17 pages).

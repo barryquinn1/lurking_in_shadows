@@ -11,9 +11,10 @@ editor: visual
 bibliography: references.bib
 ---
 
-```{r}
+```{r set-up}
 #| include: false
-library(tidyverse); library(readxl); library(broom); library(kableExtra); library(knitr); library(gridExtra); library(gtable); library(grid); library(stringr); library(moments); library(nortest); library(car); library(Matching);library(flextable)
+library(tidyverse); library(readxl); library(broom); library(kableExtra); library(knitr); library(gridExtra); library(gtable); library(grid); library(stringr); library(moments); library(nortest); library(car); library(Matching);library(flextable);library(rworldmap);library(countrycode);library(readxl);load("dat_anal.RData")
+
 ```
 
 # Abstract
@@ -107,7 +108,6 @@ Use the results from step 2, the marginal abatement cost (MAC) for bad output is
 MAC(b_{j})=\displaystyle \min_{i,k}\{MRT_{\tau}(y_{i},b_{j}), MP_{\tau}(x_{k},b_{j})\} 
 \end{equation}
 ```
-
 i.  In @eq-2 $p_{i}$ is the price of output $i$ and $w_{k}$ is the price of input $k$. This flexible definition of the MAC provides multiple opportunities for abatement. Specifically, bad output $j$ can be abated by either reducing *good* outputs (i.e., downscaling the GDP activity) or increasing the input use (for example, investment in the labour force or capital stock). This approach uses the least-cost alternative. In the case where the good outputs possess a monetary value, the sub derivatives (dual prices) provide monetary shadow prices for bad outputs, and the above equation simplifies to:
 
 ```{=latex}
@@ -146,35 +146,25 @@ The KP offers a unique empirical framework to assess the effects of explicit tar
 
 \[\^9\]: @Halkos2014 investigate the overall environmental efficiency impact of the KP.
 
-We specify a two input-two output frontier efficiency model. Specifically, we define GDP as a desirable output, CO~2~ emissions from fuel combustion as an undesirable output, and labour force numbers and capital stock as inputs. GDP and labour force numbers are sourced from the World Bank. The capital stock captures both current and past accumulations of capital investment. Finally, to capture cross-country and time-varying heterogeneity in CO~2~ production, we use several environmental variables. Table 1 provides a detailed description of the modelling variables.
+We specify a two input-two output frontier efficiency model. Specifically, we define GDP as a desirable output, CO~2~ emissions from fuel combustion as an undesirable output, and labour force numbers and capital stock as inputs. GDP and labour force numbers are sourced from the World Bank. The capital stock captures both current and past accumulations of capital investment. Finally, to capture cross-country and time-varying heterogeneity in CO~2~ production, we use several environmental variables. Table @tab-vars provides a detailed description of the modelling variables.
 
-```{r table 1 descriptions, results="asis"}
+```{r vars-desc}
+#| results: asis
+#| tbl-cap: "Description of variables"
+#| label: tab-vars
 library(WDI)
-
 library(RJSONIO)
-
 VarCodes<-c("NY.GDP.MKTP.PP.KD",
-
             "SL.TLF.TOTL.IN",
-
             "NE.TRD.GNFS.ZS",
-
             'SP.URB.TOTL.IN.ZS')
 
 GDP<-WDIsearch(VarCodes[1],field="indicator",short = F)
-
 Lab<-WDIsearch(VarCodes[2],field="indicator",short = F)
-
 Trade<-WDIsearch(VarCodes[3],field="indicator",short = F)
-
 Pop<-WDIsearch(VarCodes[4],field="indicator",short = F)
-
 info<-as.data.frame(rbind(GDP,Lab,Trade,Pop),row.names = F,stringsAsFactors = F) %>% filter(description!="")
-
-text_tbl<-tibble(Type=c("Undesirable Output","Desirable Output",rep("Input",2),rep("Enviromental Variable",4)),Variable=c("CO2 emissions from fossil fuel (Millions of metric tonnes)",info$name[1:2],"Capital Stock, PPP (constant international $Billions)",info$name[3:4],"Target Setting Indicator","Year Indicators"),Detail=c("
-
-Emissions were calculated using IEA energy databases and the default methods and emission factors given in the 2006 GLs for National Greenhouse Gas Inventories.",info$description[1:2],"Total capital stock is the sum of government capital stock, private capital stock, and public-private partnerships (PPP) capital stock.  When the PPP capital stock is missing we assume zero.",info$description[3:4],"This variable takes a value of 1 for a country which committed to a hard target of emission reduction during the Kyoto Protocol period and zero otherwise.","A proxy for unobserved between group temporal variation"),Source=c("International Energy Agency" ,info$sourceOrganization[1:2],"IMF and World Bank",info$sourceOrganization[3:4],rep("author's own calculation",2)))
-
+text_tbl<-tibble(Type=c("Undesirable Output","Desirable Output",rep("Input",2),rep("Enviromental Variable",4)),Variable=c("CO2 emissions from fossil fuel (Millions of metric tonnes)",info$name[1:2],"Capital Stock, PPP (constant international $Billions)",info$name[3:4],"Target Setting Indicator","Year Indicators"),Detail=c("Emissions were calculated using IEA energy databases and the default methods and emission factors given in the 2006 GLs for National Greenhouse Gas Inventories.",info$description[1:2],"Total capital stock is the sum of government capital stock, private capital stock, and public-private partnerships (PPP) capital stock.  When the PPP capital stock is missing we assume zero.",info$description[3:4],"This variable takes a value of 1 for a country which committed to a hard target of emission reduction during the Kyoto Protocol period and zero otherwise.","A proxy for unobserved between group temporal variation"),Source=c("International Energy Agency" ,info$sourceOrganization[1:2],"IMF and World Bank",info$sourceOrganization[3:4],rep("author's own calculation",2)))
 text_tbl %>% flextable()
 ```
 
@@ -182,31 +172,7 @@ We use the International Energy Association (IEA) database\[\^10\] which provide
 
 \[\^10\]: <http://data.iea.org/payment/products/115-co2-emissions-from-fuel-combustion-2018-edition-coming-soon.aspx>
 
-```{r}
-#| warning: false
-#| message: false
-# load library
-library(rworldmap)
-library(tidyverse)
-library(flextable)
-# get map
-worldmap <- getMap(resolution = "coarse")
-# plot world map
-plot(worldmap, col = "lightgrey", 
-     fill = T, border = "darkgray",
-     xlim = c(-180, 180), ylim = c(-90, 90),
-     bg = "aliceblue",
-     asp = 1, wrap=c(-180,180))
-```
-
-```{r}
-library(countrycode)
-load("dat_anal.RData")
-
-ClimatePolicy_anal %>% 
-  distinct(iso2c,.keep_all = T) %>%
-  dplyr::select(iso2c,TargetSet) %>%
-  mutate(Type=if_else(TargetSet==1,"Target setting country","Non-target setting country"))-> countries
+```{r countries-table}
 # countries %>%
 #   as.data.frame() %>%
 #   head(15) %>%
@@ -220,9 +186,14 @@ ClimatePolicy_anal %>%
 #   flextable::border_outer()
 ```
 
-```{r}
+```{r countries-map}
 #| fig-cap: "Map of target setting countries"
 #| label: fig-map
+
+ClimatePolicy_anal %>% 
+  distinct(iso2c,.keep_all = T) %>%
+  dplyr::select(iso2c,TargetSet) %>%
+  mutate(Type=if_else(TargetSet==1,"Target setting country","Non-target setting country"))-> countries
 # combine data frame with map
 visitedMap <- joinCountryData2Map(countries, 
                                   joinCode = "ISO2",
@@ -246,12 +217,12 @@ do.call(addMapLegendBoxes, c(mapParams,
                              bty = "n"))
 ```
 
-Table @tab-1 shows the summary statistics of the variables entering the model. These statistics reveal that significant variation in outputs and inputs highlights considerable cross-sectional heterogeneity. The variation is not surprising given the mix of countries outlined @fig-map \[\^12\].
+Table @tab-sum shows the summary statistics of the variables entering the model. These statistics reveal that significant variation in outputs and inputs highlights considerable cross-sectional heterogeneity. The variation is not surprising given the mix of countries outlined @fig-map [\^12].
 
 \[\^12\]: Notice that some countries have a trade which exceeds GDP (more than 100%). This excess is usually a feature of small countries with high productivity. Due to their small size, instead of being self-sufficient and producing all the products their population needs, they specialize in a few highly profitable industries. These industries may produce more money from exports than the entire domestic economy, which allows them to purchase imports far above what their domestic economy could otherwise support. For example, in the sample, three countries have a Trade to GDP ratio of over 200%; Luxembourg, Malta and Singapore.
 
-```{r}
-#| label: tab-1
+```{r sum-stats}
+#| label: tab-sum
 #| tbl-cap: "Summary statistics"
 sumThatFinal<-function(x){
   p5=quantile(x,na.rm = T,0.05)
@@ -284,7 +255,8 @@ sumStats %>%
 
 We estimate a step-wise yield curve of probabilistic benchmark technologies. These technologies extract, at the observed performance level, country-year marginal abatement costs of CO~2~ emissions. We use the direction vector to estimate the directional distance function model for 10 quantiles, which should be sufficient granularity for a sample size of 525. Finally, we include a noise term that captures measurement errors in the data.
 
-```{r}
+```{r macs}
+#| results: asis
 #| label: tab-macdiff
 #| tbl-cap: "Marginal abatement costs in 2011 dollars per CO2 tonne"
 ClimatePolicy_anal %>% 
@@ -310,11 +282,10 @@ There is a common theoretical starting point for carbon emissions pricing and ca
 
 Since the introduction of the KP, emission pricing schemes are political motivators to state actors, where it is politically inconvenient to increase such tax in line with climate impacts. While efforts such as the EU emission trading scheme, introduced in 2008 for major industrial facilities, have been shown to only cover about 40% of the European greenhouse-gas emissions . In contrast, shadow pricing essentially bypasses national governments, as it is commonly used by multilateral development banks. At present, only projects in emerging and developing countries routinely apply shadow pricing[@Hans-Jochen.2020]. The approach essentially adopted here is a social value of carbon (SVC). The @stiglitz2017report report on carbon prices established an SVC shadow price range necessary to achieve the Paris temperature target as \$40-80/tCO2 by 2020, and \$50-100/tCO2 by 2030.
 
-```{r}
+```{r ets-graph}
 #| label: fig-ets
 #| tbl-cap: "ETS pricing mechanism comparison"
-library(readxl)
-library(dplyr)
+#library(dplyr)
 read_excel("CPI_Data_DashboardExtract.xlsx",
            sheet = "Data_Price",
            skip = 2,na="N/A") ->df
@@ -354,7 +325,7 @@ For an emissions trading scheme to work efficiently, allocation of abatement acr
 
 Following @Gallagher2019, we investigate the marginal effect of the environmental variables in equation @eq-1 to understand how they impact inefficiency. Specifically, we consider how inefficiency is affected by the proportion of trade to GDP, the percentage of the urban living in a country's population, and whether the country explicitly sets CO~2~ emission targets in the analysis period.
 
-```{r}
+```{r effects}
 #| label: tab-effects
 #| tbl-cap: "Marginal effect of enviromental variables"
 ClimatePolicy_anal %>% mutate(logGDP=log(GDP),
@@ -379,7 +350,8 @@ The results from table @tab-effects reveal some interesting features of the inef
 
 Our statistical shadow price difference test is based on the underlying data for frontier efficiency. Specifically, it is the ratio of the corresponding bad output to either good output or input that is represented in a shadow price estimate. For example, the ratio of CO~2~ emissions to GDP could be used to test statistical differences in the shadow price of the good output calculated as $MRT_{\tau}(y_{i},b_{j})=-\frac{\delta \vec{D}_{\tau}/\delta b_{j}}{\delta \vec{D}_{\tau}/\delta y_{i}}$.
 
-```{r}
+```{r shadows}
+#| results: asis
 #| label: tab-stattest
 #| tbl-cap: "Statistical Analysis of Marginal Abatement Cost Differences"
 library(pander)
