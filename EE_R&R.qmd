@@ -177,49 +177,89 @@ Lab<-WDIsearch(VarCodes[2],field="indicator",short = F)
 Trade<-WDIsearch(VarCodes[3],field="indicator",short = F)
 Pop<-WDIsearch(VarCodes[4],field="indicator",short = F)
 info<-as.data.frame(rbind(GDP,Lab,Trade,Pop),row.names = F,stringsAsFactors = F) %>% filter(description!="")
-text_tbl<-tibble(Type=c("Undesirable Output","Desirable Output",rep("Input",2),rep("Enviromental Variable",4)),Variable=c("CO2 emissions from fossil fuel (Millions of metric tonnes)",info$name[1:2],"Capital Stock, PPP (constant international $Billions)",info$name[3:4],"Target Setting Indicator","Year Indicators"),Detail=c("Emissions were calculated using IEA energy databases and the default methods and emission factors given in the 2006 GLs for National Greenhouse Gas Inventories.",info$description[1:2],"Total capital stock is the sum of government capital stock, private capital stock, and public-private partnerships (PPP) capital stock.  When the PPP capital stock is missing we assume zero.",info$description[3:4],"This variable takes a value of 1 for a country which committed to a hard target of emission reduction during the Kyoto Protocol period and zero otherwise.","A proxy for unobserved between group temporal variation"),Source=c("International Energy Agency" ,info$sourceOrganization[1:2],"IMF and World Bank",info$sourceOrganization[3:4],rep("author's own calculation",2)))
-text_tbl %>% kable("latex",caption = "Description of model variables", row.names = T,align = "c",booktabs=T) %>% kable_styling(latex_options = c("HOLD_position","scale_down"))
 ```
 
-Table provides a detailed description of the modelling variables. We use the International Energy Association (IEA) database[^10] which provides the most extensive global coverage of CO2 emission data. This database estimates CO2 from fuel emission measured in Metric Tonnes for rover 140 countries from 1960 to 2016. After removing countries with missing observations, we have a balanced sample of 525 observations for 2008-2012. Figure @fig-map visualises the countries geography of the countries in our sample, colour coding the target[^11] setting and non-target[^12] setting nations. The grey shaded areas are countries that where not part of the KP.
+| Type                   | Variable                                                     | Detail                                                                                                                                                                                       | Source                         |
+|------------|------------|-------------------------------------|------------|
+| Undesirable Output     | CO~2~ emissions from fossil fuel (Millions of metric tonnes) | Emissions were calculated using IEA energy databases and the default methods and emission factors given in the 2006 GLs for National Greenhouse Gas Inventories                              | International Energy Agency    |
+| Desirable Output       | `r info$name[1]`                                             | `r info$description[1]`                                                                                                                                                                      | `r info$sourceOrganization[1]` |
+| Input                  | `r info$name[2]`                                             | `r info$description[2]`                                                                                                                                                                      | `r info$sourceOrganization[2]` |
+| Input                  | Capital Stock, PPP (constant international \$Billions)       | Total capital stock is the sum of government capital stock, private capital stock, and public-private partnerships (PPP) capital stock. When the PPP capital stock is missing we assume zero |                                |
+| Environmental Variable | `r info$name[3]`                                             | `r info$description[3]`                                                                                                                                                                      | `r info$sourceOrganization[3]` |
+| Environmental Variable | `r info$name[4]`                                             | `r info$description[4]`                                                                                                                                                                      | `r info$sourceOrganization[4]` |
+| Environmental Variable | Target Setting Indicator                                     | This variable takes a value of 1 for a country which committed to a hard target of emission reduction during the Kyoto Protocol period and zero otherwise                                    | Authors' own calculation       |
+| Environmental Variable | Year Indicators                                              | A proxy for unobserved between group temporal variation                                                                                                                                      | Authors' own calculation       |
+
+: Description of model variables
+
+```{r desc}
+#| tbl-cap: "Descriptions of model varaibles"
+#| label: tbl-desc-extra
+#| eval: false
+VarCodes<-c("NY.GDP.MKTP.PP.KD",
+            "SL.TLF.TOTL.IN",
+            "NE.TRD.GNFS.ZS",
+            'SP.URB.TOTL.IN.ZS')
+
+GDP<-WDIsearch(VarCodes[1],field="indicator",short = F)
+Lab<-WDIsearch(VarCodes[2],field="indicator",short = F)
+Trade<-WDIsearch(VarCodes[3],field="indicator",short = F)
+Pop<-WDIsearch(VarCodes[4],field="indicator",short = F)
+info<-as.data.frame(rbind(GDP,Lab,Trade,Pop),row.names = F,stringsAsFactors = F) %>% filter(description!="")
+text_tbl<-tibble(Type=c("Undesirable Output","Desirable Output",rep("Input",2),rep("Enviromental Variable",4)),Variable=c("CO2 emissions from fossil fuel (Millions of metric tonnes)",info$name[1:2],"Capital Stock, PPP (constant international $Billions)",info$name[3:4],"Target Setting Indicator","Year Indicators"),Detail=c("Emissions were calculated using IEA energy databases and the default methods and emission factors given in the 2006 GLs for National Greenhouse Gas Inventories.",info$description[1:2],"Total capital stock is the sum of government capital stock, private capital stock, and public-private partnerships (PPP) capital stock.  When the PPP capital stock is missing we assume zero.",info$description[3:4],"This variable takes a value of 1 for a country which committed to a hard target of emission reduction during the Kyoto Protocol period and zero otherwise.","A proxy for unobserved between group temporal variation"),Source=c("International Energy Agency" ,info$sourceOrganization[1:2],"IMF and World Bank",info$sourceOrganization[3:4],rep("author's own calculation",2)))
+text_tbl
+
+# %>% kable("latex",caption = "Description of model variables", align = "c",booktabs=T)
+```
+
+Table 1 provides a detailed description of the modelling variables. We use the International Energy Association (IEA) database[^10] which provides the most extensive global coverage of CO~2~ emission data. This database estimates CO~2~ from fuel emission measured in Metric Tonnes for rover 140 countries from 1960 to 2016. After removing countries with missing observations, we have a balanced sample of 525 observations for 2008-2012.
 
 [^10]: For more details of this data visit https://www.iea.org/data-and-statistics.
-
-[^11]: Target setting countries include Australia, Austria, Belgium, Bulgaria, Canada, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Italy, Japan, Latvia, Luxembourg, Netherlands, New Zealand, Norway, Poland, Portugal, Romania, Russian Federation, Slovak Republic, Spain, Sweden, Switzerland, United Kingdom
-
-[^12]: Non-target setting countries include Albania, Algeria, Argentina, Armenia, Azerbaijan, Bahrain, Bangladesh, Belarus, Benin, Bolivia, Botswana, Brazil, Cambodia, Cameroon, Chile, China, Colombia, Congo, Rep., Costa Rica, Croatia, Cyprus, Dominican Republic, Ecuador, Egypt, Arab Rep., El Salvador, Georgia, Ghana, Guatemala, Haiti, Honduras, India, Indonesia, Israel, Jamaica, Jordan, Kazakhstan, Kenya, Korea, Rep., Kuwait, Kyrgyz Republic, Lithuania, Malaysia, Malta, Mexico, Morocco, Mozambique, Namibia, Nepal, Nigeria, Oman, Pakistan, Panama, Paraguay, Peru, Philippines, Qatar, Saudi Arabia, Senegal, Singapore, Slovenia, South Africa, Sri Lanka, Sudan, Thailand, Togo, Tunisia, Ukraine, United Arab Emirates, United States, Uruguay, Uzbekistan, Venezuela, RB, Yemen, Rep., Zambia.
 
 ```{r countries-map}
 #| fig-cap: "Map of target setting countries"
 #| label: fig-map
-#| message: false
+library(RColorBrewer)
+library(mapproj)
+library(sf)
+library(RgoogleMaps)
+library(scales)
+library(rworldmap)
+library(maps)
+library(tidyverse)
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(rgeos)
+library(ggspatial)
+library(maptools)
+library(leaflet)
+library(sf)
+library(tmap)
+library(here)
+library(rgdal)
 
 ClimatePolicy_anal %>% 
   distinct(iso2c,.keep_all = T) %>%
   dplyr::select(iso2c,TargetSet) %>%
-  mutate(Type=if_else(TargetSet==1,"Target setting country","Non-target setting country"))-> countries
+  mutate(Type=if_else(TargetSet==1,"Target setting","Non-target setting"))-> countries
 # combine data frame with map
-visitedMap <- joinCountryData2Map(countries, 
-                                  joinCode = "ISO2",
-                                  nameJoinColumn = "iso2c")
-# def. map parameters, e.g. def. colors
-mapParams <- mapCountryData(visitedMap, 
-                            nameColumnToPlot="Type",
-                            oceanCol = "azure2",
-                            catMethod = "categorical",
-                            missingCountryCol = gray(.8),
-                            colourPalette = c("coral"),
-                            addLegend = F,
-                            mapTitle = "",
-                            border = NA)
-# add legend and display map
-do.call(addMapLegendBoxes, c(mapParams,
-                             x = 'bottom',
-                             title = "",
-                             horiz = TRUE,
-                             bg = "transparent",
-                             bty = "n"))
+world <- ne_countries(scale = "medium", returnclass = "sf")
+# gene world map
+left_join(world,countries,by=c("iso_a2"="iso2c"))->Map_dat 
+ggplot() +
+  geom_sf(data=Map_dat) +
+  geom_sf(data=Map_dat, aes(fill=Type)) +
+  scale_fill_brewer(type = 'qual') +
+  theme(legend.position = "top") +
+  scale_fill_discrete(name = "Kyoto Protocol Status", labels = c("Target setting", "Non-Target setting","Not a Signatory"))
+
 ```
+
+Figure @fig-map plots the countries which signatories, colour coding the target[^11] setting and non-target[^12] setting nations. The grey shaded areas are countries that where not part of the KP.
+
+[^11]: Target setting countries include Australia, Austria, Belgium, Bulgaria, Canada, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Ireland, Italy, Japan, Latvia, Luxembourg, Netherlands, New Zealand, Norway, Poland, Portugal, Romania, Russian Federation, Slovak Republic, Spain, Sweden, Switzerland, United Kingdom
+
+[^12]: Non-target setting countries include Albania, Algeria, Argentina, Armenia, Azerbaijan, Bahrain, Bangladesh, Belarus, Benin, Bolivia, Botswana, Brazil, Cambodia, Cameroon, Chile, China, Colombia, Congo, Rep., Costa Rica, Croatia, Cyprus, Dominican Republic, Ecuador, Egypt, Arab Rep., El Salvador, Georgia, Ghana, Guatemala, Haiti, Honduras, India, Indonesia, Israel, Jamaica, Jordan, Kazakhstan, Kenya, Korea, Rep., Kuwait, Kyrgyz Republic, Lithuania, Malaysia, Malta, Mexico, Morocco, Mozambique, Namibia, Nepal, Nigeria, Oman, Pakistan, Panama, Paraguay, Peru, Philippines, Qatar, Saudi Arabia, Senegal, Singapore, Slovenia, South Africa, Sri Lanka, Sudan, Thailand, Togo, Tunisia, Ukraine, United Arab Emirates, United States, Uruguay, Uzbekistan, Venezuela, RB, Yemen, Rep., Zambia.
 
 ```{r sum-stats}
 #| label: tbl-sum
